@@ -3,26 +3,28 @@ package test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
 import main.*;
 
-public class KundresgisterTest {
-	Kundregister kr = new Kundregister();
+public class KundTest {
 	Kund k = new Kund("123", "Bert Bertsson", "Smågatan 99");
-
+	Order o = new Order("987");
+	
 	@Test
 	public void testAddAndGet() {
-		kr.add(new Kund("123", "Anders Andersson", "Storgatan 1"));
-		kr.add(k);
-		assertEquals(k, kr.get("123"));
-		assertEquals(null, kr.get("000"));
+		k.addOrder(new Order("987"));
+		k.addOrder(o);
+		assertEquals(o, k.getOrder("987"));
+		assertEquals(null, k.getOrder("000"));
 		//antar att det ska skrivas över vid konflikt. Om den gamla kunden skall vara kvar istället, lägg till k innan Anders.
 	}
 	@Test
 	public void testRemove() {
-		kr.add(k);
-		assertEquals(k, kr.get("123"));
-		assertEquals(k, kr.remove("123"));
-		assertEquals(null, kr.get("123"));
+		k.addOrder(o);
+		assertEquals(o, k.getOrder("987"));
+		assertEquals(o, k.removeOrder("987"));
+		assertEquals(null, k.getOrder("987"));
 	}
+	//TODO: Namn och adress
 
 }
