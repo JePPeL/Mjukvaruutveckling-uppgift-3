@@ -4,18 +4,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Kund {
-	private String kundnummer; //OBS: Får ej ändras, skapa ingen setter
+	private String kundnummer; //OBS: Fï¿½r ej ï¿½ndras, skapa ingen setter
 	private Map<String, Order> ordrar;
+	private String namn;
+	private String adress;
 
 	public Kund(String kundnummer, String namn, String adress) {
 		this.kundnummer = kundnummer;
 		ordrar = new HashMap<String, Order>();
+		this namn = namn; 
+		this adress = adress;
 		//TODO: Andra attribut
 	}
 	
-	public String getName() {
-		//TODO: implement
-		return null;
+	public String getNamn() {
+		return namn;
 	}
 	public String getKundnummer() {
 		return kundnummer;
