@@ -19,4 +19,8 @@ public class Kundregister {
 		return register.get(kundnummer);
 	}
 
+	public Kund remove(String kundnummer) {
+		return register.remove(kundnummer);		
+	}
+
 }
