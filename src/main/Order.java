@@ -10,10 +10,7 @@ public class Order {
 	
 	
 	public void addOrderrad(String nummer) {
-		orderrader.put(, value)
-		
-		
-		
+
 		
 	}
 	
