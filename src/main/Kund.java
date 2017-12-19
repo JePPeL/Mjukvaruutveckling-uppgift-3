@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Kund {
-	private String kundnummer; // OBS: F�r ej �ndras, skapa ingen setter
+	private String kundnummer;
+	// OBS: F�r ej �ndras, skapa ingen setter
 	private Map<String, Order> ordrar;
 	private String namn;
 	private String adress;
