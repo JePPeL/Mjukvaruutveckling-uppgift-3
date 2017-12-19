@@ -1,12 +1,31 @@
 package main;
 
+import java.util.HashMap;
+
 public class Order {
-	private String ID;
+	private String orderID;
+	private Kund kund;
+	private String leverandsdatum;
+	private HashMap<String, Orderrad> orderrader  = new HashMap<String, Orderrad>();
+	
+	
+	public void addOrderrad(String nummer) {
+		orderrader.put(, value)
+		
+		
+		
+		
+	}
+	
 	public Order(String OrderID) {
-		ID = OrderID;
-		//TODO: Add customer
+		orderID = OrderID;
+		
 	}
 
+	public void setKund(Kund kund) {
+		this.kund = kund;
+	}
+	
 	public String getID() {
 		return ID;
 	}

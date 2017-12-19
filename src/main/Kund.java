@@ -12,20 +12,31 @@ public class Kund {
 	public Kund(String kundnummer, String namn, String adress) {
 		this.kundnummer = kundnummer;
 		ordrar = new HashMap<String, Order>();
-		this namn = namn; 
-		this adress = adress;
-		//TODO: Andra attribut
+		this.setNamn(namn);
+		this.setAdress(adress);
+	
 	}
+	
+	
+	public void setNamn(String namn) {
+		this namn = namn;
+		
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+	
 	
 	public String getNamn() {
 		return namn;
 	}
+	
 	public String getKundnummer() {
 		return kundnummer;
 	}
 
 	public void addOrder(Order order) {
-		ordrar.put(order.getID(), order);
+		ordrar.put(order.getOrderID(), order);
+		order.setKund(this);
 		
 	}
 
