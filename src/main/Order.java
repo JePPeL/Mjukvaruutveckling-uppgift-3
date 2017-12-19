@@ -22,9 +22,9 @@ public class Order {
 	public void setKund(Kund kund) {
 		this.kund = kund;
 	}
-	
-	public String getID() {
-		return ID;
+
+	public String getOrderID() {
+		return orderID;
 	}
 
 }

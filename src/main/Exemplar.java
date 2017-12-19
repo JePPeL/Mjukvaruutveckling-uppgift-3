@@ -1,7 +1,7 @@
 package main;
 
 public class Exemplar {
-	private String serienummer
+	private String serienummer;
 	private Produkt produkt;
 	
 	
@@ -17,7 +17,7 @@ public class Exemplar {
 		this.produkt = produkt;
 	}
 	
-	public String getProdukt() {
+	public Produkt getProdukt() {
 		return produkt;
 	}
 

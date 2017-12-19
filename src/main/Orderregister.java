@@ -1,7 +1,10 @@
 package main;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Orderregister {
-	public HashMap<String, int> lager = new HashMap<String, int>();
+	private Map<String, Integer> lager = new HashMap<String, Integer>();
 	
 	
 	
