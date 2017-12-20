@@ -4,23 +4,22 @@ import java.util.HashMap;
 
 public class Order {
 	private String orderID;
-	private Kund kund;
-	private String leverandsdatum;
-	private HashMap<String, Orderrad> orderrader  = new HashMap<String, Orderrad>();
+	//NB: Shouldn't change, don't create setter
+	private Customer customer;
+	private String deliveryDate;
+	private HashMap<String, OrderLine> orderLines  = new HashMap<String, OrderLine>();
 	
+	public Order(String orderID) {
+		this.orderID = orderID;
+	}
 	
-	public void addOrderrad(String nummer) {
-
+	public void addOrderLine(String number) {
+		//TODO: Implement
 		
 	}
 	
-	public Order(String OrderID) {
-		orderID = OrderID;
-		
-	}
-
-	public void setKund(Kund kund) {
-		this.kund = kund;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public String getOrderID() {
