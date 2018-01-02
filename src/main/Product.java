@@ -6,6 +6,11 @@ public class Product {
 	private String category;
 	private double price;
 	
+	public Product(String name, String category, double price) {
+		this.name = name;
+		this.category = category;
+		this.price = price;
+	}
 	
 	public void setName(String name) {
 		this.name = name;

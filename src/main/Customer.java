@@ -13,8 +13,8 @@ public class Customer {
 	public Customer(String customerNumber, String name, String address) {
 		this.customerNumber = customerNumber;
 		orderMap = new HashMap<String, Order>();
-		this.setName(name);
-		this.setAddress(address);
+		setName(name);
+		setAddress(address);
 
 	}
 
@@ -38,10 +38,12 @@ public class Customer {
 		return customerNumber;
 	}
 
-	public void addOrder(Order order) {
+	public void addOrder(String orderID, Customer customer, String deliveryDate) {
+		orderMap.put(orderID, new Order(orderID, this, deliveryDate));
+	/*public void addOrder(Order order) {
 		orderMap.put(order.getOrderID(), order);
 		order.setCustomer(this);
-
+		*/
 	}
 
 	public Order findOrder(String ID) {

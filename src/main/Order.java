@@ -6,24 +6,27 @@ public class Order {
 	private String orderID;
 	//NB: Shouldn't change, don't create setter
 	private Customer customer;
+	//Changed customer to be immutable, seems cleaner to me /Jesper
 	private String deliveryDate;
 	private HashMap<String, OrderLine> orderLines  = new HashMap<String, OrderLine>();
 	
-	public Order(String orderID) {
+	public Order(String orderID, Customer customer, String deliveryDate) {
 		this.orderID = orderID;
-	}
-	
-	public void addOrderLine(String number) {
-		//TODO: Implement
-		
-	}
-	
-	public void setCustomer(Customer customer) {
 		this.customer = customer;
+		this.deliveryDate = deliveryDate;
+	}
+	
+	public void addOrderLine(OrderLine line) {
+		orderLines.put(line.getNumber(), line);
+		
 	}
 
 	public String getOrderID() {
 		return orderID;
+	}
+
+	public Customer getCustomer() {
+		return customer;
 	}
 
 }
