@@ -6,9 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.event.ActionEvent;
 
-public class GUI {
+public class GUI implements Observer{
 
 	private JFrame frame;
 	private JTextField fieldCustomerID;
@@ -169,5 +171,11 @@ public class GUI {
 		fieldAddress.setBounds(112, 26, 86, 20);
 		frame.getContentPane().add(fieldAddress);
 		fieldAddress.setColumns(10);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 }

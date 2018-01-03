@@ -9,10 +9,16 @@ import java.util.Random;
 public class Controller {
 	
 	//Start Customer & Customer Register
-	private CustomerRegister cReg = new CustomerRegister();
+	private GUI view;
+	private Model model;
 	private int maxNbr = 10000000;
 	private List<String> idList = new LinkedList<String>();
 	private String CustomerNumber;
+	
+	public Controller(GUI view, Model model) {
+		this.view=view;
+		this.model=model;
+	}
 	
 	public void addCustomer(String name, String address) {
 		cReg.addCustomer(new Customer(custNumbGen(), name, address));
