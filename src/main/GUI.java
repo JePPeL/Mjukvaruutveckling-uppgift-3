@@ -233,22 +233,23 @@ public class GUI implements Observer{
 		frame.getContentPane().add(separator_2);
 		
 		tableInventory = new JTable();
-		tableInventory.setBounds(340, 478, 325, 155);
+		tableInventory.setBounds(328, 452, 337, 179);
 		frame.getContentPane().add(tableInventory);
 		
 		tableOrderLine = new JTable();
-		tableOrderLine.setBounds(340, 264, 325, 154);
+		tableOrderLine.setBounds(328, 264, 337, 154);
 		frame.getContentPane().add(tableOrderLine);
 		
 		tableOrder = new JTable();
-		tableOrder.setBounds(340, 160, 325, 68);
+		tableOrder.setBounds(328, 162, 337, 67);
 		frame.getContentPane().add(tableOrder);
 		
 	
 		tableCustomerRegister = new JTable();
-		tableCustomerRegister.setBounds(340, 42, 325, 85);
+		tableCustomerRegister.setBounds(328, 25, 337, 110);
 		scroll = new JScrollPane(accountTable);
-		scroll.setBounds(340, 42, 325, 85);
+		scroll.setBounds(328, 25, 337, 110);
+
 		frame.getContentPane().add(tableCustomerRegister);
 	}
 
