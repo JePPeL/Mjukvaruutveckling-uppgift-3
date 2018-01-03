@@ -23,5 +23,7 @@ public class CustomerRegister {
 	public Customer removeCustomer(String customerNumber) {
 		return register.remove(customerNumber);		
 	}
+	
+	
 
 }
