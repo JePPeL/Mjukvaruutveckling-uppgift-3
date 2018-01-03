@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -16,9 +17,6 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-
-import uppgift5.GUI.UneditableJTable;
-
 import java.awt.Font;
 import javax.swing.JTable;
 
@@ -247,9 +245,6 @@ public class GUI implements Observer{
 	
 		tableCustomerRegister = new JTable();
 		tableCustomerRegister.setBounds(328, 25, 337, 110);
-		scroll = new JScrollPane(accountTable);
-		scroll.setBounds(328, 25, 337, 110);
-
 		frame.getContentPane().add(tableCustomerRegister);
 	}
 
