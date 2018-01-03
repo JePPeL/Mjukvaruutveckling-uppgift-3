@@ -8,6 +8,15 @@ public class Controller {
 		
 	}
 	
+	public Custumer getCustomer() {
+		return cReg.findCustomer(customerNumber);
+	}
+	
+	public void removeCustomer() {
+		cReg.removeCustomer();
+	}
+	
+	
 	public String custNumbGen() {
 		Random rand = new Random();
 		String random = Integer.toString(rand.nextInt(maxNbr));
