@@ -4,11 +4,8 @@ public class Item {
 	private String serialNumber;
 	private Product product;
 	
-	public Item(Product product) {
+	public Item(Product product, String serialNumber) {
 		this.product = product;
-	}
-	
-	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
 	}
 	
