@@ -190,13 +190,13 @@ public class GUI {
 		lblOrderrad.setBounds(18, 273, 61, 16);
 		frame.getContentPane().add(lblOrderrad);
 		
-		JLabel lblNewLabel = new JLabel("Antal");
-		lblNewLabel.setBounds(21, 558, 61, 16);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lnlAntalLager = new JLabel("Antal");
+		lnlAntalLager.setBounds(21, 558, 61, 16);
+		frame.getContentPane().add(lnlAntalLager);
 		
-		JLabel lblNewLabel_1 = new JLabel("Antal");
-		lblNewLabel_1.setBounds(23, 357, 61, 16);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel lblAntalLager = new JLabel("Antal");
+		lblAntalLager.setBounds(23, 357, 61, 16);
+		frame.getContentPane().add(lblAntalLager);
 		
 		JList listCustomers = new JList();
 		listCustomers.setBounds(339, 28, 325, 99);
