@@ -13,7 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JSeparator;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
+import uppgift5.GUI.UneditableJTable;
+
 import java.awt.Font;
 import javax.swing.JTable;
 
@@ -239,8 +244,11 @@ public class GUI implements Observer{
 		tableOrder.setBounds(340, 160, 325, 68);
 		frame.getContentPane().add(tableOrder);
 		
+	
 		tableCustomerRegister = new JTable();
 		tableCustomerRegister.setBounds(340, 42, 325, 85);
+		scroll = new JScrollPane(accountTable);
+		scroll.setBounds(340, 42, 325, 85);
 		frame.getContentPane().add(tableCustomerRegister);
 	}
 
