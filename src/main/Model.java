@@ -12,9 +12,11 @@ public class Model extends Observable {
 	private List<String> idList = new LinkedList<String>();
 	private String CustomerNumber;
 	
-	public Model(GUI gui) {
+	public Model() {
 		cReg = new CustomerRegister();
 		pReg = new ProductRegister();
+	}
+	public void addGUI(GUI gui) {
 		addObserver(gui);
 	}
 	public void addCustomer(String name, String address) {
