@@ -18,9 +18,12 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
+import java.awt.Window;
+
 import javax.swing.JTable;
 
 public class GUI implements Observer {
+	private Model m;
 	private JFrame frame;
 	private JTextField fieldCustomerID;
 	private JTextField fieldProductID;
@@ -38,11 +41,11 @@ public class GUI implements Observer {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void start(Controller c, Model m) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI window = new GUI();
+					GUI window = new GUI(c, m);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,14 +57,15 @@ public class GUI implements Observer {
 	/**
 	 * Create the application.
 	 */
-	public GUI() {
-		initialize();
+	public GUI(Controller c, Model m) {
+		initialize(c, m);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(Controller c, Model m) {
+		this.m = m;
 		frame = new JFrame();
 		frame.setBounds(100, 100, 700, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,25 +84,22 @@ public class GUI implements Observer {
 		JButton btnAddProduct = new JButton("L\u00E4gg till");
 		btnAddProduct.setBounds(103, 525, 89, 23);
 		frame.getContentPane().add(btnAddProduct);
+		btnAddProduct.addActionListener(c.addAddProductListener());
 
 		JButton btnSearchProduct = new JButton("S\u00F6k");
 		btnSearchProduct.setBounds(12, 525, 89, 23);
 		frame.getContentPane().add(btnSearchProduct);
+		btnSearchProduct.addActionListener(c.addSearchProductListener());
 
 		JButton btnAddCustomer = new JButton("L\u00E4gg till");
 		btnAddCustomer.setBounds(103, 112, 89, 23);
 		frame.getContentPane().add(btnAddCustomer);
+		btnAddCustomer.addActionListener(c.addAddCustomerListener());
 
 		JButton btnSearchCustomer = new JButton("S\u00F6k");
-		btnSearchCustomer.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
 		btnSearchCustomer.setBounds(12, 112, 89, 23);
 		frame.getContentPane().add(btnSearchCustomer);
+		btnSearchCustomer.addActionListener(c.addSearchCustomerListener());
 
 		fieldOrderID = new JTextField();
 		fieldOrderID.setBounds(14, 179, 267, 20);
@@ -108,6 +109,7 @@ public class GUI implements Observer {
 		JButton btnAddOrder = new JButton("L\u00E4gg Till");
 		btnAddOrder.setBounds(103, 205, 89, 23);
 		frame.getContentPane().add(btnAddOrder);
+		btnAddOrder.addActionListener(c.addAddOrderListener());
 
 		fieldOrderLineID = new JTextField();
 		fieldOrderLineID.setBounds(14, 284, 267, 20);
@@ -117,30 +119,37 @@ public class GUI implements Observer {
 		JButton btnRemoveCustomer = new JButton("Ta bort");
 		btnRemoveCustomer.setBounds(196, 112, 89, 23);
 		frame.getContentPane().add(btnRemoveCustomer);
+		btnRemoveCustomer.addActionListener(c.addRemoveCustomerListener());
 
 		JButton btnRemoveProduct = new JButton("Ta bort");
 		btnRemoveProduct.setBounds(196, 525, 89, 23);
 		frame.getContentPane().add(btnRemoveProduct);
+		btnRemoveProduct.addActionListener(c.addRemoveProductListener());
 
 		JButton btnSearchOrder = new JButton("S\u00F6k");
 		btnSearchOrder.setBounds(12, 205, 89, 23);
 		frame.getContentPane().add(btnSearchOrder);
+		btnSearchOrder.addActionListener(c.addSearchOrderListener());
 
 		JButton btnRemoveOrder = new JButton("Ta bort");
 		btnRemoveOrder.setBounds(196, 205, 89, 23);
 		frame.getContentPane().add(btnRemoveOrder);
+		btnRemoveOrder.addActionListener(c.addRemoveOrderListener());
 
 		JButton btnSearchOrderLine = new JButton("S\u00F6k");
 		btnSearchOrderLine.setBounds(12, 310, 89, 23);
 		frame.getContentPane().add(btnSearchOrderLine);
+		btnSearchOrderLine.addActionListener(c.addSearchOrderLineListener());
 
 		JButton btnLggTill = new JButton("L\u00E4gg till");
 		btnLggTill.setBounds(103, 310, 89, 23);
 		frame.getContentPane().add(btnLggTill);
+		btnLggTill.addActionListener(c.addLggTillListener());
 
 		JButton btnTaBort = new JButton("Ta bort");
 		btnTaBort.setBounds(196, 310, 89, 23);
 		frame.getContentPane().add(btnTaBort);
+		btnTaBort.addActionListener(c.addTaBortListener());
 
 		fieldAmountInventory = new JTextField();
 		fieldAmountInventory.setBounds(14, 581, 179, 20);
@@ -150,10 +159,12 @@ public class GUI implements Observer {
 		JButton btnRemoveFromInventory = new JButton("Ta bort");
 		btnRemoveFromInventory.setBounds(108, 608, 89, 23);
 		frame.getContentPane().add(btnRemoveFromInventory);
+		btnRemoveFromInventory.addActionListener(c.addRemoveFromInventoryListener());
 
 		JButton btnAddToInventory = new JButton("L\u00E4gg till");
 		btnAddToInventory.setBounds(12, 608, 89, 23);
 		frame.getContentPane().add(btnAddToInventory);
+		btnAddToInventory.addActionListener(c.addAddToInventoryListener());
 
 		fieldAmountOrderLine = new JTextField();
 		fieldAmountOrderLine.setColumns(10);
@@ -161,16 +172,14 @@ public class GUI implements Observer {
 		frame.getContentPane().add(fieldAmountOrderLine);
 
 		JButton btnRemoveFromOrderLine = new JButton("Ta bort");
-		btnRemoveFromOrderLine.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnRemoveFromOrderLine.setBounds(108, 395, 89, 23);
 		frame.getContentPane().add(btnRemoveFromOrderLine);
+		btnRemoveFromOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
 		JButton btnAddToOrderLine = new JButton("L\u00E4gg till");
 		btnAddToOrderLine.setBounds(12, 395, 89, 23);
 		frame.getContentPane().add(btnAddToOrderLine);
+		btnAddToOrderLine.addActionListener(c.addAddToOrderLineListener());
 
 		fieldName = new JTextField();
 		fieldName.setBounds(14, 42, 269, 20);

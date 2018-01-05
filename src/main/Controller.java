@@ -10,24 +10,136 @@ import com.sun.glass.ui.View;
 
 public class Controller {
 
-	// Start Customer & Customer Register
-	private GUI view;
 	private Model model;
 
-	public Controller(GUI view, Model model) {
-		this.view = view;
+	public Controller(Model model) {
 		this.model = model;
 	}
 
-	public ActionListener getSearchCustomerListener() {
+	public ActionListener addAddProductListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addSearchProductListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addAddCustomerListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addSearchCustomerListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addAddOrderListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addRemoveCustomerListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addRemoveProductListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addSearchOrderListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addRemoveOrderListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addSearchOrderLineListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
-			}
+			}			
 		};
 	}
-
-	// End Customer & CustomerRegister
+	public ActionListener addLggTillListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addTaBortListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
+	public ActionListener addRemoveFromInventoryListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}	public ActionListener addAddToInventoryListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}	public ActionListener addRemoveFromOrderLineListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}	
+	public ActionListener addAddToOrderLineListener() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub				
+			}			
+		};
+	}
 }
