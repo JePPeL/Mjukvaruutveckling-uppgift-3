@@ -18,6 +18,9 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+
+import uppgift5.Account;
+
 import java.awt.Font;
 import java.awt.Window;
 
@@ -90,7 +93,7 @@ public class GUI implements Observer {
 	private void initialize(Controller c, Model m) {
 		this.m = m;
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1150, 700);
+		frame.setBounds(100, 100, 1413, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -248,21 +251,21 @@ public class GUI implements Observer {
 		lblAntalLager.setBounds(20, 360, 61, 16);
 		frame.getContentPane().add(lblAntalLager);
 
-		JList listCustomers = new JList();
-		listCustomers.setBounds(295, 34, 263, 111);
-		frame.getContentPane().add(listCustomers);
-
-		JList listOrders = new JList();
-		listOrders.setBounds(295, 168, 263, 70);
-		frame.getContentPane().add(listOrders);
-
-		JList listOrderLines = new JList();
-		listOrderLines.setBounds(295, 273, 263, 155);
-		frame.getContentPane().add(listOrderLines);
-
-		JList listProducts = new JList();
-		listProducts.setBounds(867, 34, 263, 81);
-		frame.getContentPane().add(listProducts);
+//		JList listCustomers = new JList();
+//		listCustomers.setBounds(295, 34, 263, 111);
+//		frame.getContentPane().add(listCustomers);
+//
+//		JList listOrders = new JList();
+//		listOrders.setBounds(295, 168, 263, 70);
+//		frame.getContentPane().add(listOrders);
+//
+//		JList listOrderLines = new JList();
+//		listOrderLines.setBounds(295, 273, 263, 155);
+//		frame.getContentPane().add(listOrderLines);
+//
+//		JList listProducts = new JList();
+//		listProducts.setBounds(868, 42, 263, 81);
+//		frame.getContentPane().add(listProducts);
 		
 		JLabel lblNewLabel_2 = new JLabel("Lager");
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.BOLD, 16));
@@ -300,20 +303,21 @@ public class GUI implements Observer {
 		
 		
 		tableInventory = new JTable();
-		tableInventory.setBounds(868, 37, 263, 81);
+		tableInventory.setBounds(868, 37, 263, 108);
+		tableInventory.setBounds(868, 37, 263, 108);
 		frame.getContentPane().add(tableInventory);
 		
 		tableOrderLine = new JTable();
-		tableOrderLine.setBounds(293, 264, 263, 154);
+		tableOrderLine.setBounds(295, 264, 264, 154);
 		frame.getContentPane().add(tableOrderLine);
 		
 		tableOrder = new JTable();
-		tableOrder.setBounds(295, 168, 263, 70);
+		tableOrder.setBounds(295, 167, 264, 70);
 		frame.getContentPane().add(tableOrder);
 		
 	
 		tableCustomerRegister = new JTable();
-		tableCustomerRegister.setBounds(293, 25, 263, 110);
+		tableCustomerRegister.setBounds(293, 25, 264, 110);
 		frame.getContentPane().add(tableCustomerRegister);
 
 		dtmInventory = new DefaultTableModel(s, 0);
@@ -321,17 +325,16 @@ public class GUI implements Observer {
 		frame.getContentPane().add(tableInventory);
 		
 		JTextArea tableTitle2 = new JTextArea();
-		//tableTitle2.setBounds(217, 49, 207, 20);
+		tableTitle2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		tableTitle2.setBounds(999, 18, 132, 20);
 		frame.getContentPane().add(tableTitle2);
-		tableTitle2.setText("Saldo");
+		tableTitle2.setText("Antal");
 		
 		JTextArea tableTitle1 = new JTextArea();
-		//tableTitle1.setBounds(10, 49, 207, 20);
+		tableTitle1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		tableTitle1.setBounds(868, 18, 132, 20);
 		frame.getContentPane().add(tableTitle1);
-		tableTitle1.setText("Kontonummer");
-		inventoryHeader = new Vector();
-		inventoryHeader.add("Kontonummer");
-		inventoryHeader.add("Saldo");
+		tableTitle1.setText("Produkt");
 		dtmInventory.setColumnIdentifiers(inventoryHeader);
 		
 		JLabel lblBestllning = new JLabel("Beställning");
@@ -360,6 +363,17 @@ public class GUI implements Observer {
 
 	}
 
+	/*private void updateTable() {
+		int j = dtmInventory.getRowCount();
+		for(int i = 0; i<j; i++) {
+			dtmInventory.removeRow(0);
+		}
+		for (Product a : .getPerson().getAccounts().values()) {
+			String[] s = { a.getNbr(), Double.toString(a.getBalance()) };
+			dtmInventory.addRow(s);
+		}
+	}*/
+	
 	public String getProductID() {
 		return fieldProductID.getText();
 	}
