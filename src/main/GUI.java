@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -21,6 +22,7 @@ import java.awt.Font;
 import java.awt.Window;
 
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.Box;
 import javax.swing.JTextPane;
 
@@ -38,9 +40,11 @@ public class GUI implements Observer {
 	private JTable tableInventory;
 	private JTable tableOrderLine;
 	private JTable tableOrder;
+	private DefaultTableModel dtmInventory;
 	private JTable tableCustomerRegister;
 	private JTextField fieldProductCategory;
 	private JTextField fieldProductPrice;
+	private Vector inventoryHeader;
 
 	/**
 	 * Launch the application.
@@ -271,23 +275,6 @@ public class GUI implements Observer {
 		separator_1.setBounds(2, 250, 556, 16);
 		frame.getContentPane().add(separator_1);
 		
-		tableInventory = new JTable();
-		tableInventory.setBounds(868, 25, 263, 81);
-		frame.getContentPane().add(tableInventory);
-		
-		tableOrderLine = new JTable();
-		tableOrderLine.setBounds(295, 274, 263, 154);
-		frame.getContentPane().add(tableOrderLine);
-		
-		tableOrder = new JTable();
-		tableOrder.setBounds(295, 168, 263, 70);
-		frame.getContentPane().add(tableOrder);
-		
-	
-		tableCustomerRegister = new JTable();
-		tableCustomerRegister.setBounds(295, 35, 263, 110);
-		frame.getContentPane().add(tableCustomerRegister);
-		
 		JSeparator separator_3 = new JSeparator();
 		separator_3.setBounds(2, 600, 6, 600);
 		frame.getContentPane().add(separator_3);
@@ -333,6 +320,45 @@ public class GUI implements Observer {
 		JButton btnRemovePrice = new JButton("Ta bort");
 		btnRemovePrice.setBounds(773, 250, 89, 23);
 		frame.getContentPane().add(btnRemovePrice);
+		
+		String[] s = {"Kontonummer", "Saldo"};
+		
+		
+		tableInventory = new JTable();
+		tableInventory.setBounds(868, 25, 263, 81);
+		frame.getContentPane().add(tableInventory);
+		
+		tableOrderLine = new JTable();
+		tableOrderLine.setBounds(293, 264, 263, 154);
+		frame.getContentPane().add(tableOrderLine);
+		
+		tableOrder = new JTable();
+		tableOrder.setBounds(293, 157, 263, 70);
+		frame.getContentPane().add(tableOrder);
+		
+	
+		tableCustomerRegister = new JTable();
+		tableCustomerRegister.setBounds(293, 25, 263, 110);
+		frame.getContentPane().add(tableCustomerRegister);
+
+		dtmInventory = new DefaultTableModel(s, 0);
+		tableInventory = new JTable(dtmInventory);
+		tableInventory.setBounds(10, 71, 414, 184);
+		frame.getContentPane().add(tableInventory);
+		
+		JTextArea tableTitle2 = new JTextArea();
+		tableTitle2.setBounds(217, 49, 207, 20);
+		frame.getContentPane().add(tableTitle2);
+		tableTitle2.setText("Saldo");
+		
+		JTextArea tableTitle1 = new JTextArea();
+		tableTitle1.setBounds(10, 49, 207, 20);
+		frame.getContentPane().add(tableTitle1);
+		tableTitle1.setText("Kontonummer");
+		inventoryHeader = new Vector();
+		inventoryHeader.add("Kontonummer");
+		inventoryHeader.add("Saldo");
+		dtmInventory.setColumnIdentifiers(inventoryHeader);
 		
 		JLabel lblBestllning = new JLabel("Beställning");
 		lblBestllning.setHorizontalAlignment(SwingConstants.LEFT);
