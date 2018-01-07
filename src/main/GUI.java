@@ -21,6 +21,8 @@ import java.awt.Font;
 import java.awt.Window;
 
 import javax.swing.JTable;
+import javax.swing.Box;
+import javax.swing.JTextPane;
 
 public class GUI implements Observer {
 	private Model m;
@@ -37,6 +39,8 @@ public class GUI implements Observer {
 	private JTable tableOrderLine;
 	private JTable tableOrder;
 	private JTable tableCustomerRegister;
+	private JTextField fieldProductCategory;
+	private JTextField fieldProductPrice;
 
 	/**
 	 * Launch the application.
@@ -155,28 +159,28 @@ public class GUI implements Observer {
 		frame.getContentPane().add(btnSearchOrderLine);
 		btnSearchOrderLine.addActionListener(c.addSearchOrderLineListener());
 
-		JButton btnLggTill = new JButton("L\u00E4gg till");
-		btnLggTill.setBounds(103, 310, 89, 23);
-		frame.getContentPane().add(btnLggTill);
-		btnLggTill.addActionListener(c.addLggTillListener());
+		JButton btnAddOrderLine = new JButton("L\u00E4gg till");
+		btnAddOrderLine.setBounds(103, 310, 89, 23);
+		frame.getContentPane().add(btnAddOrderLine);
+		btnAddOrderLine.addActionListener(c.addAddOrderLineListener());
 
-		JButton btnTaBort = new JButton("Ta bort");
-		btnTaBort.setBounds(196, 310, 89, 23);
-		frame.getContentPane().add(btnTaBort);
-		btnTaBort.addActionListener(c.addTaBortListener());
+		JButton btnRemoveOrderLine = new JButton("Ta bort");
+		btnRemoveOrderLine.setBounds(196, 310, 89, 23);
+		frame.getContentPane().add(btnRemoveOrderLine);
+		btnRemoveOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
 		fieldAmountInventory = new JTextField();
-		fieldAmountInventory.setBounds(589, 127, 179, 20);
+		fieldAmountInventory.setBounds(591, 316, 179, 20);
 		frame.getContentPane().add(fieldAmountInventory);
 		fieldAmountInventory.setColumns(10);
 
 		JButton btnRemoveFromInventory = new JButton("Ta bort");
-		btnRemoveFromInventory.setBounds(683, 154, 89, 23);
+		btnRemoveFromInventory.setBounds(685, 343, 89, 23);
 		frame.getContentPane().add(btnRemoveFromInventory);
 		btnRemoveFromInventory.addActionListener(c.addRemoveFromInventoryListener());
 
 		JButton btnAddToInventory = new JButton("L\u00E4gg till");
-		btnAddToInventory.setBounds(587, 154, 89, 23);
+		btnAddToInventory.setBounds(589, 343, 89, 23);
 		frame.getContentPane().add(btnAddToInventory);
 		btnAddToInventory.addActionListener(c.addAddToInventoryListener());
 
@@ -217,9 +221,9 @@ public class GUI implements Observer {
 		lblAdress.setBounds(18, 68, 61, 16);
 		frame.getContentPane().add(lblAdress);
 
-		JLabel lblProduktnummer = new JLabel("Produktnummer");
-		lblProduktnummer.setBounds(593, 24, 113, 16);
-		frame.getContentPane().add(lblProduktnummer);
+		JLabel lblProduktNamn = new JLabel("Namn");
+		lblProduktNamn.setBounds(593, 24, 113, 16);
+		frame.getContentPane().add(lblProduktNamn);
 
 		JLabel lblOrdernummer = new JLabel("Ordernummer");
 		lblOrdernummer.setBounds(18, 159, 113, 16);
@@ -230,7 +234,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lblOrderrad);
 
 		JLabel lnlAntalLager = new JLabel("Antal");
-		lnlAntalLager.setBounds(593, 108, 61, 16);
+		lnlAntalLager.setBounds(595, 297, 61, 16);
 		frame.getContentPane().add(lnlAntalLager);
 
 		JLabel lblAntalLager = new JLabel("Antal");
@@ -250,7 +254,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(listOrderLines);
 
 		JList listProducts = new JList();
-		listProducts.setBounds(868, 24, 263, 155);
+		listProducts.setBounds(868, 24, 263, 81);
 		frame.getContentPane().add(listProducts);
 		
 		JLabel lblNewLabel_2 = new JLabel("Lager");
@@ -268,7 +272,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(separator_1);
 		
 		tableInventory = new JTable();
-		tableInventory.setBounds(868, 25, 263, 155);
+		tableInventory.setBounds(868, 25, 263, 81);
 		frame.getContentPane().add(tableInventory);
 		
 		tableOrderLine = new JTable();
@@ -288,9 +292,47 @@ public class GUI implements Observer {
 		separator_3.setBounds(2, 600, 6, 600);
 		frame.getContentPane().add(separator_3);
 		
-		JSeparator separator_4 = new JSeparator();
-		separator_4.setBounds(571, 0, 6, 578);
-		frame.getContentPane().add(separator_4);
+		fieldProductCategory = new JTextField();
+		fieldProductCategory.setBounds(589, 132, 267, 26);
+		frame.getContentPane().add(fieldProductCategory);
+		fieldProductCategory.setColumns(10);
+		
+		JLabel lblCategory = new JLabel("Kategori");
+		lblCategory.setBounds(597, 114, 113, 16);
+		frame.getContentPane().add(lblCategory);
+		
+		JButton btnSearchCategory = new JButton("Sök");
+		btnSearchCategory.setBounds(589, 164, 89, 23);
+		frame.getContentPane().add(btnSearchCategory);
+		
+		JButton btnAddCategory = new JButton("Lägg till");
+		btnAddCategory.setBounds(680, 164, 89, 23);
+		frame.getContentPane().add(btnAddCategory);
+		
+		JButton btnRemoveCategory = new JButton("Ta bort");
+		btnRemoveCategory.setBounds(773, 164, 89, 23);
+		frame.getContentPane().add(btnRemoveCategory);
+		
+		fieldProductPrice = new JTextField();
+		fieldProductPrice.setColumns(10);
+		fieldProductPrice.setBounds(591, 224, 267, 26);
+		frame.getContentPane().add(fieldProductPrice);
+		
+		JLabel lblProductPrice = new JLabel("Pris");
+		lblProductPrice.setBounds(599, 206, 113, 16);
+		frame.getContentPane().add(lblProductPrice);
+		
+		JButton btnSearchPrice = new JButton("Sök");
+		btnSearchPrice.setBounds(591, 256, 89, 23);
+		frame.getContentPane().add(btnSearchPrice);
+		
+		JButton btnAddPrice = new JButton("Lägg till");
+		btnAddPrice.setBounds(682, 256, 89, 23);
+		frame.getContentPane().add(btnAddPrice);
+		
+		JButton btnRemovePrice = new JButton("Ta bort");
+		btnRemovePrice.setBounds(775, 256, 89, 23);
+		frame.getContentPane().add(btnRemovePrice);
 	}
 
 	@Override
@@ -298,5 +340,19 @@ public class GUI implements Observer {
 		// update all the displayed information (tables)
 		
 
+	}
+
+	public String getProductID() {
+		return fieldProductID.getText();
+	}
+
+	public String getProductCategory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public double getProductPrice() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
