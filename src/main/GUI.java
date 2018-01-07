@@ -58,6 +58,7 @@ public class GUI implements Observer {
 	 * Create the application.
 	 */
 	public GUI(Controller c, Model m) {
+		c.addGUI(this);
 		initialize(c, m);
 	}
 
