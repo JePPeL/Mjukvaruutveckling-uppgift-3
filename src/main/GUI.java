@@ -343,16 +343,15 @@ public class GUI implements Observer {
 
 		dtmInventory = new DefaultTableModel(s, 0);
 		tableInventory = new JTable(dtmInventory);
-		tableInventory.setBounds(10, 71, 414, 184);
 		frame.getContentPane().add(tableInventory);
 		
 		JTextArea tableTitle2 = new JTextArea();
-		tableTitle2.setBounds(217, 49, 207, 20);
+		//tableTitle2.setBounds(217, 49, 207, 20);
 		frame.getContentPane().add(tableTitle2);
 		tableTitle2.setText("Saldo");
 		
 		JTextArea tableTitle1 = new JTextArea();
-		tableTitle1.setBounds(10, 49, 207, 20);
+		//tableTitle1.setBounds(10, 49, 207, 20);
 		frame.getContentPane().add(tableTitle1);
 		tableTitle1.setText("Kontonummer");
 		inventoryHeader = new Vector();
