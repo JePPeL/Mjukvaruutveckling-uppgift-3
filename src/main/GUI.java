@@ -317,12 +317,12 @@ public class GUI implements Observer {
 		
 	
 		tableCustomerRegister = new JTable();
-		tableCustomerRegister.setBounds(293, 25, 264, 110);
+		tableCustomerRegister.setBounds(293, 25, 264, 201);
 		frame.getContentPane().add(tableCustomerRegister);
 
 		dtmInventory = new DefaultTableModel(s, 0);
 		tableInventory = new JTable(dtmInventory);
-		tableInventory.setBounds(868, 37, 263, 108);
+		tableInventory.setBounds(868, 37, 263, 201);
 		frame.getContentPane().add(tableInventory);
 		
 		JTextArea tableTitle2 = new JTextArea();
