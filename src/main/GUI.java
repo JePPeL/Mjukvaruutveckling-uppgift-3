@@ -18,6 +18,9 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+
+
+
 import java.awt.Font;
 import java.awt.Window;
 
@@ -45,6 +48,8 @@ public class GUI implements Observer {
 	private JTextField fieldProductCategory;
 	private JTextField fieldProductPrice;
 	private Vector inventoryHeader;
+	
+	private JScrollPane scroll;
 
 	/**
 	 * Launch the application.
@@ -300,13 +305,17 @@ public class GUI implements Observer {
 		fieldProductPrice.setColumns(10);
 		fieldProductPrice.setBounds(731, 96, 124, 26);
 		frame.getContentPane().add(fieldProductPrice);
-		
-		String[] s = {"Kontonummer", "Saldo"};
-//		tableInventory = new JTable();
-//		tableInventory.setBounds(868, 37, 263, 108);
-//		frame.getContentPane().add(tableInventory);
 
 		
+		String[] s = { "Produktnummer", "Lagersaldo" };
+
+		dtmInventory = new DefaultTableModel(s, 0);
+		tableInventory = new UneditableJTable(dtmInventory);
+		tableInventory.setBounds(868, 37, 263, 108);
+		scroll = new JScrollPane(tableInventory);
+		scroll.setBounds(868, 37, 263, 108);
+		frame.getContentPane().add(scroll);
+	
 		tableOrderLine = new JTable();
 		tableOrderLine.setBounds(295, 264, 264, 154);
 		frame.getContentPane().add(tableOrderLine);
@@ -320,23 +329,7 @@ public class GUI implements Observer {
 		tableCustomerRegister.setBounds(293, 25, 264, 110);
 		frame.getContentPane().add(tableCustomerRegister);
 
-		dtmInventory = new DefaultTableModel(s, 0);
-		tableInventory = new JTable(dtmInventory);
-		tableInventory.setBounds(868, 37, 263, 108);
-		frame.getContentPane().add(tableInventory);
-		
-		JTextArea tableTitle2 = new JTextArea();
-		tableTitle2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		tableTitle2.setBounds(1033, 18, 98, 20);
-		frame.getContentPane().add(tableTitle2);
-		tableTitle2.setText("Antal");
-		
-		JTextArea tableTitle1 = new JTextArea();
-		tableTitle1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		tableTitle1.setBounds(868, 18, 168, 20);
-		frame.getContentPane().add(tableTitle1);
-		tableTitle1.setText("Produkt");
-		dtmInventory.setColumnIdentifiers(inventoryHeader);
+
 		
 		JLabel lblBestllning = new JLabel("Beställning");
 		lblBestllning.setHorizontalAlignment(SwingConstants.LEFT);
@@ -398,4 +391,15 @@ public class GUI implements Observer {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	private class UneditableJTable extends JTable {
+		public UneditableJTable(DefaultTableModel dtm) {
+			super(dtm);
+		}
+
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		}
+	}
+	
 }
