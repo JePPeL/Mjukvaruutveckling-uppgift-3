@@ -68,7 +68,7 @@ public class GUI implements Observer {
 	private void initialize(Controller c, Model m) {
 		this.m = m;
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1200, 700);
+		frame.setBounds(100, 100, 1150, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -253,10 +253,6 @@ public class GUI implements Observer {
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(0, 240, 556, 16);
 		frame.getContentPane().add(separator_1);
-		
-		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(0, 430, 610, 12);
-		frame.getContentPane().add(separator_2);
 		
 		tableInventory = new JTable();
 		tableInventory.setBounds(868, 25, 263, 155);
