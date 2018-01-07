@@ -67,7 +67,7 @@ public class GUI implements Observer {
 	private void initialize(Controller c, Model m) {
 		this.m = m;
 		frame = new JFrame();
-		frame.setBounds(100, 100, 700, 700);
+		frame.setBounds(100, 100, 1200, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -78,16 +78,16 @@ public class GUI implements Observer {
 
 		fieldProductID = new JTextField();
 		fieldProductID.setColumns(10);
-		fieldProductID.setBounds(14, 499, 267, 20);
+		fieldProductID.setBounds(589, 45, 267, 20);
 		frame.getContentPane().add(fieldProductID);
 
 		JButton btnAddProduct = new JButton("L\u00E4gg till");
-		btnAddProduct.setBounds(103, 525, 89, 23);
+		btnAddProduct.setBounds(678, 71, 89, 23);
 		frame.getContentPane().add(btnAddProduct);
 		btnAddProduct.addActionListener(c.addAddProductListener());
 
 		JButton btnSearchProduct = new JButton("S\u00F6k");
-		btnSearchProduct.setBounds(12, 525, 89, 23);
+		btnSearchProduct.setBounds(587, 71, 89, 23);
 		frame.getContentPane().add(btnSearchProduct);
 		btnSearchProduct.addActionListener(c.addSearchProductListener());
 
@@ -122,7 +122,7 @@ public class GUI implements Observer {
 		btnRemoveCustomer.addActionListener(c.addRemoveCustomerListener());
 
 		JButton btnRemoveProduct = new JButton("Ta bort");
-		btnRemoveProduct.setBounds(196, 525, 89, 23);
+		btnRemoveProduct.setBounds(771, 71, 89, 23);
 		frame.getContentPane().add(btnRemoveProduct);
 		btnRemoveProduct.addActionListener(c.addRemoveProductListener());
 
@@ -152,17 +152,17 @@ public class GUI implements Observer {
 		btnTaBort.addActionListener(c.addTaBortListener());
 
 		fieldAmountInventory = new JTextField();
-		fieldAmountInventory.setBounds(14, 581, 179, 20);
+		fieldAmountInventory.setBounds(589, 127, 179, 20);
 		frame.getContentPane().add(fieldAmountInventory);
 		fieldAmountInventory.setColumns(10);
 
 		JButton btnRemoveFromInventory = new JButton("Ta bort");
-		btnRemoveFromInventory.setBounds(108, 608, 89, 23);
+		btnRemoveFromInventory.setBounds(683, 154, 89, 23);
 		frame.getContentPane().add(btnRemoveFromInventory);
 		btnRemoveFromInventory.addActionListener(c.addRemoveFromInventoryListener());
 
 		JButton btnAddToInventory = new JButton("L\u00E4gg till");
-		btnAddToInventory.setBounds(12, 608, 89, 23);
+		btnAddToInventory.setBounds(587, 154, 89, 23);
 		frame.getContentPane().add(btnAddToInventory);
 		btnAddToInventory.addActionListener(c.addAddToInventoryListener());
 
@@ -204,7 +204,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lblAdress);
 
 		JLabel lblProduktnummer = new JLabel("Produktnummer");
-		lblProduktnummer.setBounds(18, 478, 113, 16);
+		lblProduktnummer.setBounds(593, 24, 113, 16);
 		frame.getContentPane().add(lblProduktnummer);
 
 		JLabel lblOrdernummer = new JLabel("Ordernummer");
@@ -216,7 +216,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lblOrderrad);
 
 		JLabel lnlAntalLager = new JLabel("Antal");
-		lnlAntalLager.setBounds(18, 562, 61, 16);
+		lnlAntalLager.setBounds(593, 108, 61, 16);
 		frame.getContentPane().add(lnlAntalLager);
 
 		JLabel lblAntalLager = new JLabel("Antal");
@@ -224,55 +224,63 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lblAntalLager);
 
 		JList listCustomers = new JList();
-		listCustomers.setBounds(328, 24, 340, 111);
+		listCustomers.setBounds(293, 24, 263, 111);
 		frame.getContentPane().add(listCustomers);
 
 		JList listOrders = new JList();
-		listOrders.setBounds(328, 158, 340, 70);
+		listOrders.setBounds(293, 156, 263, 70);
 		frame.getContentPane().add(listOrders);
 
 		JList listOrderLines = new JList();
-		listOrderLines.setBounds(328, 263, 340, 155);
+		listOrderLines.setBounds(293, 263, 263, 155);
 		frame.getContentPane().add(listOrderLines);
 
 		JList listProducts = new JList();
-		listProducts.setBounds(328, 451, 340, 179);
+		listProducts.setBounds(868, 24, 263, 155);
 		frame.getContentPane().add(listProducts);
 		
 		JLabel lblNewLabel_2 = new JLabel("Lager");
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_2.setBounds(18, 450, 700, 16);
+		lblNewLabel_2.setBounds(441, 68, 700, 16);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 142, 700, 16);
+		separator.setBounds(0, 142, 559, 16);
 		frame.getContentPane().add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(0, 240, 700, 16);
+		separator_1.setBounds(0, 240, 556, 16);
 		frame.getContentPane().add(separator_1);
 		
 		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(0, 430, 700, 12);
+		separator_2.setBounds(0, 430, 610, 12);
 		frame.getContentPane().add(separator_2);
 		
 		tableInventory = new JTable();
-		tableInventory.setBounds(328, 452, 337, 179);
+		tableInventory.setBounds(868, 25, 263, 155);
 		frame.getContentPane().add(tableInventory);
 		
 		tableOrderLine = new JTable();
-		tableOrderLine.setBounds(328, 264, 337, 154);
+		tableOrderLine.setBounds(293, 264, 263, 154);
 		frame.getContentPane().add(tableOrderLine);
 		
 		tableOrder = new JTable();
-		tableOrder.setBounds(328, 162, 337, 67);
+		tableOrder.setBounds(293, 157, 263, 70);
 		frame.getContentPane().add(tableOrder);
 		
 	
 		tableCustomerRegister = new JTable();
-		tableCustomerRegister.setBounds(328, 25, 337, 110);
+		tableCustomerRegister.setBounds(293, 25, 263, 110);
 		frame.getContentPane().add(tableCustomerRegister);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBounds(2, 600, 6, 600);
+		frame.getContentPane().add(separator_3);
+		
+		JSeparator separator_4 = new JSeparator();
+		separator_4.setBounds(571, 0, 6, 578);
+		frame.getContentPane().add(separator_4);
 	}
 
 	@Override
