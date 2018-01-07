@@ -129,7 +129,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addToInventory(view.getProductID(), view.getProductCategory(), view.getProductPrice());				
+				model.addToInventory(view.getAntal());				
 			}			
 		};
 	}	public ActionListener addRemoveFromOrderLineListener() {

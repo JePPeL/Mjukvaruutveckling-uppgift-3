@@ -84,6 +84,9 @@ public class GUI implements Observer {
 		return fieldName.getText();
 	}
 	
+	public int getAntal() {
+		return Integer.parseInt(fieldAmountInventory.getText());
+	}
 	private void initialize(Controller c, Model m) {
 		this.m = m;
 		frame = new JFrame();

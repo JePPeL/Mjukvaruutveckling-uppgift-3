@@ -59,10 +59,13 @@ public class Model extends Observable {
 		}
 		return random;
 	}
-	public void addToInventory(String productID, String category, double price) {
-		pReg.addProduct(new Product(productID, category, price));
-		setChanged();
-		notifyObservers();
+	public void addToInventory(int antal) {
+		for(int i=0; i<= antal; i++) {
+			Product temp = pReg.findProduct(productName); //hämta från jTable inventory
+			temp.addItem(new Item(temp, custNumbGen()));
+			setChanged();
+			notifyObservers();
+		}
 	}
 	public void removeItem(String productID) {
 		pReg.removeProduct(productID);

@@ -15,7 +15,7 @@ public class ProductRegister {
 		
 	}
 
-	public Product findCustomer(String productName) {
+	public Product findProduct(String productName) {
 		return register.get(productName);
 	}
 
