@@ -276,7 +276,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(2, 150, 1148, 16);
+		separator.setBounds(2, 150, 576, 16);
 		frame.getContentPane().add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -305,8 +305,8 @@ public class GUI implements Observer {
 		
 		
 		tableInventory = new JTable();
-		tableInventory.setBounds(868, 37, 263, 108);
-		tableInventory.setBounds(868, 37, 263, 108);
+		tableInventory.setBounds(868, 37, 263, 201);
+		tableInventory.setBounds(868, 37, 263, 201);
 		frame.getContentPane().add(tableInventory);
 		
 		tableOrderLine = new JTable();
