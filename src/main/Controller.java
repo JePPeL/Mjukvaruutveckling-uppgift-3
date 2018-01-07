@@ -20,6 +20,11 @@ public class Controller {
 	public void addGUI(GUI view) {
 		this.view = view;
 	}
+	
+	public void testClass(){
+		int i = 1 + 1;
+		System.out.print(i);
+	}
 
 	public ActionListener addAddProductListener() {
 		return new ActionListener() {
