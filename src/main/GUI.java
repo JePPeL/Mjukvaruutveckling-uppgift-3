@@ -144,7 +144,7 @@ public class GUI implements Observer {
 		btnAddOrder.addActionListener(c.addAddOrderListener());
 
 		fieldOrderLineID = new JTextField();
-		fieldOrderLineID.setBounds(16, 294, 262, 20);
+		fieldOrderLineID.setBounds(16, 294, 267, 20);
 		frame.getContentPane().add(fieldOrderLineID);
 		fieldOrderLineID.setColumns(10);
 
@@ -164,7 +164,7 @@ public class GUI implements Observer {
 		btnSearchOrder.addActionListener(c.addSearchOrderListener());
 
 		JButton btnRemoveOrder = new JButton("Ta bort");
-		btnRemoveOrder.setBounds(198, 215, 89, 23);
+		btnRemoveOrder.setBounds(195, 215, 89, 23);
 		frame.getContentPane().add(btnRemoveOrder);
 		btnRemoveOrder.addActionListener(c.addRemoveOrderListener());
 
@@ -179,12 +179,12 @@ public class GUI implements Observer {
 		btnAddOrderLine.addActionListener(c.addAddOrderLineListener());
 
 		JButton btnRemoveOrderLine = new JButton("Ta bort");
-		btnRemoveOrderLine.setBounds(198, 320, 89, 23);
+		btnRemoveOrderLine.setBounds(195, 320, 89, 23);
 		frame.getContentPane().add(btnRemoveOrderLine);
 		btnRemoveOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
 		fieldAmountInventory = new JTextField();
-		fieldAmountInventory.setBounds(597, 188, 179, 20);
+		fieldAmountInventory.setBounds(597, 188, 258, 20);
 		frame.getContentPane().add(fieldAmountInventory);
 		fieldAmountInventory.setColumns(10);
 
@@ -200,7 +200,7 @@ public class GUI implements Observer {
 
 		fieldAmountOrderLine = new JTextField();
 		fieldAmountOrderLine.setColumns(10);
-		fieldAmountOrderLine.setBounds(16, 380, 262, 20);
+		fieldAmountOrderLine.setBounds(16, 380, 267, 20);
 		frame.getContentPane().add(fieldAmountOrderLine);
 
 		JButton btnRemoveFromOrderLine = new JButton("Ta bort");
