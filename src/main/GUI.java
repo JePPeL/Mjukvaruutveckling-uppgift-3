@@ -76,6 +76,9 @@ public class GUI implements Observer {
 		fieldCustomerID.setBounds(14, 85, 135, 20);
 		frame.getContentPane().add(fieldCustomerID);
 		fieldCustomerID.setColumns(10);
+		public String getCustomerID(){
+			return fieldCustomerID.getText();
+		}
 
 		fieldProductID = new JTextField();
 		fieldProductID.setColumns(10);
