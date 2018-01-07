@@ -307,7 +307,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(fieldProductPrice);
 
 		
-		String[] s = { "Produktnummer", "Pris" };
+		String[] s = { "Produktnummer", "Pris" , "Lagersaldo", "Beskrivning"};
 
 		dtmInventory = new DefaultTableModel(s, 0);
 		tableInventory = new UneditableJTable(dtmInventory);
@@ -365,14 +365,12 @@ public class GUI implements Observer {
 		int j = dtmInventory.getRowCount();
 		for(int i = 0; i<j; i++) {
 			dtmInventory.removeRow(0);
-			System.out.println("removed line");
+			
 		}
 		for (Product a : m.getProductList()) {
-			System.out.println("in loop: " + a.getName());
-			String[] s = { a.getName(), Double.toString(a.getPrice())};
+			String[] s = { a.getName(), Double.toString(a.getPrice()), Integer.toString(a.numberInStock()), a.getCategory()};
 			dtmInventory.addRow(s);
-			System.out.println(s[0] + "||" + s[1]);
-			System.out.println("added line");
+			
 		}
 	}
 	
