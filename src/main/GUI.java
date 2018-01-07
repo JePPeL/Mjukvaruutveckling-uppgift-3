@@ -65,6 +65,17 @@ public class GUI implements Observer {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	public String getCustomerId() {
+		return fieldCustomerID.getText();
+		}
+	public String getCustomerAddress() {
+		return fieldAddress.getText();
+	}
+	
+	public String getCustomerName() {
+		return fieldName.getText();
+	}
+	
 	private void initialize(Controller c, Model m) {
 		this.m = m;
 		frame = new JFrame();
@@ -76,7 +87,9 @@ public class GUI implements Observer {
 		fieldCustomerID.setBounds(14, 85, 135, 20);
 		frame.getContentPane().add(fieldCustomerID);
 		fieldCustomerID.setColumns(10);
-	
+		
+		
+		
 		fieldProductID = new JTextField();
 		fieldProductID.setColumns(10);
 		fieldProductID.setBounds(589, 45, 267, 20);
@@ -283,6 +296,7 @@ public class GUI implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// update all the displayed information (tables)
+		
 
 	}
 }
