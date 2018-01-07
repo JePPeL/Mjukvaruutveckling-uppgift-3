@@ -202,7 +202,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(fieldAmountOrderLine);
 
 		JButton btnRemoveFromOrderLine = new JButton("Ta bort");
-		btnRemoveFromOrderLine.setBounds(110, 405, 89, 23);
+		btnRemoveFromOrderLine.setBounds(105, 405, 89, 23);
 		frame.getContentPane().add(btnRemoveFromOrderLine);
 		btnRemoveFromOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
@@ -328,13 +328,13 @@ public class GUI implements Observer {
 		
 		JTextArea tableTitle2 = new JTextArea();
 		tableTitle2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		tableTitle2.setBounds(999, 18, 132, 20);
+		tableTitle2.setBounds(1033, 18, 98, 20);
 		frame.getContentPane().add(tableTitle2);
 		tableTitle2.setText("Antal");
 		
 		JTextArea tableTitle1 = new JTextArea();
 		tableTitle1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		tableTitle1.setBounds(868, 18, 132, 20);
+		tableTitle1.setBounds(868, 18, 168, 20);
 		frame.getContentPane().add(tableTitle1);
 		tableTitle1.setText("Produkt");
 		dtmInventory.setColumnIdentifiers(inventoryHeader);
