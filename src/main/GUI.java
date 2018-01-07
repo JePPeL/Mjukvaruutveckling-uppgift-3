@@ -90,6 +90,10 @@ public class GUI implements Observer {
 	public int getAntal() {
 		return Integer.parseInt(fieldAmountInventory.getText());
 	}
+	
+	public String getSeletedInventory() {
+		return (String) tableInventory.getValueAt(tableInventory.getSelectedRow(), 0);
+	}
 	private void initialize(Controller c, Model m) {
 		this.m = m;
 		frame = new JFrame();
