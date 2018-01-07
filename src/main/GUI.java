@@ -18,6 +18,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.Font;
 import java.awt.Window;
 
@@ -84,10 +85,17 @@ public class GUI implements Observer {
 		return fieldName.getText();
 	}
 	
+	public int getAntal() {
+		return Integer.parseInt(fieldAmountInventory.getText());
+	}
+	
+	public String getSeletedInventory() {
+		return (String) tableInventory.getValueAt(tableInventory.getSelectedRow(), 0);
+	}
 	private void initialize(Controller c, Model m) {
 		this.m = m;
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1150, 700);
+		frame.setBounds(100, 100, 1150, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -134,7 +142,7 @@ public class GUI implements Observer {
 		btnAddOrder.addActionListener(c.addAddOrderListener());
 
 		fieldOrderLineID = new JTextField();
-		fieldOrderLineID.setBounds(16, 294, 262, 20);
+		fieldOrderLineID.setBounds(16, 294, 267, 20);
 		frame.getContentPane().add(fieldOrderLineID);
 		fieldOrderLineID.setColumns(10);
 
@@ -154,7 +162,7 @@ public class GUI implements Observer {
 		btnSearchOrder.addActionListener(c.addSearchOrderListener());
 
 		JButton btnRemoveOrder = new JButton("Ta bort");
-		btnRemoveOrder.setBounds(198, 215, 89, 23);
+		btnRemoveOrder.setBounds(195, 215, 89, 23);
 		frame.getContentPane().add(btnRemoveOrder);
 		btnRemoveOrder.addActionListener(c.addRemoveOrderListener());
 
@@ -169,12 +177,12 @@ public class GUI implements Observer {
 		btnAddOrderLine.addActionListener(c.addAddOrderLineListener());
 
 		JButton btnRemoveOrderLine = new JButton("Ta bort");
-		btnRemoveOrderLine.setBounds(198, 320, 89, 23);
+		btnRemoveOrderLine.setBounds(195, 320, 89, 23);
 		frame.getContentPane().add(btnRemoveOrderLine);
 		btnRemoveOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
 		fieldAmountInventory = new JTextField();
-		fieldAmountInventory.setBounds(597, 188, 179, 20);
+		fieldAmountInventory.setBounds(597, 188, 258, 20);
 		frame.getContentPane().add(fieldAmountInventory);
 		fieldAmountInventory.setColumns(10);
 
@@ -190,7 +198,7 @@ public class GUI implements Observer {
 
 		fieldAmountOrderLine = new JTextField();
 		fieldAmountOrderLine.setColumns(10);
-		fieldAmountOrderLine.setBounds(16, 380, 262, 20);
+		fieldAmountOrderLine.setBounds(16, 380, 267, 20);
 		frame.getContentPane().add(fieldAmountOrderLine);
 
 		JButton btnRemoveFromOrderLine = new JButton("Ta bort");
@@ -245,21 +253,21 @@ public class GUI implements Observer {
 		lblAntalLager.setBounds(20, 360, 61, 16);
 		frame.getContentPane().add(lblAntalLager);
 
-		JList listCustomers = new JList();
-		listCustomers.setBounds(295, 34, 263, 111);
-		frame.getContentPane().add(listCustomers);
-
-		JList listOrders = new JList();
-		listOrders.setBounds(295, 168, 263, 70);
-		frame.getContentPane().add(listOrders);
-
-		JList listOrderLines = new JList();
-		listOrderLines.setBounds(295, 273, 263, 155);
-		frame.getContentPane().add(listOrderLines);
-
-		JList listProducts = new JList();
-		listProducts.setBounds(867, 34, 263, 81);
-		frame.getContentPane().add(listProducts);
+//		JList listCustomers = new JList();
+//		listCustomers.setBounds(295, 34, 263, 111);
+//		frame.getContentPane().add(listCustomers);
+//
+//		JList listOrders = new JList();
+//		listOrders.setBounds(295, 168, 263, 70);
+//		frame.getContentPane().add(listOrders);
+//
+//		JList listOrderLines = new JList();
+//		listOrderLines.setBounds(295, 273, 263, 155);
+//		frame.getContentPane().add(listOrderLines);
+//
+//		JList listProducts = new JList();
+//		listProducts.setBounds(868, 42, 263, 81);
+//		frame.getContentPane().add(listProducts);
 		
 		JLabel lblNewLabel_2 = new JLabel("Lager");
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.BOLD, 16));
@@ -272,7 +280,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(2, 250, 556, 16);
+		separator_1.setBounds(2, 250, 1148, 16);
 		frame.getContentPane().add(separator_1);
 		
 		JSeparator separator_3 = new JSeparator();
@@ -297,20 +305,21 @@ public class GUI implements Observer {
 		
 		
 		tableInventory = new JTable();
-		tableInventory.setBounds(868, 37, 263, 81);
+		tableInventory.setBounds(868, 37, 263, 108);
+		tableInventory.setBounds(868, 37, 263, 108);
 		frame.getContentPane().add(tableInventory);
 		
 		tableOrderLine = new JTable();
-		tableOrderLine.setBounds(293, 264, 263, 154);
+		tableOrderLine.setBounds(295, 264, 264, 154);
 		frame.getContentPane().add(tableOrderLine);
 		
 		tableOrder = new JTable();
-		tableOrder.setBounds(295, 168, 263, 70);
+		tableOrder.setBounds(295, 167, 264, 70);
 		frame.getContentPane().add(tableOrder);
 		
 	
 		tableCustomerRegister = new JTable();
-		tableCustomerRegister.setBounds(293, 25, 263, 110);
+		tableCustomerRegister.setBounds(293, 25, 264, 110);
 		frame.getContentPane().add(tableCustomerRegister);
 
 		dtmInventory = new DefaultTableModel(s, 0);
@@ -318,17 +327,16 @@ public class GUI implements Observer {
 		frame.getContentPane().add(tableInventory);
 		
 		JTextArea tableTitle2 = new JTextArea();
-		//tableTitle2.setBounds(217, 49, 207, 20);
+		tableTitle2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		tableTitle2.setBounds(999, 18, 132, 20);
 		frame.getContentPane().add(tableTitle2);
-		tableTitle2.setText("Saldo");
+		tableTitle2.setText("Antal");
 		
 		JTextArea tableTitle1 = new JTextArea();
-		//tableTitle1.setBounds(10, 49, 207, 20);
+		tableTitle1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		tableTitle1.setBounds(868, 18, 132, 20);
 		frame.getContentPane().add(tableTitle1);
-		tableTitle1.setText("Kontonummer");
-		inventoryHeader = new Vector();
-		inventoryHeader.add("Kontonummer");
-		inventoryHeader.add("Saldo");
+		tableTitle1.setText("Produkt");
 		dtmInventory.setColumnIdentifiers(inventoryHeader);
 		
 		JLabel lblBestllning = new JLabel("Beställning");
@@ -348,6 +356,11 @@ public class GUI implements Observer {
 		JButton btnChangeProduct = new JButton("Ändra");
 		btnChangeProduct.setBounds(770, 124, 89, 23);
 		frame.getContentPane().add(btnChangeProduct);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setOrientation(SwingConstants.VERTICAL);
+		separator_2.setBounds(571, -21, 6, 509);
+		frame.getContentPane().add(separator_2);
 	}
 
 	@Override
@@ -357,6 +370,17 @@ public class GUI implements Observer {
 
 	}
 
+	/*private void updateTable() {
+		int j = dtmInventory.getRowCount();
+		for(int i = 0; i<j; i++) {
+			dtmInventory.removeRow(0);
+		}
+		for (Product a : .getPerson().getAccounts().values()) {
+			String[] s = { a.getNbr(), Double.toString(a.getBalance()) };
+			dtmInventory.addRow(s);
+		}
+	}*/
+	
 	public String getProductID() {
 		return fieldProductID.getText();
 	}
