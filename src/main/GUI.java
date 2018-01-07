@@ -307,7 +307,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(fieldProductPrice);
 
 		
-		String[] s = { "Produktnummer", "Lagersaldo" };
+		String[] s = { "Produktnummer", "Pris" };
 
 		dtmInventory = new DefaultTableModel(s, 0);
 		tableInventory = new UneditableJTable(dtmInventory);
@@ -381,13 +381,12 @@ public class GUI implements Observer {
 	}
 
 	public String getProductCategory() {
-		// TODO Auto-generated method stub
-		return null;
+		return fieldProductCategory.getText();
 	}
 
 	public double getProductPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Double.parseDouble((fieldProductPrice.getText()));
+		
 	}
 	
 	private class UneditableJTable extends JTable {
