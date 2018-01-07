@@ -19,7 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import uppgift5.Account;
 
 import java.awt.Font;
 import java.awt.Window;
@@ -354,20 +353,20 @@ public class GUI implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// update all the displayed information (tables)
-		
+		updateInventory();
 
 	}
 
-	/*private void updateTable() {
+	private void updateInventory() {
 		int j = dtmInventory.getRowCount();
 		for(int i = 0; i<j; i++) {
 			dtmInventory.removeRow(0);
 		}
-		for (Product a : .getPerson().getAccounts().values()) {
-			String[] s = { a.getNbr(), Double.toString(a.getBalance()) };
+		for (Product a : m.getProductList()) {
+			String[] s = { a.getName(), Double.toString(a.getPrice())};
 			dtmInventory.addRow(s);
 		}
-	}*/
+	}
 	
 	public String getProductID() {
 		return fieldProductID.getText();

@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
@@ -73,5 +74,8 @@ public class Model extends Observable {
 	
 	public void removeItem(String productID) {
 		pReg.removeProduct(productID);
+	}
+	public Collection<Product> getProductList() {
+		return pReg.getProducts();
 	}
 }
