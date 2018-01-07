@@ -1,10 +1,13 @@
 package main;
+import java.util.HashMap;
+
 
 public class Product {
 
 	private String name;
 	private String category;
 	private double price;
+	private HashMap <String, Item> items = new HashMap<String, Item>();
 	
 	public Product(String name, String category, double price) {
 		this.name = name;
@@ -34,6 +37,14 @@ public class Product {
 	
 	public double getPrice() {
 		return price;
+	}
+	
+	public void addItem(Item item){
+		items.put(item.getSerialNumber(), item);
+	}
+	
+	public void removeItem(Item item) {
+		items.remove(item.getSerialNumber());
 	}
 	
 }
