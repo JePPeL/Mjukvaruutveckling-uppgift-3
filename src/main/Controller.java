@@ -35,7 +35,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
+				model.searchProduct(view.getProductID());
 			}			
 		};
 	}

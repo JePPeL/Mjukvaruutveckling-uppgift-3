@@ -18,8 +18,6 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-
-
 import java.awt.Font;
 import java.awt.Window;
 
@@ -144,7 +142,7 @@ public class GUI implements Observer {
 		btnAddOrder.addActionListener(c.addAddOrderListener());
 
 		fieldOrderLineID = new JTextField();
-		fieldOrderLineID.setBounds(16, 294, 262, 20);
+		fieldOrderLineID.setBounds(16, 294, 267, 20);
 		frame.getContentPane().add(fieldOrderLineID);
 		fieldOrderLineID.setColumns(10);
 
@@ -164,7 +162,7 @@ public class GUI implements Observer {
 		btnSearchOrder.addActionListener(c.addSearchOrderListener());
 
 		JButton btnRemoveOrder = new JButton("Ta bort");
-		btnRemoveOrder.setBounds(198, 215, 89, 23);
+		btnRemoveOrder.setBounds(195, 215, 89, 23);
 		frame.getContentPane().add(btnRemoveOrder);
 		btnRemoveOrder.addActionListener(c.addRemoveOrderListener());
 
@@ -179,12 +177,12 @@ public class GUI implements Observer {
 		btnAddOrderLine.addActionListener(c.addAddOrderLineListener());
 
 		JButton btnRemoveOrderLine = new JButton("Ta bort");
-		btnRemoveOrderLine.setBounds(198, 320, 89, 23);
+		btnRemoveOrderLine.setBounds(195, 320, 89, 23);
 		frame.getContentPane().add(btnRemoveOrderLine);
 		btnRemoveOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
 		fieldAmountInventory = new JTextField();
-		fieldAmountInventory.setBounds(597, 188, 179, 20);
+		fieldAmountInventory.setBounds(597, 188, 258, 20);
 		frame.getContentPane().add(fieldAmountInventory);
 		fieldAmountInventory.setColumns(10);
 
@@ -200,11 +198,11 @@ public class GUI implements Observer {
 
 		fieldAmountOrderLine = new JTextField();
 		fieldAmountOrderLine.setColumns(10);
-		fieldAmountOrderLine.setBounds(16, 380, 262, 20);
+		fieldAmountOrderLine.setBounds(16, 380, 267, 20);
 		frame.getContentPane().add(fieldAmountOrderLine);
 
 		JButton btnRemoveFromOrderLine = new JButton("Ta bort");
-		btnRemoveFromOrderLine.setBounds(110, 405, 89, 23);
+		btnRemoveFromOrderLine.setBounds(105, 405, 89, 23);
 		frame.getContentPane().add(btnRemoveFromOrderLine);
 		btnRemoveFromOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
@@ -278,7 +276,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(2, 150, 1148, 16);
+		separator.setBounds(2, 150, 576, 16);
 		frame.getContentPane().add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -304,11 +302,10 @@ public class GUI implements Observer {
 		frame.getContentPane().add(fieldProductPrice);
 		
 		String[] s = {"Kontonummer", "Saldo"};
-		
-		
 //		tableInventory = new JTable();
 //		tableInventory.setBounds(868, 37, 263, 108);
 //		frame.getContentPane().add(tableInventory);
+
 		
 		tableOrderLine = new JTable();
 		tableOrderLine.setBounds(295, 264, 264, 154);
@@ -330,13 +327,13 @@ public class GUI implements Observer {
 		
 		JTextArea tableTitle2 = new JTextArea();
 		tableTitle2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		tableTitle2.setBounds(999, 18, 132, 20);
+		tableTitle2.setBounds(1033, 18, 98, 20);
 		frame.getContentPane().add(tableTitle2);
 		tableTitle2.setText("Antal");
 		
 		JTextArea tableTitle1 = new JTextArea();
 		tableTitle1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		tableTitle1.setBounds(868, 18, 132, 20);
+		tableTitle1.setBounds(868, 18, 168, 20);
 		frame.getContentPane().add(tableTitle1);
 		tableTitle1.setText("Produkt");
 		dtmInventory.setColumnIdentifiers(inventoryHeader);
