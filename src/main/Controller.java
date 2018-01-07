@@ -42,7 +42,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addCustomer(view, address);
+				model.addCustomer(view.getCustomerName(), view.getCustomerAddress());
 			}			
 		};
 	}
@@ -50,7 +50,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
+				model.findCustomer(view.getCustomerId());			
 			}			
 		};
 	}
@@ -62,12 +62,12 @@ public class Controller {
 			}			
 		};
 	}
+
 	public ActionListener addRemoveCustomerListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
-			}			
+			}
 		};
 	}
 	public ActionListener addRemoveProductListener() {
