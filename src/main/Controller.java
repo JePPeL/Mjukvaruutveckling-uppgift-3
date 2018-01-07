@@ -25,6 +25,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("controller");
 				model.addProduct(view.getProductID(), view.getProductCategory(), view.getProductPrice());				
 
 			}			

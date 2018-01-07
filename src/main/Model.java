@@ -71,7 +71,9 @@ public class Model extends Observable {
 	}
 	
 	public void addProduct(String productID, String category, double price) {
+		System.out.println("model");
 		pReg.addProduct(new Product(productID, category, price));
+		System.out.println(pReg.findProduct(productID).getName());
 		setChanged();
 		notifyObservers();
 	}

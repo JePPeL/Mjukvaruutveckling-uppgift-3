@@ -69,6 +69,7 @@ public class GUI implements Observer {
 	 */
 	public GUI(Controller c, Model m) {
 		c.addGUI(this);
+		m.addObserver(this);
 		initialize(c, m);
 	}
 
@@ -305,10 +306,9 @@ public class GUI implements Observer {
 		String[] s = {"Kontonummer", "Saldo"};
 		
 		
-		tableInventory = new JTable();
-		tableInventory.setBounds(868, 37, 263, 108);
-		tableInventory.setBounds(868, 37, 263, 108);
-		frame.getContentPane().add(tableInventory);
+//		tableInventory = new JTable();
+//		tableInventory.setBounds(868, 37, 263, 108);
+//		frame.getContentPane().add(tableInventory);
 		
 		tableOrderLine = new JTable();
 		tableOrderLine.setBounds(295, 264, 264, 154);
@@ -325,6 +325,7 @@ public class GUI implements Observer {
 
 		dtmInventory = new DefaultTableModel(s, 0);
 		tableInventory = new JTable(dtmInventory);
+		tableInventory.setBounds(868, 37, 263, 108);
 		frame.getContentPane().add(tableInventory);
 		
 		JTextArea tableTitle2 = new JTextArea();
@@ -368,6 +369,7 @@ public class GUI implements Observer {
 	public void update(Observable o, Object arg) {
 		// update all the displayed information (tables)
 		updateInventory();
+		System.out.println("update");
 
 	}
 
@@ -375,10 +377,14 @@ public class GUI implements Observer {
 		int j = dtmInventory.getRowCount();
 		for(int i = 0; i<j; i++) {
 			dtmInventory.removeRow(0);
+			System.out.println("removed line");
 		}
 		for (Product a : m.getProductList()) {
+			System.out.println("in loop: " + a.getName());
 			String[] s = { a.getName(), Double.toString(a.getPrice())};
 			dtmInventory.addRow(s);
+			System.out.println(s[0] + "||" + s[1]);
+			System.out.println("added line");
 		}
 	}
 	
