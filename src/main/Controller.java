@@ -25,7 +25,8 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
+		//	model.addProduct();
+
 			}			
 		};
 	}
@@ -41,7 +42,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addCustomer(view, address);
+				model.addCustomer(view.getCustomerName(), view.getCustomerAddress());
 			}			
 		};
 	}
@@ -49,7 +50,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
+				model.findCustomer(view.getCustomerId());			
 			}			
 		};
 	}
@@ -61,12 +62,12 @@ public class Controller {
 			}			
 		};
 	}
+
 	public ActionListener addRemoveCustomerListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
-			}			
+			}
 		};
 	}
 	public ActionListener addRemoveProductListener() {
@@ -101,7 +102,7 @@ public class Controller {
 			}			
 		};
 	}
-	public ActionListener addLggTillListener() {
+	public ActionListener addAddOrderLineListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -109,11 +110,11 @@ public class Controller {
 			}			
 		};
 	}
-	public ActionListener addTaBortListener() {
+	public ActionListener addRemoveOrderLineListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
+				//TODO: Implement
 			}			
 		};
 	}
@@ -121,14 +122,14 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
+				model.removeItem(view.getProductID());			
 			}			
 		};
 	}	public ActionListener addAddToInventoryListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
+				model.addToInventory(view.getProductID(), view.getProductCategory(), view.getProductPrice());				
 			}			
 		};
 	}	public ActionListener addRemoveFromOrderLineListener() {

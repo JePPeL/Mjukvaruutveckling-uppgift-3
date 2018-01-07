@@ -69,6 +69,17 @@ public class GUI implements Observer {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	public String getCustomerId() {
+		return fieldCustomerID.getText();
+		}
+	public String getCustomerAddress() {
+		return fieldAddress.getText();
+	}
+	
+	public String getCustomerName() {
+		return fieldName.getText();
+	}
+	
 	private void initialize(Controller c, Model m) {
 		this.m = m;
 		frame = new JFrame();
@@ -80,7 +91,9 @@ public class GUI implements Observer {
 		fieldCustomerID.setBounds(156, 95, 128, 20);
 		frame.getContentPane().add(fieldCustomerID);
 		fieldCustomerID.setColumns(10);
-	
+		
+		
+		
 		fieldProductID = new JTextField();
 		fieldProductID.setColumns(10);
 		fieldProductID.setBounds(593, 57, 267, 20);
@@ -149,12 +162,12 @@ public class GUI implements Observer {
 		JButton btnAddOrderLine = new JButton("Lägg till");
 		btnAddOrderLine.setBounds(105, 320, 89, 23);
 		frame.getContentPane().add(btnAddOrderLine);
-		btnAddOrderLine.addActionListener(c.addLggTillListener());
+		btnAddOrderLine.addActionListener(c.addAddOrderLineListener());
 
 		JButton btnRemoveOrderLine = new JButton("Ta bort");
 		btnRemoveOrderLine.setBounds(198, 320, 89, 23);
 		frame.getContentPane().add(btnRemoveOrderLine);
-		btnRemoveOrderLine.addActionListener(c.addTaBortListener());
+		btnRemoveOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
 		fieldAmountInventory = new JTextField();
 		fieldAmountInventory.setBounds(593, 316, 179, 20);
@@ -331,6 +344,21 @@ public class GUI implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// update all the displayed information (tables)
+		
 
+	}
+
+	public String getProductID() {
+		return fieldProductID.getText();
+	}
+
+	public String getProductCategory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public double getProductPrice() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
