@@ -25,7 +25,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-		//	model.addProduct();
+			model.addProduct(view.getProductID());
 
 			}			
 		};

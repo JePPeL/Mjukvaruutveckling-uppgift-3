@@ -25,9 +25,6 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 	
-//	public void addProduct(Product product){
-//		pReg.addProduct(product);
-//	}
 	
 	public Customer findCustomer(String cNbr) {
 		if (cReg.findCustomer(cNbr) != null) {
