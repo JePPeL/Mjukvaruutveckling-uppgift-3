@@ -19,8 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import uppgift5.Account;
-
 import java.awt.Font;
 import java.awt.Window;
 
