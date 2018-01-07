@@ -146,15 +146,15 @@ public class GUI implements Observer {
 		frame.getContentPane().add(btnSearchOrderLine);
 		btnSearchOrderLine.addActionListener(c.addSearchOrderLineListener());
 
-		JButton btnLggTill = new JButton("L\u00E4gg till");
-		btnLggTill.setBounds(103, 310, 89, 23);
-		frame.getContentPane().add(btnLggTill);
-		btnLggTill.addActionListener(c.addLggTillListener());
+		JButton btnAddOrderLine = new JButton("L\u00E4gg till");
+		btnAddOrderLine.setBounds(103, 310, 89, 23);
+		frame.getContentPane().add(btnAddOrderLine);
+		btnAddOrderLine.addActionListener(c.addLggTillListener());
 
-		JButton btnTaBort = new JButton("Ta bort");
-		btnTaBort.setBounds(196, 310, 89, 23);
-		frame.getContentPane().add(btnTaBort);
-		btnTaBort.addActionListener(c.addTaBortListener());
+		JButton btnRemoveOrderLine = new JButton("Ta bort");
+		btnRemoveOrderLine.setBounds(196, 310, 89, 23);
+		frame.getContentPane().add(btnRemoveOrderLine);
+		btnRemoveOrderLine.addActionListener(c.addTaBortListener());
 
 		fieldAmountInventory = new JTextField();
 		fieldAmountInventory.setBounds(591, 316, 179, 20);
