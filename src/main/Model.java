@@ -64,6 +64,13 @@ public class Model extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+	
+	public void addProduct(String productID, String category, double price) {
+		pReg.addProduct(new Product(productID, category, price));
+		setChanged();
+		notifyObservers();
+	}
+	
 	public void removeItem(String productID) {
 		pReg.removeProduct(productID);
 	}
