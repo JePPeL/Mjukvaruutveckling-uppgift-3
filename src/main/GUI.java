@@ -326,10 +326,8 @@ public class GUI implements Observer {
 		
 	
 		tableCustomerRegister = new JTable();
-		tableCustomerRegister.setBounds(293, 25, 264, 110);
+		tableCustomerRegister.setBounds(293, 25, 264, 201);
 		frame.getContentPane().add(tableCustomerRegister);
-
-
 		
 		JLabel lblBestllning = new JLabel("Beställning");
 		lblBestllning.setHorizontalAlignment(SwingConstants.LEFT);
