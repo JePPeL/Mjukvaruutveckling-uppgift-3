@@ -21,7 +21,8 @@ public class Model extends Observable {
 	}
 	public void addCustomer(String name, String address) {
 		cReg.addCustomer(new Customer(custNumbGen(), name, address));
-		
+		setChanged();
+		notifyObservers();
 	}
 	
 	public Customer findCustomer(String cNbr) {
@@ -56,5 +57,13 @@ public class Model extends Observable {
 			b = false;
 		}
 		return random;
+	}
+	public void addToInventory(String productID, String category, double price) {
+		pReg.addProduct(new Product(productID, category, price));
+		setChanged();
+		notifyObservers();
+	}
+	public void removeItem(String productID) {
+		pReg.removeProduct(productID);
 	}
 }

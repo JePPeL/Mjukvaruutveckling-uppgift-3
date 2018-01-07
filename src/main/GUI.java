@@ -145,12 +145,12 @@ public class GUI implements Observer {
 		JButton btnLggTill = new JButton("L\u00E4gg till");
 		btnLggTill.setBounds(103, 310, 89, 23);
 		frame.getContentPane().add(btnLggTill);
-		btnLggTill.addActionListener(c.addLggTillListener());
+		btnLggTill.addActionListener(c.addAddOrderLineListener());
 
 		JButton btnTaBort = new JButton("Ta bort");
 		btnTaBort.setBounds(196, 310, 89, 23);
 		frame.getContentPane().add(btnTaBort);
-		btnTaBort.addActionListener(c.addTaBortListener());
+		btnTaBort.addActionListener(c.addRemoveOrderLineListener());
 
 		fieldAmountInventory = new JTextField();
 		fieldAmountInventory.setBounds(14, 581, 179, 20);
@@ -280,5 +280,19 @@ public class GUI implements Observer {
 	public void update(Observable o, Object arg) {
 		// update all the displayed information (tables)
 
+	}
+
+	public String getProductID() {
+		return fieldProductID.getText();
+	}
+
+	public String getProductCategory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public double getProductPrice() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
