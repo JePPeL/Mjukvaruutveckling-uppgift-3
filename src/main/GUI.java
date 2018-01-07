@@ -106,7 +106,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(fieldOrderID);
 		fieldOrderID.setColumns(10);
 
-		JButton btnAddOrder = new JButton("L\u00E4gg Till");
+		JButton btnAddOrder = new JButton("Lägg till");
 		btnAddOrder.setBounds(103, 205, 89, 23);
 		frame.getContentPane().add(btnAddOrder);
 		btnAddOrder.addActionListener(c.addAddOrderListener());
@@ -224,19 +224,19 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lblAntalLager);
 
 		JList listCustomers = new JList();
-		listCustomers.setBounds(339, 28, 325, 99);
+		listCustomers.setBounds(328, 24, 340, 111);
 		frame.getContentPane().add(listCustomers);
 
 		JList listOrders = new JList();
-		listOrders.setBounds(342, 158, 326, 88);
+		listOrders.setBounds(328, 158, 340, 70);
 		frame.getContentPane().add(listOrders);
 
 		JList listOrderLines = new JList();
-		listOrderLines.setBounds(340, 280, 334, 125);
+		listOrderLines.setBounds(328, 263, 340, 155);
 		frame.getContentPane().add(listOrderLines);
 
 		JList listProducts = new JList();
-		listProducts.setBounds(341, 478, 323, 164);
+		listProducts.setBounds(328, 451, 340, 179);
 		frame.getContentPane().add(listProducts);
 		
 		JLabel lblNewLabel_2 = new JLabel("Lager");
