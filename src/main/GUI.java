@@ -248,7 +248,6 @@ public class GUI implements Observer {
 		lblAntalLager.setBounds(20, 360, 61, 16);
 		frame.getContentPane().add(lblAntalLager);
 
-<<<<<<< HEAD
 //		JList listCustomers = new JList();
 //		listCustomers.setBounds(295, 34, 263, 111);
 //		frame.getContentPane().add(listCustomers);
@@ -264,23 +263,6 @@ public class GUI implements Observer {
 //		JList listProducts = new JList();
 //		listProducts.setBounds(868, 42, 263, 81);
 //		frame.getContentPane().add(listProducts);
-=======
-		JList listCustomers = new JList();
-		listCustomers.setBounds(295, 34, 263, 111);
-		frame.getContentPane().add(listCustomers);
-
-		JList listOrders = new JList();
-		listOrders.setBounds(295, 168, 263, 70);
-		frame.getContentPane().add(listOrders);
-
-		JList listOrderLines = new JList();
-		listOrderLines.setBounds(295, 273, 263, 155);
-		frame.getContentPane().add(listOrderLines);
-
-		JList listProducts = new JList();
-		listProducts.setBounds(867, 34, 263, 81);
-		frame.getContentPane().add(listProducts);
->>>>>>> 550c86133c8467113181e0a1ad55b1a418bd9cf5
 		
 		JLabel lblNewLabel_2 = new JLabel("Lager");
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.BOLD, 16));
