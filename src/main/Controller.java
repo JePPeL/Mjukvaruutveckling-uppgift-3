@@ -11,9 +11,14 @@ import com.sun.glass.ui.View;
 public class Controller {
 
 	private Model model;
+	private GUI view;
 
 	public Controller(Model model) {
 		this.model = model;
+	}
+	
+	public void addGUI(GUI view) {
+		this.view = view;
 	}
 
 	public ActionListener addAddProductListener() {
