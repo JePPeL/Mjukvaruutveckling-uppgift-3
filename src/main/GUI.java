@@ -313,7 +313,6 @@ public class GUI implements Observer {
 		fieldProductPrice.setBounds(731, 96, 124, 26);
 		frame.getContentPane().add(fieldProductPrice);
 
-		
 		String[] s0 = { "Kundnummer", "Namn", "Adress" };
 
 		dtmCustomer = new DefaultTableModel(s0, 0);
@@ -322,8 +321,8 @@ public class GUI implements Observer {
 		scrollC = new JScrollPane(tableCustomer);
 		scrollC.setBounds(868, 37, 263, 108);
 		frame.getContentPane().add(scrollC);
-		
-		String[] s1 = { "Produktnummer", "Lagersaldo" };
+
+		String[] s1 = { "Produktnummer", "Pris" , "Lagersaldo", "Beskrivning"};
 
 		dtmInventory = new DefaultTableModel(s1, 0);
 		tableInventory = new UneditableJTable(dtmInventory);
@@ -384,17 +383,14 @@ public class GUI implements Observer {
 	}
 
 	private void updateInventory() {
-		int j = dtmCustomer.getRowCount();
+		int j = dtmInventory.getRowCount();
 		for(int i = 0; i<j; i++) {
-			dtmCustomer.removeRow(0);
-			System.out.println("removed line");
+			dtmInventory.removeRow(0);
+			
 		}
 		for (Product a : m.getProductList()) {
-			System.out.println("in loop: " + a.getName());
-			String[] s = { a.getName(), Double.toString(a.getPrice())};
-			dtmCustomer.addRow(s);
-			System.out.println(s[0] + "||" + s[1]);
-			System.out.println("added line");
+			String[] s = { a.getName(), Double.toString(a.getPrice()), Integer.toString(a.numberInStock()), a.getCategory()};
+			dtmInventory.addRow(s);
 		}
 	}
 	
@@ -403,13 +399,12 @@ public class GUI implements Observer {
 	}
 
 	public String getProductCategory() {
-		// TODO Auto-generated method stub
-		return null;
+		return fieldProductCategory.getText();
 	}
 
 	public double getProductPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Double.parseDouble((fieldProductPrice.getText()));
+		
 	}
 	
 	private class UneditableJTable extends JTable {
