@@ -76,6 +76,10 @@ public class Model extends Observable {
 	}
 	
 	public void searchProduct(String productID) {
+		pReg.findProduct(productID);
+	}
+	
+	public void addOrder(String orderID) {
 		
 	}
 	

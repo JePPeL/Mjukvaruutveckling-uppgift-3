@@ -384,7 +384,7 @@ public class GUI implements Observer {
 	public String getProductID() {
 		return fieldProductID.getText();
 	}
-
+	
 	public String getProductCategory() {
 		// TODO Auto-generated method stub
 		return null;
@@ -394,4 +394,13 @@ public class GUI implements Observer {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public String getOrderID() {
+		return fieldOrderID.getText();
+	}
+	
+	public String getCostumerID() {
+		return fieldCustomerID.getText();
+	}
+	
 }
