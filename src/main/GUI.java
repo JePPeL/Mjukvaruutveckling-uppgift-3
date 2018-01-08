@@ -40,16 +40,23 @@ public class GUI implements Observer {
 	private JTextField fieldAmountOrderLine;
 	private JTextField fieldName;
 	private JTextField fieldAddress;
-	private JTable tableInventory;
-	private JTable tableOrderLine;
-	private JTable tableOrder;
-	private DefaultTableModel dtmInventory;
+	private JTable tableCustomer;
+	private DefaultTableModel dtmCustomer;
 	private JTable tableCustomerRegister;
 	private JTextField fieldProductCategory;
 	private JTextField fieldProductPrice;
 	private Vector inventoryHeader;
 	
-	private JScrollPane scroll;
+	private JScrollPane scrollO;
+	private DefaultTableModel dtmOrder;
+	private UneditableJTable tableOrder;
+	private JScrollPane scrollC;
+	private DefaultTableModel dtmOrderLine;
+	private UneditableJTable tableOrderLine;
+	private JScrollPane scrollOL;
+	private DefaultTableModel dtmInventory;
+	private UneditableJTable tableInventory;
+	private JScrollPane scrollI;
 
 	/**
 	 * Launch the application.
@@ -95,7 +102,7 @@ public class GUI implements Observer {
 	}
 	
 	public String getSeletedInventory() {
-		return (String) tableInventory.getValueAt(tableInventory.getSelectedRow(), 0);
+		return (String) tableCustomer.getValueAt(tableCustomer.getSelectedRow(), 0);
 	}
 	private void initialize(Controller c, Model m) {
 		this.m = m;
@@ -307,27 +314,42 @@ public class GUI implements Observer {
 		frame.getContentPane().add(fieldProductPrice);
 
 		
-		String[] s = { "Produktnummer", "Lagersaldo" };
+		String[] s0 = { "Kundnummer", "Namn", "Adress" };
 
-		dtmInventory = new DefaultTableModel(s, 0);
+		dtmCustomer = new DefaultTableModel(s0, 0);
+		tableCustomer = new UneditableJTable(dtmCustomer);
+		tableCustomer.setBounds(293, 25, 264, 201);
+		scrollC = new JScrollPane(tableCustomer);
+		scrollC.setBounds(868, 37, 263, 108);
+		frame.getContentPane().add(scrollC);
+		
+		String[] s1 = { "Produktnummer", "Lagersaldo" };
+
+		dtmInventory = new DefaultTableModel(s1, 0);
 		tableInventory = new UneditableJTable(dtmInventory);
 		tableInventory.setBounds(868, 37, 263, 108);
-		scroll = new JScrollPane(tableInventory);
-		scroll.setBounds(868, 37, 263, 108);
-		frame.getContentPane().add(scroll);
-	
-		tableOrderLine = new JTable();
-		tableOrderLine.setBounds(295, 264, 264, 154);
-		frame.getContentPane().add(tableOrderLine);
 		
-		tableOrder = new JTable();
-		tableOrder.setBounds(295, 167, 264, 70);
-		frame.getContentPane().add(tableOrder);
+		String[] s2 = { "Ordernummer", "Leveransdatum", "Kundnummer" };
+
+		dtmOrder = new DefaultTableModel(s2, 0);
+		tableOrder = new UneditableJTable(dtmOrder);
+		tableOrder.setBounds(295, 264, 264, 154);
 		
-	
-		tableCustomerRegister = new JTable();
-		tableCustomerRegister.setBounds(293, 25, 264, 201);
-		frame.getContentPane().add(tableCustomerRegister);
+		
+		String[] s3 = { "Produktnummer", "Lagersaldo" };
+
+		dtmOrderLine = new DefaultTableModel(s3, 0);
+		tableOrderLine = new UneditableJTable(dtmOrderLine);
+		tableOrderLine.setBounds(868, 37, 263, 108);
+		scrollI = new JScrollPane(tableInventory);
+		scrollI.setBounds(868, 37, 263, 108);
+		frame.getContentPane().add(scrollI);
+		scrollO = new JScrollPane(tableOrder);
+		scrollO.setBounds(295, 264, 264, 154);
+		frame.getContentPane().add(scrollO);
+		scrollOL = new JScrollPane(tableOrderLine);
+		scrollOL.setBounds(868, 37, 263, 108);
+		frame.getContentPane().add(scrollOL);
 		
 		JLabel lblBestllning = new JLabel("Beställning");
 		lblBestllning.setHorizontalAlignment(SwingConstants.LEFT);
@@ -362,15 +384,15 @@ public class GUI implements Observer {
 	}
 
 	private void updateInventory() {
-		int j = dtmInventory.getRowCount();
+		int j = dtmCustomer.getRowCount();
 		for(int i = 0; i<j; i++) {
-			dtmInventory.removeRow(0);
+			dtmCustomer.removeRow(0);
 			System.out.println("removed line");
 		}
 		for (Product a : m.getProductList()) {
 			System.out.println("in loop: " + a.getName());
 			String[] s = { a.getName(), Double.toString(a.getPrice())};
-			dtmInventory.addRow(s);
+			dtmCustomer.addRow(s);
 			System.out.println(s[0] + "||" + s[1]);
 			System.out.println("added line");
 		}
