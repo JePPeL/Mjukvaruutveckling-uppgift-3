@@ -12,6 +12,7 @@ public class Model extends Observable {
 	private int maxNbr = 10000000;
 	private List<String> idList = new LinkedList<String>();
 	private String CustomerNumber;
+	//CustomerNumber should probably be in GUI or maybe controller (model is supposed to be independent)
 	
 	public Model() {
 		cReg = new CustomerRegister();
@@ -85,7 +86,10 @@ public class Model extends Observable {
 	public void removeItem(String productID) {
 		pReg.removeProduct(productID);
 	}
-	public Collection<Product> getProductList() {
+	public Collection<Product> getProductCollection() {
 		return pReg.getProducts();
+	}
+	public Collection<Customer> getCustomerCollection() {
+		return cReg.getCustomers();
 	}
 }

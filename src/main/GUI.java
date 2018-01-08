@@ -327,12 +327,18 @@ public class GUI implements Observer {
 		dtmInventory = new DefaultTableModel(s1, 0);
 		tableInventory = new UneditableJTable(dtmInventory);
 		tableInventory.setBounds(868, 37, 263, 108);
+		scrollI = new JScrollPane(tableInventory);
+		scrollI.setBounds(868, 37, 263, 108);
+		frame.getContentPane().add(scrollI);
 		
-		String[] s2 = { "Ordernummer", "Leveransdatum", "Kundnummer" };
+		String[] s2 = { "Ordernummer", "Leveransdatum" };
 
 		dtmOrder = new DefaultTableModel(s2, 0);
 		tableOrder = new UneditableJTable(dtmOrder);
 		tableOrder.setBounds(295, 264, 264, 154);
+		scrollO = new JScrollPane(tableOrder);
+		scrollO.setBounds(295, 264, 264, 154);
+		frame.getContentPane().add(scrollO);
 		
 		
 		String[] s3 = { "Produktnummer", "Lagersaldo" };
@@ -340,12 +346,6 @@ public class GUI implements Observer {
 		dtmOrderLine = new DefaultTableModel(s3, 0);
 		tableOrderLine = new UneditableJTable(dtmOrderLine);
 		tableOrderLine.setBounds(868, 37, 263, 108);
-		scrollI = new JScrollPane(tableInventory);
-		scrollI.setBounds(868, 37, 263, 108);
-		frame.getContentPane().add(scrollI);
-		scrollO = new JScrollPane(tableOrder);
-		scrollO.setBounds(295, 264, 264, 154);
-		frame.getContentPane().add(scrollO);
 		scrollOL = new JScrollPane(tableOrderLine);
 		scrollOL.setBounds(868, 37, 263, 108);
 		frame.getContentPane().add(scrollOL);
@@ -378,19 +378,49 @@ public class GUI implements Observer {
 	public void update(Observable o, Object arg) {
 		// update all the displayed information (tables)
 		updateInventory();
-		System.out.println("update");
+		updateCustomer();
+		updateOder();
+		updateOrderLine();
 
 	}
 
-	private void updateInventory() {
-		int j = dtmInventory.getRowCount();
-		for(int i = 0; i<j; i++) {
-			dtmInventory.removeRow(0);
-			
-		}
-		for (Product a : m.getProductList()) {
-			String[] s = { a.getName(), Double.toString(a.getPrice()), Integer.toString(a.numberInStock()), a.getCategory()};
+	private void updateCustomer() {
+		clearTable(dtmCustomer);
+		for (Customer a : m.getCustomerCollection()) {
+			String[] s = { a.getCustomerNumber(), a.getName(), a.getAddress()};
 			dtmInventory.addRow(s);
+		}
+	}
+	
+	private void updateInventory() {
+		clearTable(dtmInventory);
+		for (Product a : m.getProductCollection()) {
+			String[] s = { a.getName(), Double.toString(a.getPrice()), Integer.toString(a.numberInStock()), a.getCategory()};
+			dtmOrderLine.addRow(s);
+		}
+	}
+	
+	private void updateOder() {
+		clearTable(dtmOrder);
+		for (Order a : m.getCustomer().getOrderCollection()) {
+			String[] s = { a.getOrderID(), a.getDeliveryDate()};
+			dtmOrderLine.addRow(s);
+		}
+	}
+	
+	private void updateOrderLine() {
+		//TODO: Uncomment and make getting order line collection work
+/*		clearTable(dtmOrderLine);
+		for (OrderLine a : m.getCustomer().getOrder().getOrderLineCollection) {
+			String[] s = {a.getNumber(), Integer.toString(a.getAmount())};
+			dtmInventory.addRow(s);
+		}*/
+	}
+	
+	private static void clearTable(DefaultTableModel dtm) {
+		int j = dtm.getRowCount();
+		for(int i = 0; i < j; i++) {
+			dtm.removeRow(0);
 		}
 	}
 	

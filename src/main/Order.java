@@ -29,4 +29,9 @@ public class Order {
 		return customer;
 	}
 
+	public String getDeliveryDate() {
+		// TODO Auto-generated method stub
+		return deliveryDate;
+	}
+
 }
