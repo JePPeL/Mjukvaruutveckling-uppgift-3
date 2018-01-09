@@ -58,7 +58,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addOrder(view.getOrderID(), view.getCurrectCustomer());
+				model.addOrder(view.getOrderID(), view.getCurrentCustomer(), view.getDeliveryDate);
 			}			
 		};
 	}

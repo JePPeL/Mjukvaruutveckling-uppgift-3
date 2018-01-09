@@ -1,8 +1,10 @@
 package main;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Random;
 
@@ -13,7 +15,7 @@ public class Model extends Observable {
 	ProductRegister pReg;
 	private int maxNbr = 10000000;
 	private List<String> idList = new LinkedList<String>();
-	
+
 	public Model() {
 		cReg = new CustomerRegister();
 		pReg = new ProductRegister();
@@ -81,8 +83,7 @@ public class Model extends Observable {
 	}
 	
 
-	public void addOrder(String orderID, Customer c) {
-		c.getCurrentCostumer.addOrder();
+	
 	public void addOrder(String orderID) {
 		//TODO: implement
 	}

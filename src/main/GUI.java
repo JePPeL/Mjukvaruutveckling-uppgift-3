@@ -56,6 +56,7 @@ public class GUI implements Observer {
 	private DefaultTableModel dtmInventory;
 	private UneditableJTable tableInventory;
 	private JScrollPane scrollI;
+	private JTextField fieldDeliveryDate;
 
 	/**
 	 * Launch the application.
@@ -370,6 +371,15 @@ public class GUI implements Observer {
 		separator_2.setOrientation(SwingConstants.VERTICAL);
 		separator_2.setBounds(571, -21, 6, 509);
 		frame.getContentPane().add(separator_2);
+		
+		fieldDeliveryDate = new JTextField();
+		fieldDeliveryDate.setBounds(313, 186, 130, 26);
+		frame.getContentPane().add(fieldDeliveryDate);
+		fieldDeliveryDate.setColumns(10);
+		
+		JLabel labelDeliveryDate = new JLabel("Leveransdatum (YYYY-MM-DD)");
+		labelDeliveryDate.setBounds(313, 169, 234, 16);
+		frame.getContentPane().add(labelDeliveryDate);
 	}
 
 	@Override
@@ -449,6 +459,10 @@ public class GUI implements Observer {
 		return currentCustomer;
 	}
 
+	public String getDeliveryDate() {
+		return fieldDeliveryDate.getText();
+	}
+	
 	public void setCurrentCustomer(Customer currentCustomer) {
 		this.currentCustomer = currentCustomer;
 	}
@@ -462,5 +476,4 @@ public class GUI implements Observer {
 			return false;
 		}
 	}
-
 }
