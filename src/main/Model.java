@@ -84,8 +84,8 @@ public class Model extends Observable {
 	
 
 	
-	public void addOrder(String orderID, Customer customer, String string) {
-		//TODO: implement
+	public void addOrder(String orderID, Customer customer, String deliveryDate) {
+		customer.addOrder(orderID, deliveryDate);
 	}
 	
 	public void removeItem(String productID) {
