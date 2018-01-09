@@ -82,8 +82,14 @@ public class Model extends Observable {
 		pReg.findProduct(productID);
 	}
 	
-	public void searchOrder(String orderID){
-		
+	public Order searchOrder(String orderID){
+		for (Customer c : getCustomerCollection()){
+			Order order = c.findOrder(orderID);
+			if (order != null){
+				return order;
+			}
+		}
+		return null;
 	}
 	
 	public void removeOrder(String orderID) {
