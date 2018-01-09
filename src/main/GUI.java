@@ -446,10 +446,10 @@ public class GUI implements Observer {
 				String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
 				dtmOrderLine.addRow(s);
 			} else
-			for (OrderLine a : m.searchOrder(currentOrderID).getOrderLineCollection()) {
-				String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
-				dtmOrderLine.addRow(s);
-			}
+				for (OrderLine a : m.searchOrder(currentOrderID).getOrderLineCollection()) {
+					String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
+					dtmOrderLine.addRow(s);
+				}
 		}
 	}
 
@@ -551,6 +551,11 @@ public class GUI implements Observer {
 		currentOrderLineID = null;
 		updateOrder();
 		updateOrderLine();
+	}
+
+	public String getTableCustomerID() {
+		return (String) tableCustomer.getValueAt(tableCustomer.getSelectedRow(), 0);
+
 	}
 
 	private class UneditableJTable extends JTable {
