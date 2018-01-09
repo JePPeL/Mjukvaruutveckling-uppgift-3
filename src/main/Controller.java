@@ -119,6 +119,7 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				if (model.searchOrderLine(view.getOrderLineID(), view.getCurrentOrderID()) != null) {
 					view.setCurrentOrderLineID(view.getOrderLineID());
+					System.out.println("SearchOrderLineListener: currentOrderLineID == " + view.getCurrentOrderLineID());
 				}
 			}
 		};

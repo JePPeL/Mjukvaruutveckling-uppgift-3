@@ -7,7 +7,7 @@ public class OrderLine {
 	//Maybe rename to avoid it being interpreted as number of items
 	private int amount;
 	
-	public OrderLine(String Number, int amount) {
+	public OrderLine(String number, int amount) {
 		this.number = number;
 		this.amount = amount;
 	}

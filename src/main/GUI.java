@@ -425,12 +425,10 @@ public class GUI implements Observer {
 
 	private void updateOrder() {
 		clearTable(dtmOrder);
-		System.out.println("currentOrderID: " + currentOrderID);
 		if (currentOrderID != null) {
 			Order a = m.searchOrder(currentOrderID);
 			String[] s = { a.getOrderID(), a.getDeliveryDate() };
 			dtmOrder.addRow(s);
-			System.out.println("single order");
 		} else if (currentCustomerID != null)
 			for (Order a : m.findCustomer(currentCustomerID).getOrderCollection()) {
 				String[] s = { a.getOrderID(), a.getDeliveryDate() };
@@ -441,14 +439,19 @@ public class GUI implements Observer {
 	private void updateOrderLine() {
 		clearTable(dtmOrderLine);
 		if (currentOrderID != null) {
+			System.out.println("updating, currentOrderID == " + currentOrderID);
 			if (currentOrderLineID != null) {
+				System.out.println("single line");
 				OrderLine a = m.searchOrder(currentOrderID).getOrderLine(currentOrderLineID);
 				String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
 				dtmOrderLine.addRow(s);
-			} else
-			for (OrderLine a : m.searchOrder(currentOrderID).getOrderLineCollection()) {
-				String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
-				dtmOrderLine.addRow(s);
+			} else {
+				for (OrderLine a : m.searchOrder(currentOrderID).getOrderLineCollection()) {
+					String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
+					dtmOrderLine.addRow(s);
+					System.out.println("iterating: " + s[0] + " " + s[1]);
+				}
+				System.out.println("multiple lines");
 			}
 		}
 	}
@@ -502,7 +505,6 @@ public class GUI implements Observer {
 
 	public void setCurrentOrderID(String currentOrderID) {
 		this.currentOrderID = currentOrderID;
-		System.out.println("setorderID: " + currentOrderID);
 		updateOrder();
 	}
 
@@ -514,7 +516,6 @@ public class GUI implements Observer {
 		currentOrderID = null;
 		updateOrder();
 		updateOrderLine();
-		System.out.println("clearOrderID");
 	}
 
 	public void setCurrentProductID(String ID) {
@@ -545,6 +546,8 @@ public class GUI implements Observer {
 
 	public void setCurrentOrderLineID(String currentOrderLineID) {
 		this.currentOrderLineID = currentOrderLineID;
+		updateOrderLine();
+		updateOrder();
 	}
 
 	public void clearCurrentOrderLineID() {

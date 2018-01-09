@@ -43,6 +43,8 @@ public class Model extends Observable {
 
 	public void removeCustomer(String CustomerNumber) {
 		cReg.removeCustomer(CustomerNumber);
+		setChanged();
+		notifyObservers();
 	}
 
 	public String custNumbGen() {
@@ -118,11 +120,15 @@ public class Model extends Observable {
 	public void addOrderLine(String orderLineID, int amount, String orderID) {
 		Order order = searchOrder(orderID);
 		order.addOrderLine(new OrderLine(orderLineID, amount));
+		setChanged();
+		notifyObservers();
 	}
 
 	public void removeOrderLine(String orderLineID, String orderID) {
 		Order order = searchOrder(orderID);
 		order.removeOrderLine(orderLineID);
+		setChanged();
+		notifyObservers();
 	}
 
 	public void removeFromOrderLine(String orderLineID, String orderID, int amount) {
@@ -135,10 +141,14 @@ public class Model extends Observable {
 		Order order = searchOrder(orderID);
 		OrderLine ol = order.getOrderLine(orderLineID);
 		ol.increase(amount);
+		setChanged();
+		notifyObservers();
 	}
 
 	public void removeItem(String productID) {
 		pReg.removeProduct(productID);
+		setChanged();
+		notifyObservers();
 	}
 
 	public Collection<Product> getProductCollection() {
