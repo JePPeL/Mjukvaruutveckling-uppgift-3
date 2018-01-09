@@ -112,12 +112,12 @@ public class GUI implements Observer {
 	private void initialize(Controller c, Model m) {
 		this.m = m;
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1150, 500);
+		frame.setBounds(100, 100, 1150, 550);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
 		fieldCustomerID = new JTextField();
-		fieldCustomerID.setBounds(16, 98, 128, 20);
+		fieldCustomerID.setBounds(16, 52, 169, 20);
 		frame.getContentPane().add(fieldCustomerID);
 		fieldCustomerID.setColumns(10);
 
@@ -147,17 +147,17 @@ public class GUI implements Observer {
 		btnSearchCustomer.addActionListener(c.addSearchCustomerListener());
 
 		fieldOrderID = new JTextField();
-		fieldOrderID.setBounds(16, 189, 267, 20);
+		fieldOrderID.setBounds(24, 249, 267, 20);
 		frame.getContentPane().add(fieldOrderID);
 		fieldOrderID.setColumns(10);
 
 		JButton btnAddOrder = new JButton("Lägg till");
-		btnAddOrder.setBounds(105, 215, 89, 23);
+		btnAddOrder.setBounds(113, 275, 89, 23);
 		frame.getContentPane().add(btnAddOrder);
 		btnAddOrder.addActionListener(c.addAddOrderListener());
 
 		fieldOrderLineID = new JTextField();
-		fieldOrderLineID.setBounds(16, 294, 267, 20);
+		fieldOrderLineID.setBounds(24, 354, 267, 20);
 		frame.getContentPane().add(fieldOrderLineID);
 		fieldOrderLineID.setColumns(10);
 
@@ -172,27 +172,27 @@ public class GUI implements Observer {
 		btnRemoveProduct.addActionListener(c.addRemoveProductListener());
 
 		JButton btnSearchOrder = new JButton("Sök");
-		btnSearchOrder.setBounds(14, 215, 89, 23);
+		btnSearchOrder.setBounds(22, 275, 89, 23);
 		frame.getContentPane().add(btnSearchOrder);
 		btnSearchOrder.addActionListener(c.addSearchOrderListener());
 
 		JButton btnRemoveOrder = new JButton("Ta bort");
-		btnRemoveOrder.setBounds(195, 215, 89, 23);
+		btnRemoveOrder.setBounds(203, 275, 89, 23);
 		frame.getContentPane().add(btnRemoveOrder);
 		btnRemoveOrder.addActionListener(c.addRemoveOrderListener());
 
 		JButton btnSearchOrderLine = new JButton("Sök");
-		btnSearchOrderLine.setBounds(14, 320, 89, 23);
+		btnSearchOrderLine.setBounds(22, 380, 89, 23);
 		frame.getContentPane().add(btnSearchOrderLine);
 		btnSearchOrderLine.addActionListener(c.addSearchOrderLineListener());
 
 		JButton btnAddOrderLine = new JButton("Lägg till");
-		btnAddOrderLine.setBounds(105, 320, 89, 23);
+		btnAddOrderLine.setBounds(113, 380, 89, 23);
 		frame.getContentPane().add(btnAddOrderLine);
 		btnAddOrderLine.addActionListener(c.addAddOrderLineListener());
 
 		JButton btnRemoveOrderLine = new JButton("Ta bort");
-		btnRemoveOrderLine.setBounds(195, 320, 89, 23);
+		btnRemoveOrderLine.setBounds(202, 380, 89, 23);
 		frame.getContentPane().add(btnRemoveOrderLine);
 		btnRemoveOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
@@ -213,21 +213,21 @@ public class GUI implements Observer {
 
 		fieldAmountOrderLine = new JTextField();
 		fieldAmountOrderLine.setColumns(10);
-		fieldAmountOrderLine.setBounds(16, 380, 267, 20);
+		fieldAmountOrderLine.setBounds(24, 440, 267, 20);
 		frame.getContentPane().add(fieldAmountOrderLine);
 
 		JButton btnRemoveFromOrderLine = new JButton("Ta bort");
-		btnRemoveFromOrderLine.setBounds(105, 405, 89, 23);
+		btnRemoveFromOrderLine.setBounds(113, 465, 89, 23);
 		frame.getContentPane().add(btnRemoveFromOrderLine);
 		btnRemoveFromOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
 		JButton btnAddToOrderLine = new JButton("Lägg till");
-		btnAddToOrderLine.setBounds(14, 405, 89, 23);
+		btnAddToOrderLine.setBounds(22, 465, 89, 23);
 		frame.getContentPane().add(btnAddToOrderLine);
 		btnAddToOrderLine.addActionListener(c.addAddToOrderLineListener());
 
 		fieldName = new JTextField();
-		fieldName.setBounds(16, 52, 179, 20);
+		fieldName.setBounds(16, 98, 128, 20);
 		frame.getContentPane().add(fieldName);
 		fieldName.setColumns(10);
 
@@ -253,11 +253,11 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lblProductName);
 
 		JLabel lblOrdernummer = new JLabel("Ordernummer");
-		lblOrdernummer.setBounds(20, 169, 113, 16);
+		lblOrdernummer.setBounds(28, 229, 113, 16);
 		frame.getContentPane().add(lblOrdernummer);
 
 		JLabel lblOrderrad = new JLabel("Orderrad");
-		lblOrderrad.setBounds(20, 273, 61, 16);
+		lblOrderrad.setBounds(28, 333, 61, 16);
 		frame.getContentPane().add(lblOrderrad);
 
 		JLabel lnlAntalLager = new JLabel("Antal");
@@ -265,7 +265,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lnlAntalLager);
 
 		JLabel lblAntalLager = new JLabel("Antal");
-		lblAntalLager.setBounds(20, 360, 61, 16);
+		lblAntalLager.setBounds(28, 420, 61, 16);
 		frame.getContentPane().add(lblAntalLager);
 
 		// JList listCustomers = new JList();
@@ -295,7 +295,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(separator);
 
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(2, 250, 1148, 16);
+		separator_1.setBounds(10, 310, 1148, 16);
 		frame.getContentPane().add(separator_1);
 
 		JSeparator separator_3 = new JSeparator();
@@ -322,7 +322,7 @@ public class GUI implements Observer {
 		tableCustomer = new UneditableJTable(dtmCustomer);
 		tableCustomer.setBounds(293, 25, 264, 201);
 		scrollC = new JScrollPane(tableCustomer);
-		scrollC.setBounds(868, 37, 263, 108);
+		scrollC.setBounds(302, 18, 263, 129);
 		frame.getContentPane().add(scrollC);
 
 		String[] s1 = { "Produktnummer", "Pris", "Lagersaldo", "Beskrivning" };
@@ -340,7 +340,7 @@ public class GUI implements Observer {
 		tableOrder = new UneditableJTable(dtmOrder);
 		tableOrder.setBounds(295, 264, 264, 154);
 		scrollO = new JScrollPane(tableOrder);
-		scrollO.setBounds(295, 264, 264, 154);
+		scrollO.setBounds(301, 169, 264, 129);
 		frame.getContentPane().add(scrollO);
 
 		String[] s3 = { "Produktnummer", "Lagersaldo" };
@@ -349,7 +349,7 @@ public class GUI implements Observer {
 		tableOrderLine = new UneditableJTable(dtmOrderLine);
 		tableOrderLine.setBounds(868, 37, 263, 108);
 		scrollOL = new JScrollPane(tableOrderLine);
-		scrollOL.setBounds(868, 37, 263, 108);
+		scrollOL.setBounds(301, 328, 263, 160);
 		frame.getContentPane().add(scrollOL);
 
 		JLabel lblBestllning = new JLabel("Beställning");
@@ -372,16 +372,16 @@ public class GUI implements Observer {
 
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setOrientation(SwingConstants.VERTICAL);
-		separator_2.setBounds(571, -21, 6, 509);
+		separator_2.setBounds(571, -21, 6, 545);
 		frame.getContentPane().add(separator_2);
 
 		fieldDeliveryDate = new JTextField();
-		fieldDeliveryDate.setBounds(313, 186, 130, 26);
+		fieldDeliveryDate.setBounds(24, 186, 267, 26);
 		frame.getContentPane().add(fieldDeliveryDate);
 		fieldDeliveryDate.setColumns(10);
 
 		JLabel labelDeliveryDate = new JLabel("Leveransdatum (YYYY-MM-DD)");
-		labelDeliveryDate.setBounds(313, 169, 234, 16);
+		labelDeliveryDate.setBounds(24, 169, 231, 16);
 		frame.getContentPane().add(labelDeliveryDate);
 	}
 
