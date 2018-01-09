@@ -35,6 +35,9 @@ public class Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				view.setCurrentProductID(view.getProductID());
+				view.clearCurrentCustomerID();
+				view.clearCurrentOrderID();
+				view.clearCurrentOrderLineID();
 			}			
 		};
 	}
@@ -50,7 +53,10 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.findCustomer(view.getCustomerId());			
+				model.findCustomer(view.getCustomerId());
+				view.clearCurrentOrderID();
+				view.clearCurrentOrderLineID();
+				view.clearCurrentProductID();
 			}			
 		};
 	}
@@ -84,6 +90,9 @@ public class Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				model.searchOrder(view.getOrderID());
+				view.clearCurrentCustomerID();
+				view.clearCurrentOrderLineID();
+				view.clearCurrentProductID();
 			}
 		};
 	}
@@ -99,7 +108,9 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				if (model.searchOrderLine(view.getOrderLineID(), view.getOrderID()) != null){
+					view.setCurrentOrderLineID(view.getOrderLineID());
+				}
 			}			
 		};
 	}

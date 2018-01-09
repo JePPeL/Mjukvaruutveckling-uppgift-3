@@ -503,6 +503,10 @@ public class GUI implements Observer {
 		updateOrderLine();
 	}
 	
+	public String getOrderLineID(){
+		return fieldOrderLineID.getText();
+	}
+	
 	public void clearCurrentOrderID() {
 		currentOrderID = null;
 		updateOrder();
