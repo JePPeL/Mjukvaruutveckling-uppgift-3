@@ -31,6 +31,7 @@ public class GUI implements Observer {
 	private Model m;
 	private String currentCustomerID;
 	private String currentOrderID;
+	private String currentOrderLineID;
 	private JFrame frame;
 	private JTextField fieldCustomerID;
 	private JTextField fieldProductID;
@@ -424,6 +425,11 @@ public class GUI implements Observer {
 
 	private void updateOrder() {
 		clearTable(dtmOrder);
+		if (currentOrderID != null) {
+			Order a = m.searchOrder(currentOrderID);
+			String[] s = { a.getOrderID(), a.getDeliveryDate() };
+			dtmOrderLine.addRow(s);
+		} else if (currentCustomerID != null)
 			for (Order a : m.findCustomer(currentCustomerID).getOrderCollection()) {
 				String[] s = { a.getOrderID(), a.getDeliveryDate() };
 				dtmOrderLine.addRow(s);
@@ -432,11 +438,17 @@ public class GUI implements Observer {
 
 	private void updateOrderLine() {
 		clearTable(dtmOrderLine);
-		for (OrderLine a : m.findCustomer(currentCustomerID).findOrder(currentOrderID).getOrderLineCollection()) {
-			String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
-			dtmInventory.addRow(s);
+		if (currentOrderID != null) {
+			if (currentOrderLineID != null) {
+				OrderLine a = m.searchOrder(currentOrderID).getOrderLine(currentOrderLineID);
+				String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
+				dtmInventory.addRow(s);
+			}
+			for (OrderLine a : m.findCustomer(currentCustomerID).findOrder(currentOrderID).getOrderLineCollection()) {
+				String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
+				dtmInventory.addRow(s);
+			}
 		}
-
 	}
 
 	private static void clearTable(DefaultTableModel dtm) {
@@ -496,6 +508,14 @@ public class GUI implements Observer {
 
 	public String getDeliveryDate() {
 		return fieldDeliveryDate.getText();
+	}
+
+	public String getCurrentOrderLineID() {
+		return currentOrderLineID;
+	}
+
+	public void setCurrentOrderLineID(String currentOrderLineID) {
+		this.currentOrderLineID = currentOrderLineID;
 	}
 
 	private class UneditableJTable extends JTable {

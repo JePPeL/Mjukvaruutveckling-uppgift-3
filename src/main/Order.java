@@ -33,4 +33,9 @@ public class Order {
 		return orderLines.values();
 	}
 
+	public OrderLine getOrderLine(String orderLineID) {
+		// TODO Auto-generated method stub
+		return orderLines.get(orderLineID);
+	}
+
 }
