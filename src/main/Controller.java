@@ -16,7 +16,7 @@ public class Controller {
 	public Controller(Model model) {
 		this.model = model;
 	}
-	
+
 	public void addGUI(GUI view) {
 		this.view = view;
 	}
@@ -25,47 +25,54 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addProduct(view.getProductID(), view.getProductCategory(), view.getProductPrice());				
-				
-			}			
+				model.addProduct(view.getProductID(), view.getProductCategory(), view.getProductPrice());
+
+			}
 		};
 	}
+
 	public ActionListener addSearchProductListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				view.setCurrentProductID(view.getProductID());
+				if (model.searchProduct(view.getProductID()) != null)
+					view.setCurrentProductID(view.getProductID());
 				view.clearCurrentCustomerID();
 				view.clearCurrentOrderID();
 				view.clearCurrentOrderLineID();
-			}			
+			}
 		};
 	}
+
 	public ActionListener addAddCustomerListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				model.addCustomer(view.getCustomerName(), view.getCustomerAddress());
-			}			
+			}
 		};
 	}
+
 	public ActionListener addSearchCustomerListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.findCustomer(view.getCustomerId());
+				if (model.findCustomer(view.getCustomerId()) != null)
+					view.setCurrentCustomerID(view.getCostumerID());
 				view.clearCurrentOrderID();
 				view.clearCurrentOrderLineID();
 				view.clearCurrentProductID();
-			}			
+			}
 		};
 	}
+
 	public ActionListener addAddOrderListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addOrder(view.getOrderID(), model.findCustomer(view.getCurrentCustomerID()), view.getDeliveryDate());
-			}			
+				model.addOrder(view.getOrderID(), model.findCustomer(view.getCurrentCustomerID()),
+						view.getDeliveryDate());
+			}
 		};
 	}
 
@@ -77,43 +84,50 @@ public class Controller {
 			}
 		};
 	}
+
 	public ActionListener addRemoveProductListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				model.removeItem(view.getProductID());
-			}			
+			}
 		};
 	}
+
 	public ActionListener addSearchOrderListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.searchOrder(view.getOrderID());
+				if (model.searchOrder(view.getOrderID()) != null)
+					view.setCurrentOrderID(view.getCurrentOrderID());
+				;
 				view.clearCurrentCustomerID();
 				view.clearCurrentOrderLineID();
 				view.clearCurrentProductID();
 			}
 		};
 	}
+
 	public ActionListener addRemoveOrderListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				model.removeOrder(view.getOrderID());
-			}			
+			}
 		};
 	}
+
 	public ActionListener addSearchOrderLineListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (model.searchOrderLine(view.getOrderLineID(), view.getOrderID()) != null){
+				if (model.searchOrderLine(view.getOrderLineID(), view.getOrderID()) != null) {
 					view.setCurrentOrderLineID(view.getOrderLineID());
 				}
-			}			
+			}
 		};
 	}
+
 	public ActionListener addAddOrderLineListener() {
 		return new ActionListener() {
 			@Override
@@ -122,42 +136,49 @@ public class Controller {
 			}			
 		};
 	}
+
 	public ActionListener addRemoveOrderLineListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO: Implement
-			}			
+				// TODO: Implement
+			}
 		};
 	}
+
 	public ActionListener addRemoveFromInventoryListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.removeItem(view.getProductID());			
-			}			
+				model.removeItem(view.getProductID());
+			}
 		};
-	}	public ActionListener addAddToInventoryListener() {
+	}
+
+	public ActionListener addAddToInventoryListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addToInventory(view.getAntal(), view.getSeletedInventory());				
-			}			
+				model.addToInventory(view.getAntal(), view.getSeletedInventory());
+			}
 		};
-	}	public ActionListener addRemoveFromOrderLineListener() {
+	}
+
+	public ActionListener addRemoveFromOrderLineListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
-			}			
+				// TODO Auto-generated method stub
+			}
 		};
-	}	
+	}
+
 	public ActionListener addAddToOrderLineListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
-			}			
+				// TODO Auto-generated method stub
+			}
 		};
 	}
 }
