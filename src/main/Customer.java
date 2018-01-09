@@ -40,7 +40,7 @@ public class Customer {
 		return customerNumber;
 	}
 
-	public void addOrder(String orderID, Customer customer, String deliveryDate) {
+	public void addOrder(String orderID, String deliveryDate) {
 		orderMap.put(orderID, new Order(orderID, customer, deliveryDate));
 	}
 	/*public void addOrder(Order order) {
