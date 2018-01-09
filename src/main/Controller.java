@@ -71,7 +71,7 @@ public class Controller {
 							view.getDeliveryDate());
 				}
 				else if (view.getTableCustomerID() != null){
-					model.addOrder(view.getTableCustomerID(), model.findCustomer(view.getCurrentCustomerID()),
+					model.addOrder(view.getOrderID(), model.findCustomer(view.getTableCustomerID()),
 							view.getDeliveryDate());
 				}
 			}
