@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Random;
 
+import com.sun.glass.ui.View;
+
 public class Model extends Observable {
 	CustomerRegister cReg;
 	ProductRegister pReg;
@@ -83,8 +85,8 @@ public class Model extends Observable {
 		pReg.findProduct(productID);
 	}
 	
-	public void addOrder(String orderID) {
-		
+	public void addOrder(String orderID, Customer c) {
+		c.getCurrentCostumer.addOrder();
 	}
 	
 	public void removeItem(String productID) {
