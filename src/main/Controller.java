@@ -121,7 +121,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (model.searchOrderLine(view.getOrderLineID(), view.getOrderID()) != null) {
+				if (model.searchOrderLine(view.getOrderLineID(), view.getCurrentOrderID()) != null) {
 					view.setCurrentOrderLineID(view.getOrderLineID());
 				}
 			}
@@ -132,7 +132,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addOrderLine(view.getOrderLineID(), 0, view.getOrderID());
+				model.addOrderLine(view.getOrderLineID(), 0, view.getCurrentOrderID());
 			}
 		};
 	}
