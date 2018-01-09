@@ -2,11 +2,6 @@ package main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
-
-import com.sun.glass.ui.View;
 
 public class Controller {
 
@@ -67,11 +62,13 @@ public class Controller {
 	}
 
 	public ActionListener addAddOrderListener() {
+		// confirmed works
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addOrder(view.getOrderID(), model.findCustomer(view.getCurrentCustomerID()),
-						view.getDeliveryDate());
+				if (view.getCurrentCustomerID() != null)
+					model.addOrder(view.getOrderID(), model.findCustomer(view.getCurrentCustomerID()),
+							view.getDeliveryDate());
 			}
 		};
 	}
@@ -99,8 +96,7 @@ public class Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (model.searchOrder(view.getOrderID()) != null)
-					view.setCurrentOrderID(view.getCurrentOrderID());
-				;
+					view.setCurrentOrderID(view.getOrderID());
 				view.clearCurrentCustomerID();
 				view.clearCurrentOrderLineID();
 				view.clearCurrentProductID();

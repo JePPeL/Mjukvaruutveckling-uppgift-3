@@ -425,14 +425,16 @@ public class GUI implements Observer {
 
 	private void updateOrder() {
 		clearTable(dtmOrder);
+		System.out.println("currentOrderID: " + currentOrderID);
 		if (currentOrderID != null) {
 			Order a = m.searchOrder(currentOrderID);
 			String[] s = { a.getOrderID(), a.getDeliveryDate() };
-			dtmOrderLine.addRow(s);
+			dtmOrder.addRow(s);
+			System.out.println("single order");
 		} else if (currentCustomerID != null)
 			for (Order a : m.findCustomer(currentCustomerID).getOrderCollection()) {
 				String[] s = { a.getOrderID(), a.getDeliveryDate() };
-				dtmOrderLine.addRow(s);
+				dtmOrder.addRow(s);
 			}
 	}
 
@@ -442,11 +444,11 @@ public class GUI implements Observer {
 			if (currentOrderLineID != null) {
 				OrderLine a = m.searchOrder(currentOrderID).getOrderLine(currentOrderLineID);
 				String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
-				dtmInventory.addRow(s);
-			}
-			for (OrderLine a : m.findCustomer(currentCustomerID).findOrder(currentOrderID).getOrderLineCollection()) {
+				dtmOrderLine.addRow(s);
+			} else
+			for (OrderLine a : m.searchOrder(currentOrderID).getOrderLineCollection()) {
 				String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
-				dtmInventory.addRow(s);
+				dtmOrderLine.addRow(s);
 			}
 		}
 	}
@@ -500,7 +502,8 @@ public class GUI implements Observer {
 
 	public void setCurrentOrderID(String currentOrderID) {
 		this.currentOrderID = currentOrderID;
-		updateOrderLine();
+		System.out.println("setorderID: " + currentOrderID);
+		updateOrder();
 	}
 	
 	public String getOrderLineID(){
@@ -511,6 +514,7 @@ public class GUI implements Observer {
 		currentOrderID = null;
 		updateOrder();
 		updateOrderLine();
+		System.out.println("clearOrderID");
 	}
 
 	public void setCurrentProductID(String ID) {
