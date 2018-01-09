@@ -84,7 +84,7 @@ public class Model extends Observable {
 	}
 	
 	public void addOrder(String orderID) {
-		
+		//TODO: implement
 	}
 	
 	public void removeItem(String productID) {
