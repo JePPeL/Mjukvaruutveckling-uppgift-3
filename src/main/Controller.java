@@ -66,9 +66,14 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (view.getCurrentCustomerID() != null)
+				if (view.getCurrentCustomerID() != null) {
 					model.addOrder(view.getOrderID(), model.findCustomer(view.getCurrentCustomerID()),
 							view.getDeliveryDate());
+				}
+				else if (view.getTableCustomerID() != null){
+					model.addOrder(view.getOrderID(), model.findCustomer(view.getTableCustomerID()),
+							view.getDeliveryDate());
+				}
 			}
 		};
 	}
