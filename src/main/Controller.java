@@ -132,7 +132,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addOrderLine(view.getOrderLineID(), Integer.parseInt(view.getAmountOrderLine()), view.getOrderID());
+				model.addOrderLine(view.getOrderLineID(), 0, view.getOrderID());
 			}			
 		};
 	}
@@ -141,7 +141,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO: Implement
+				model.removeOrderLine(view.getOrderLineID(), view.getCurrentOrderID());
 			}
 		};
 	}
@@ -168,7 +168,8 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				model.removeFromOrderLine(view.getCurrentOrderLineID(), view.getCurrentOrderID(), Integer.parseInt(view.getAmountOrderLine()));
+				
 			}
 		};
 	}
@@ -177,7 +178,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				model.addToOrderLine(view.getCurrentOrderLineID(), view.getCurrentOrderID(), Integer.parseInt(view.getAmountOrderLine()));
 			}
 		};
 	}

@@ -119,6 +119,23 @@ public class Model extends Observable {
 		
 	}
 	
+	public void removeOrderLine(String orderLineID, String orderID) {
+		Order order = searchOrder(orderID);
+		order.removeOrderLine(orderLineID);
+	}
+	
+	public void removeFromOrderLine(String orderLineID, String orderID, int amount){
+		Order order = searchOrder(orderID);
+		OrderLine ol = order.getOrderLine(orderLineID);
+		ol.decrease(amount);
+	}
+	
+	public void addToOrderLine(String orderLineID, String orderID, int amount){
+		Order order = searchOrder(orderID);
+		OrderLine ol = order.getOrderLine(orderLineID);
+		ol.increase(amount);
+	}
+	
 	public void removeItem(String productID) {
 		pReg.removeProduct(productID);
 	}
