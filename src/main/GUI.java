@@ -29,7 +29,8 @@ import javax.swing.JTextPane;
 
 public class GUI implements Observer {
 	private Model m;
-	private Customer currentCustomer;
+	private String currentCustomerID;
+	private String currentOrderID;
 	private JFrame frame;
 	private JTextField fieldCustomerID;
 	private JTextField fieldProductID;
@@ -377,7 +378,7 @@ public class GUI implements Observer {
 		// update all the displayed information (tables)
 		updateInventory();
 		updateCustomer();
-		updateOder();
+		updateOrder();
 		updateOrderLine();
 
 	}
@@ -399,22 +400,21 @@ public class GUI implements Observer {
 		}
 	}
 
-	private void updateOder() {
+	private void updateOrder() {
 		clearTable(dtmOrder);
-		for (Order a : m.getCustomer().getOrderCollection()) {
+		for (Order a : m.findCustomer(currentCustomerID).getOrderCollection()) {
 			String[] s = { a.getOrderID(), a.getDeliveryDate() };
 			dtmOrderLine.addRow(s);
 		}
 	}
 
 	private void updateOrderLine() {
-		// TODO: Uncomment and make getting order line collection work
-		/*
-		 * clearTable(dtmOrderLine); for (OrderLine a :
-		 * m.getCustomer().getOrder().getOrderLineCollection) { String[] s =
-		 * {a.getNumber(), Integer.toString(a.getAmount())};
-		 * dtmInventory.addRow(s); }
-		 */
+		clearTable(dtmOrderLine);
+		for (OrderLine a : m.findCustomer(currentCustomerID).findOrder(currentOrderID).getOrderLineCollection()) {
+			String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
+			dtmInventory.addRow(s);
+		}
+
 	}
 
 	private static void clearTable(DefaultTableModel dtm) {
@@ -445,12 +445,22 @@ public class GUI implements Observer {
 		return fieldCustomerID.getText();
 	}
 
-	public Customer getCurrentCustomer() {
-		return currentCustomer;
+	public String getCurrentCustomerID() {
+		return currentCustomerID;
 	}
 
-	public void setCurrentCustomer(Customer currentCustomer) {
-		this.currentCustomer = currentCustomer;
+	public void setCurrentCustomerID(String currentCustomerID) {
+		this.currentCustomerID = currentCustomerID;
+		updateOrder();
+	}
+
+	public String getCurrentOrderID() {
+		return currentOrderID;
+	}
+
+	public void setCurrentOrderID(String currentOrderID) {
+		this.currentOrderID = currentOrderID;
+		updateOrderLine();
 	}
 
 	private class UneditableJTable extends JTable {
