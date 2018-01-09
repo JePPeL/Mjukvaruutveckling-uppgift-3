@@ -11,8 +11,6 @@ public class Model extends Observable {
 	ProductRegister pReg;
 	private int maxNbr = 10000000;
 	private List<String> idList = new LinkedList<String>();
-	private String CustomerNumber;
-	//CustomerNumber should probably be in GUI or maybe controller (model is supposed to be independent)
 	
 	public Model() {
 		cReg = new CustomerRegister();
@@ -29,19 +27,16 @@ public class Model extends Observable {
 	
 	
 	public Customer findCustomer(String cNbr) {
-		if (cReg.findCustomer(cNbr) != null) {
-			this.CustomerNumber = cReg.findCustomer(cNbr).getCustomerNumber();
-			return cReg.findCustomer(cNbr);
-		} else {
-			return null;
-		}
+		return cReg.findCustomer(cNbr);
+//		if (cReg.findCustomer(cNbr) != null) {
+//			this.CustomerNumber = cReg.findCustomer(cNbr).getCustomerNumber();
+//			return cReg.findCustomer(cNbr);
+//		} else {
+//			return null;
+//		}
 	}
 	
-	public Customer getCustomer() {
-		return cReg.findCustomer(CustomerNumber);
-	}
-	
-	public void removeCustomer() {
+	public void removeCustomer(String CustomerNumber) {
 		cReg.removeCustomer(CustomerNumber);
 	}
 	

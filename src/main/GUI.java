@@ -29,6 +29,7 @@ import javax.swing.JTextPane;
 
 public class GUI implements Observer {
 	private Model m;
+	private Customer currentCustomer;
 	private JFrame frame;
 	private JTextField fieldCustomerID;
 	private JTextField fieldProductID;
@@ -442,6 +443,14 @@ public class GUI implements Observer {
 
 	public String getCostumerID() {
 		return fieldCustomerID.getText();
+	}
+
+	public Customer getCurrentCustomer() {
+		return currentCustomer;
+	}
+
+	public void setCurrentCustomer(Customer currentCustomer) {
+		this.currentCustomer = currentCustomer;
 	}
 
 	private class UneditableJTable extends JTable {
