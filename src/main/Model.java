@@ -20,38 +20,38 @@ public class Model extends Observable {
 		cReg = new CustomerRegister();
 		pReg = new ProductRegister();
 	}
+
 	public void addGUI(GUI gui) {
 		addObserver(gui);
 	}
+
 	public void addCustomer(String name, String address) {
 		cReg.addCustomer(new Customer(custNumbGen(), name, address));
 		setChanged();
 		notifyObservers();
 	}
-	
-	
+
 	public Customer findCustomer(String cNbr) {
 		return cReg.findCustomer(cNbr);
-//		if (cReg.findCustomer(cNbr) != null) {
-//			this.CustomerNumber = cReg.findCustomer(cNbr).getCustomerNumber();
-//			return cReg.findCustomer(cNbr);
-//		} else {
-//			return null;
-//		}
+		// if (cReg.findCustomer(cNbr) != null) {
+		// this.CustomerNumber = cReg.findCustomer(cNbr).getCustomerNumber();
+		// return cReg.findCustomer(cNbr);
+		// } else {
+		// return null;
+		// }
 	}
-	
+
 	public void removeCustomer(String CustomerNumber) {
 		cReg.removeCustomer(CustomerNumber);
 	}
-	
-	
+
 	public String custNumbGen() {
 		Random rand = new Random();
-		
+
 		String random = Integer.toString(rand.nextInt(maxNbr));
 		boolean b = true;
 		while (b) {
-	
+
 			if (idList.contains(random)) {
 				random = Integer.toString(rand.nextInt(maxNbr));
 			} else
@@ -60,16 +60,18 @@ public class Model extends Observable {
 		}
 		return random;
 	}
+
 	public void addToInventory(int antal, String productName) {
-		
-		for(int i=0; i< antal; i++) {
-			Product temp = pReg.findProduct(productName); //hämta från jTable inventory
+
+		for (int i = 0; i < antal; i++) {
+			Product temp = pReg.findProduct(productName); // hämta från jTable
+															// inventory
 			temp.addItem(new Item(temp, custNumbGen()));
 			setChanged();
 			notifyObservers();
 		}
 	}
-	
+
 	public void addProduct(String productID, String category, double price) {
 		System.out.println("model");
 		pReg.addProduct(new Product(productID, category, price));
@@ -77,71 +79,72 @@ public class Model extends Observable {
 		setChanged();
 		notifyObservers();
 	}
-	
+
 	public Product searchProduct(String productID) {
 		return pReg.findProduct(productID);
 	}
-	
-	public Order searchOrder(String orderID){
-		for (Customer c : getCustomerCollection()){
+
+	public Order searchOrder(String orderID) {
+		for (Customer c : getCustomerCollection()) {
 			Order order = c.findOrder(orderID);
-			if (order != null){
+			if (order != null) {
 				return order;
 			}
 		}
 		return null;
 	}
-	
+
 	public void removeOrder(String orderID) {
-		for (Customer c : getCustomerCollection()){
-			if (c.findOrder(orderID) != null){
+		for (Customer c : getCustomerCollection()) {
+			if (c.findOrder(orderID) != null) {
 				c.removeOrder(orderID);
 				setChanged();
 				notifyObservers();
 			}
 		}
 	}
-	
+
 	public void addOrder(String orderID, Customer customer, String deliveryDate) {
 		customer.addOrder(orderID, deliveryDate);
 		setChanged();
 		notifyObservers();
 	}
-	
+
 	public OrderLine searchOrderLine(String orderLineID, String orderID) {
 		Order order = searchOrder(orderID);
 		return order.getOrderLine(orderLineID);
 	}
-	
-	public void addOrderLine(String orderLineID, int amount, String orderID){
+
+	public void addOrderLine(String orderLineID, int amount, String orderID) {
 		Order order = searchOrder(orderID);
 		order.addOrderLine(new OrderLine(orderLineID, amount));
-		
 	}
-	
+
 	public void removeOrderLine(String orderLineID, String orderID) {
 		Order order = searchOrder(orderID);
 		order.removeOrderLine(orderLineID);
 	}
-	
-	public void removeFromOrderLine(String orderLineID, String orderID, int amount){
+
+	public void removeFromOrderLine(String orderLineID, String orderID, int amount) {
 		Order order = searchOrder(orderID);
 		OrderLine ol = order.getOrderLine(orderLineID);
 		ol.decrease(amount);
 	}
-	
-	public void addToOrderLine(String orderLineID, String orderID, int amount){
+
+	public void addToOrderLine(String orderLineID, String orderID, int amount) {
 		Order order = searchOrder(orderID);
 		OrderLine ol = order.getOrderLine(orderLineID);
 		ol.increase(amount);
 	}
-	
+
 	public void removeItem(String productID) {
 		pReg.removeProduct(productID);
 	}
+
 	public Collection<Product> getProductCollection() {
 		return pReg.getProducts();
 	}
+
 	public Collection<Customer> getCustomerCollection() {
 		return cReg.getCustomers();
 	}

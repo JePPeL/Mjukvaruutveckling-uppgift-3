@@ -487,13 +487,13 @@ public class GUI implements Observer {
 		this.currentCustomerID = currentCustomerID;
 		updateCustomer();
 	}
-	
-	public void clearCurrentCustomerID(){
+
+	public void clearCurrentCustomerID() {
 		currentCustomerID = null;
 		updateCustomer();
 		updateOrder();
 	}
-	
+
 	public String getCurrentOrderID() {
 		return currentOrderID;
 	}
@@ -502,11 +502,11 @@ public class GUI implements Observer {
 		this.currentOrderID = currentOrderID;
 		updateOrderLine();
 	}
-	
-	public String getOrderLineID(){
+
+	public String getOrderLineID() {
 		return fieldOrderLineID.getText();
 	}
-	
+
 	public void clearCurrentOrderID() {
 		currentOrderID = null;
 		updateOrder();
@@ -521,7 +521,7 @@ public class GUI implements Observer {
 	public String getCurrentProductID() {
 		return currentProductID;
 	}
-	
+
 	public void clearCurrentProductID() {
 		currentProductID = null;
 		updateInventory();
@@ -538,17 +538,17 @@ public class GUI implements Observer {
 	public String getAmountOrderLine() {
 		return fieldAmountOrderLine.getText();
 	}
-	
+
 	public void setCurrentOrderLineID(String currentOrderLineID) {
 		this.currentOrderLineID = currentOrderLineID;
 	}
-	
+
 	public void clearCurrentOrderLineID() {
 		currentOrderLineID = null;
 		updateOrder();
 		updateOrderLine();
 	}
-	
+
 	private class UneditableJTable extends JTable {
 		public UneditableJTable(DefaultTableModel dtm) {
 			super(dtm);
