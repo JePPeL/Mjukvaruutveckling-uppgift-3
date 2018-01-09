@@ -67,6 +67,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				model.removeCustomer(view.getCurrentCustomerID());
 			}
 		};
 	}
@@ -74,7 +75,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
+				model.removeItem(view.getProductID());
 			}			
 		};
 	}
@@ -82,15 +83,15 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
-			}			
+				model.searchOrder(view.getOrderID());
+			}
 		};
 	}
 	public ActionListener addRemoveOrderListener() {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub				
+				model.removeOrder(view.getOrderID());
 			}			
 		};
 	}
