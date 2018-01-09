@@ -84,7 +84,7 @@ public class Model extends Observable {
 	
 
 	
-	public void addOrder(String orderID) {
+	public void addOrder(String orderID, Customer customer, String string) {
 		//TODO: implement
 	}
 	

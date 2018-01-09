@@ -41,7 +41,7 @@ public class Customer {
 	}
 
 	public void addOrder(String orderID, String deliveryDate) {
-		orderMap.put(orderID, new Order(orderID, customer, deliveryDate));
+		orderMap.put(orderID, new Order(orderID, deliveryDate));
 	}
 	/*public void addOrder(Order order) {
 		orderMap.put(order.getOrderID(), order);

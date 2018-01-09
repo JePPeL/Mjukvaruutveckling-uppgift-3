@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Order {
@@ -32,6 +33,11 @@ public class Order {
 	public String getDeliveryDate() {
 		// TODO Auto-generated method stub
 		return deliveryDate;
+	}
+
+	public Collection<OrderLine> getOrderLineCollection() {
+		// TODO Auto-generated method stub
+		return orderLines.values();
 	}
 
 }
