@@ -19,8 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-
-
 import java.awt.Font;
 import java.awt.Window;
 
@@ -31,6 +29,7 @@ import javax.swing.JTextPane;
 
 public class GUI implements Observer {
 	private Model m;
+	private Customer currentCustomer;
 	private JFrame frame;
 	private JTextField fieldCustomerID;
 	private JTextField fieldProductID;
@@ -46,7 +45,7 @@ public class GUI implements Observer {
 	private JTextField fieldProductCategory;
 	private JTextField fieldProductPrice;
 	private Vector inventoryHeader;
-	
+
 	private JScrollPane scrollO;
 	private DefaultTableModel dtmOrder;
 	private UneditableJTable tableOrder;
@@ -88,22 +87,24 @@ public class GUI implements Observer {
 	 */
 	public String getCustomerId() {
 		return fieldCustomerID.getText();
-		}
+	}
+
 	public String getCustomerAddress() {
 		return fieldAddress.getText();
 	}
-	
+
 	public String getCustomerName() {
 		return fieldName.getText();
 	}
-	
+
 	public int getAntal() {
 		return Integer.parseInt(fieldAmountInventory.getText());
 	}
-	
+
 	public String getSeletedInventory() {
 		return (String) tableCustomer.getValueAt(tableCustomer.getSelectedRow(), 0);
 	}
+
 	private void initialize(Controller c, Model m) {
 		this.m = m;
 		frame = new JFrame();
@@ -115,9 +116,7 @@ public class GUI implements Observer {
 		fieldCustomerID.setBounds(16, 98, 128, 20);
 		frame.getContentPane().add(fieldCustomerID);
 		fieldCustomerID.setColumns(10);
-		
-		
-		
+
 		fieldProductID = new JTextField();
 		fieldProductID.setColumns(10);
 		fieldProductID.setBounds(593, 52, 179, 20);
@@ -265,49 +264,49 @@ public class GUI implements Observer {
 		lblAntalLager.setBounds(20, 360, 61, 16);
 		frame.getContentPane().add(lblAntalLager);
 
-//		JList listCustomers = new JList();
-//		listCustomers.setBounds(295, 34, 263, 111);
-//		frame.getContentPane().add(listCustomers);
-//
-//		JList listOrders = new JList();
-//		listOrders.setBounds(295, 168, 263, 70);
-//		frame.getContentPane().add(listOrders);
-//
-//		JList listOrderLines = new JList();
-//		listOrderLines.setBounds(295, 273, 263, 155);
-//		frame.getContentPane().add(listOrderLines);
-//
-//		JList listProducts = new JList();
-//		listProducts.setBounds(868, 42, 263, 81);
-//		frame.getContentPane().add(listProducts);
-		
+		// JList listCustomers = new JList();
+		// listCustomers.setBounds(295, 34, 263, 111);
+		// frame.getContentPane().add(listCustomers);
+		//
+		// JList listOrders = new JList();
+		// listOrders.setBounds(295, 168, 263, 70);
+		// frame.getContentPane().add(listOrders);
+		//
+		// JList listOrderLines = new JList();
+		// listOrderLines.setBounds(295, 273, 263, 155);
+		// frame.getContentPane().add(listOrderLines);
+		//
+		// JList listProducts = new JList();
+		// listProducts.setBounds(868, 42, 263, 81);
+		// frame.getContentPane().add(listProducts);
+
 		JLabel lblNewLabel_2 = new JLabel("Lager");
 		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.BOLD, 16));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2.setBounds(597, 14, 61, 16);
 		frame.getContentPane().add(lblNewLabel_2);
-		
+
 		JSeparator separator = new JSeparator();
 		separator.setBounds(2, 150, 576, 16);
 		frame.getContentPane().add(separator);
-		
+
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(2, 250, 1148, 16);
 		frame.getContentPane().add(separator_1);
-		
+
 		JSeparator separator_3 = new JSeparator();
 		separator_3.setBounds(2, 600, 6, 600);
 		frame.getContentPane().add(separator_3);
-		
+
 		fieldProductCategory = new JTextField();
 		fieldProductCategory.setBounds(593, 96, 128, 26);
 		frame.getContentPane().add(fieldProductCategory);
 		fieldProductCategory.setColumns(10);
-		
+
 		JLabel lblCategory = new JLabel("Kategori");
 		lblCategory.setBounds(597, 77, 89, 23);
 		frame.getContentPane().add(lblCategory);
-		
+
 		fieldProductPrice = new JTextField();
 		fieldProductPrice.setColumns(10);
 		fieldProductPrice.setBounds(731, 96, 124, 26);
@@ -322,7 +321,7 @@ public class GUI implements Observer {
 		scrollC.setBounds(868, 37, 263, 108);
 		frame.getContentPane().add(scrollC);
 
-		String[] s1 = { "Produktnummer", "Pris" , "Lagersaldo", "Beskrivning"};
+		String[] s1 = { "Produktnummer", "Pris", "Lagersaldo", "Beskrivning" };
 
 		dtmInventory = new DefaultTableModel(s1, 0);
 		tableInventory = new UneditableJTable(dtmInventory);
@@ -330,7 +329,7 @@ public class GUI implements Observer {
 		scrollI = new JScrollPane(tableInventory);
 		scrollI.setBounds(868, 37, 263, 108);
 		frame.getContentPane().add(scrollI);
-		
+
 		String[] s2 = { "Ordernummer", "Leveransdatum" };
 
 		dtmOrder = new DefaultTableModel(s2, 0);
@@ -339,8 +338,7 @@ public class GUI implements Observer {
 		scrollO = new JScrollPane(tableOrder);
 		scrollO.setBounds(295, 264, 264, 154);
 		frame.getContentPane().add(scrollO);
-		
-		
+
 		String[] s3 = { "Produktnummer", "Lagersaldo" };
 
 		dtmOrderLine = new DefaultTableModel(s3, 0);
@@ -349,25 +347,25 @@ public class GUI implements Observer {
 		scrollOL = new JScrollPane(tableOrderLine);
 		scrollOL.setBounds(868, 37, 263, 108);
 		frame.getContentPane().add(scrollOL);
-		
+
 		JLabel lblBestllning = new JLabel("Beställning");
 		lblBestllning.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBestllning.setFont(new Font("Lucida Grande", Font.BOLD, 16));
 		lblBestllning.setBounds(18, 14, 98, 16);
 		frame.getContentPane().add(lblBestllning);
-		
+
 		JButton btnChangeCustomer = new JButton("Ändra");
 		btnChangeCustomer.setBounds(195, 124, 89, 23);
 		frame.getContentPane().add(btnChangeCustomer);
-		
+
 		JLabel lblPrice = new JLabel("Pris");
 		lblPrice.setBounds(735, 77, 89, 23);
 		frame.getContentPane().add(lblPrice);
-		
+
 		JButton btnChangeProduct = new JButton("Ändra");
 		btnChangeProduct.setBounds(770, 124, 89, 23);
 		frame.getContentPane().add(btnChangeProduct);
-		
+
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setOrientation(SwingConstants.VERTICAL);
 		separator_2.setBounds(571, -21, 6, 509);
@@ -387,64 +385,75 @@ public class GUI implements Observer {
 	private void updateCustomer() {
 		clearTable(dtmCustomer);
 		for (Customer a : m.getCustomerCollection()) {
-			String[] s = { a.getCustomerNumber(), a.getName(), a.getAddress()};
+			String[] s = { a.getCustomerNumber(), a.getName(), a.getAddress() };
 			dtmInventory.addRow(s);
 		}
 	}
-	
+
 	private void updateInventory() {
 		clearTable(dtmInventory);
 		for (Product a : m.getProductCollection()) {
-			String[] s = { a.getName(), Double.toString(a.getPrice()), Integer.toString(a.numberInStock()), a.getCategory()};
+			String[] s = { a.getName(), Double.toString(a.getPrice()), Integer.toString(a.numberInStock()),
+					a.getCategory() };
 			dtmOrderLine.addRow(s);
 		}
 	}
-	
+
 	private void updateOder() {
 		clearTable(dtmOrder);
 		for (Order a : m.getCustomer().getOrderCollection()) {
-			String[] s = { a.getOrderID(), a.getDeliveryDate()};
+			String[] s = { a.getOrderID(), a.getDeliveryDate() };
 			dtmOrderLine.addRow(s);
 		}
 	}
-	
+
 	private void updateOrderLine() {
-		//TODO: Uncomment and make getting order line collection work
-/*		clearTable(dtmOrderLine);
-		for (OrderLine a : m.getCustomer().getOrder().getOrderLineCollection) {
-			String[] s = {a.getNumber(), Integer.toString(a.getAmount())};
-			dtmInventory.addRow(s);
-		}*/
+		// TODO: Uncomment and make getting order line collection work
+		/*
+		 * clearTable(dtmOrderLine); for (OrderLine a :
+		 * m.getCustomer().getOrder().getOrderLineCollection) { String[] s =
+		 * {a.getNumber(), Integer.toString(a.getAmount())};
+		 * dtmInventory.addRow(s); }
+		 */
 	}
-	
+
 	private static void clearTable(DefaultTableModel dtm) {
 		int j = dtm.getRowCount();
-		for(int i = 0; i < j; i++) {
+		for (int i = 0; i < j; i++) {
 			dtm.removeRow(0);
 		}
 	}
-	
+
 	public String getProductID() {
 		return fieldProductID.getText();
 	}
-	
+
 	public String getProductCategory() {
 		return fieldProductCategory.getText();
 	}
 
 	public double getProductPrice() {
 		return Double.parseDouble((fieldProductPrice.getText()));
-		
+
 	}
-	
+
 	public String getOrderID() {
 		return fieldOrderID.getText();
 	}
-	
+
 	public String getCostumerID() {
 		return fieldCustomerID.getText();
 	}
-		private class UneditableJTable extends JTable {
+
+	public Customer getCurrentCustomer() {
+		return currentCustomer;
+	}
+
+	public void setCurrentCustomer(Customer currentCustomer) {
+		this.currentCustomer = currentCustomer;
+	}
+
+	private class UneditableJTable extends JTable {
 		public UneditableJTable(DefaultTableModel dtm) {
 			super(dtm);
 		}
@@ -453,5 +462,5 @@ public class GUI implements Observer {
 			return false;
 		}
 	}
-	
+
 }
