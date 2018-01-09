@@ -78,8 +78,8 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 	
-	public void searchProduct(String productID) {
-		pReg.findProduct(productID);
+	public Product searchProduct(String productID) {
+		return pReg.findProduct(productID);
 	}
 	
 

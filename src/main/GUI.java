@@ -58,6 +58,7 @@ public class GUI implements Observer {
 	private UneditableJTable tableInventory;
 	private JScrollPane scrollI;
 	private JTextField fieldDeliveryDate;
+	private String currentProductID;
 
 	/**
 	 * Launch the application.
@@ -395,27 +396,38 @@ public class GUI implements Observer {
 
 	private void updateCustomer() {
 		clearTable(dtmCustomer);
-		for (Customer a : m.getCustomerCollection()) {
-			String[] s = { a.getCustomerNumber(), a.getName(), a.getAddress() };
-			dtmInventory.addRow(s);
-		}
+		if (currentCustomerID != null) {
+			Customer c = m.findCustomer(currentCustomerID);
+			String[] s = { c.getCustomerNumber(), c.getName(), c.getAddress() };
+			dtmCustomer.addRow(s);
+		} else
+			for (Customer a : m.getCustomerCollection()) {
+				String[] s = { a.getCustomerNumber(), a.getName(), a.getAddress() };
+				dtmCustomer.addRow(s);
+			}
 	}
 
 	private void updateInventory() {
 		clearTable(dtmInventory);
-		for (Product a : m.getProductCollection()) {
+		if (currentProductID != null) {
+			Product a = m.searchProduct(currentProductID);
 			String[] s = { a.getName(), Double.toString(a.getPrice()), Integer.toString(a.numberInStock()),
 					a.getCategory() };
-			dtmOrderLine.addRow(s);
-		}
+			dtmInventory.addRow(s);
+		} else
+			for (Product a : m.getProductCollection()) {
+				String[] s = { a.getName(), Double.toString(a.getPrice()), Integer.toString(a.numberInStock()),
+						a.getCategory() };
+				dtmInventory.addRow(s);
+			}
 	}
 
 	private void updateOrder() {
 		clearTable(dtmOrder);
-		for (Order a : m.findCustomer(currentCustomerID).getOrderCollection()) {
-			String[] s = { a.getOrderID(), a.getDeliveryDate() };
-			dtmOrderLine.addRow(s);
-		}
+			for (Order a : m.findCustomer(currentCustomerID).getOrderCollection()) {
+				String[] s = { a.getOrderID(), a.getDeliveryDate() };
+				dtmOrderLine.addRow(s);
+			}
 	}
 
 	private void updateOrderLine() {
@@ -471,6 +483,15 @@ public class GUI implements Observer {
 	public void setCurrentOrderID(String currentOrderID) {
 		this.currentOrderID = currentOrderID;
 		updateOrderLine();
+	}
+
+	public void setCurrentProductID(String ID) {
+		currentProductID = ID;
+		updateInventory();
+	}
+
+	public String getCurrentProductID() {
+		return currentProductID;
 	}
 
 	public String getDeliveryDate() {

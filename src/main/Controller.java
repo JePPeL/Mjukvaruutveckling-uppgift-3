@@ -34,7 +34,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.searchProduct(view.getProductID());
+				view.setCurrentProductID(view.getProductID());
 			}			
 		};
 	}
