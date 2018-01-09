@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
@@ -11,6 +12,7 @@ public class Model extends Observable {
 	private int maxNbr = 10000000;
 	private List<String> idList = new LinkedList<String>();
 	private String CustomerNumber;
+	//CustomerNumber should probably be in GUI or maybe controller (model is supposed to be independent)
 	
 	public Model() {
 		cReg = new CustomerRegister();
@@ -61,7 +63,7 @@ public class Model extends Observable {
 	}
 	public void addToInventory(int antal, String productName) {
 		
-		for(int i=0; i<= antal; i++) {
+		for(int i=0; i< antal; i++) {
 			Product temp = pReg.findProduct(productName); //hämta från jTable inventory
 			temp.addItem(new Item(temp, custNumbGen()));
 			setChanged();
@@ -70,7 +72,9 @@ public class Model extends Observable {
 	}
 	
 	public void addProduct(String productID, String category, double price) {
+		System.out.println("model");
 		pReg.addProduct(new Product(productID, category, price));
+		System.out.println(pReg.findProduct(productID).getName());
 		setChanged();
 		notifyObservers();
 	}
@@ -85,5 +89,11 @@ public class Model extends Observable {
 	
 	public void removeItem(String productID) {
 		pReg.removeProduct(productID);
+	}
+	public Collection<Product> getProductCollection() {
+		return pReg.getProducts();
+	}
+	public Collection<Customer> getCustomerCollection() {
+		return cReg.getCustomers();
 	}
 }

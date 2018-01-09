@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,5 +54,8 @@ public class Customer {
 	public Order removeOrder(String ID) {
 		return orderMap.remove(ID);
 	}
-
+	
+	public Collection<Order> getOrderCollection() {
+		return orderMap.values();
+	}
 }

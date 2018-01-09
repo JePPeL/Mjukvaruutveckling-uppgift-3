@@ -47,4 +47,7 @@ public class Product {
 		items.remove(item.getSerialNumber());
 	}
 	
+	public int numberInStock() {
+		return items.size();
+	}
 }

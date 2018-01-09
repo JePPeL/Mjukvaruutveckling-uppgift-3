@@ -19,6 +19,8 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+
+
 import java.awt.Font;
 import java.awt.Window;
 
@@ -38,14 +40,23 @@ public class GUI implements Observer {
 	private JTextField fieldAmountOrderLine;
 	private JTextField fieldName;
 	private JTextField fieldAddress;
-	private JTable tableInventory;
-	private JTable tableOrderLine;
-	private JTable tableOrder;
-	private DefaultTableModel dtmInventory;
+	private JTable tableCustomer;
+	private DefaultTableModel dtmCustomer;
 	private JTable tableCustomerRegister;
 	private JTextField fieldProductCategory;
 	private JTextField fieldProductPrice;
 	private Vector inventoryHeader;
+	
+	private JScrollPane scrollO;
+	private DefaultTableModel dtmOrder;
+	private UneditableJTable tableOrder;
+	private JScrollPane scrollC;
+	private DefaultTableModel dtmOrderLine;
+	private UneditableJTable tableOrderLine;
+	private JScrollPane scrollOL;
+	private DefaultTableModel dtmInventory;
+	private UneditableJTable tableInventory;
+	private JScrollPane scrollI;
 
 	/**
 	 * Launch the application.
@@ -68,6 +79,7 @@ public class GUI implements Observer {
 	 */
 	public GUI(Controller c, Model m) {
 		c.addGUI(this);
+		m.addObserver(this);
 		initialize(c, m);
 	}
 
@@ -90,7 +102,7 @@ public class GUI implements Observer {
 	}
 	
 	public String getSeletedInventory() {
-		return (String) tableInventory.getValueAt(tableInventory.getSelectedRow(), 0);
+		return (String) tableCustomer.getValueAt(tableCustomer.getSelectedRow(), 0);
 	}
 	private void initialize(Controller c, Model m) {
 		this.m = m;
@@ -202,7 +214,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(fieldAmountOrderLine);
 
 		JButton btnRemoveFromOrderLine = new JButton("Ta bort");
-		btnRemoveFromOrderLine.setBounds(110, 405, 89, 23);
+		btnRemoveFromOrderLine.setBounds(105, 405, 89, 23);
 		frame.getContentPane().add(btnRemoveFromOrderLine);
 		btnRemoveFromOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
@@ -276,7 +288,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(2, 150, 1148, 16);
+		separator.setBounds(2, 150, 576, 16);
 		frame.getContentPane().add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -300,44 +312,43 @@ public class GUI implements Observer {
 		fieldProductPrice.setColumns(10);
 		fieldProductPrice.setBounds(731, 96, 124, 26);
 		frame.getContentPane().add(fieldProductPrice);
-		
-		String[] s = {"Kontonummer", "Saldo"};
-		
-		
-		tableInventory = new JTable();
-		tableInventory.setBounds(868, 37, 263, 108);
-		tableInventory.setBounds(868, 37, 263, 108);
-		frame.getContentPane().add(tableInventory);
-		
-		tableOrderLine = new JTable();
-		tableOrderLine.setBounds(295, 264, 264, 154);
-		frame.getContentPane().add(tableOrderLine);
-		
-		tableOrder = new JTable();
-		tableOrder.setBounds(295, 167, 264, 70);
-		frame.getContentPane().add(tableOrder);
-		
-	
-		tableCustomerRegister = new JTable();
-		tableCustomerRegister.setBounds(293, 25, 264, 110);
-		frame.getContentPane().add(tableCustomerRegister);
 
-		dtmInventory = new DefaultTableModel(s, 0);
-		tableInventory = new JTable(dtmInventory);
-		frame.getContentPane().add(tableInventory);
+		String[] s0 = { "Kundnummer", "Namn", "Adress" };
+
+		dtmCustomer = new DefaultTableModel(s0, 0);
+		tableCustomer = new UneditableJTable(dtmCustomer);
+		tableCustomer.setBounds(293, 25, 264, 201);
+		scrollC = new JScrollPane(tableCustomer);
+		scrollC.setBounds(868, 37, 263, 108);
+		frame.getContentPane().add(scrollC);
+
+		String[] s1 = { "Produktnummer", "Pris" , "Lagersaldo", "Beskrivning"};
+
+		dtmInventory = new DefaultTableModel(s1, 0);
+		tableInventory = new UneditableJTable(dtmInventory);
+		tableInventory.setBounds(868, 37, 263, 108);
+		scrollI = new JScrollPane(tableInventory);
+		scrollI.setBounds(868, 37, 263, 108);
+		frame.getContentPane().add(scrollI);
 		
-		JTextArea tableTitle2 = new JTextArea();
-		tableTitle2.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		tableTitle2.setBounds(999, 18, 132, 20);
-		frame.getContentPane().add(tableTitle2);
-		tableTitle2.setText("Antal");
+		String[] s2 = { "Ordernummer", "Leveransdatum" };
+
+		dtmOrder = new DefaultTableModel(s2, 0);
+		tableOrder = new UneditableJTable(dtmOrder);
+		tableOrder.setBounds(295, 264, 264, 154);
+		scrollO = new JScrollPane(tableOrder);
+		scrollO.setBounds(295, 264, 264, 154);
+		frame.getContentPane().add(scrollO);
 		
-		JTextArea tableTitle1 = new JTextArea();
-		tableTitle1.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		tableTitle1.setBounds(868, 18, 132, 20);
-		frame.getContentPane().add(tableTitle1);
-		tableTitle1.setText("Produkt");
-		dtmInventory.setColumnIdentifiers(inventoryHeader);
+		
+		String[] s3 = { "Produktnummer", "Lagersaldo" };
+
+		dtmOrderLine = new DefaultTableModel(s3, 0);
+		tableOrderLine = new UneditableJTable(dtmOrderLine);
+		tableOrderLine.setBounds(868, 37, 263, 108);
+		scrollOL = new JScrollPane(tableOrderLine);
+		scrollOL.setBounds(868, 37, 263, 108);
+		frame.getContentPane().add(scrollOL);
 		
 		JLabel lblBestllning = new JLabel("Beställning");
 		lblBestllning.setHorizontalAlignment(SwingConstants.LEFT);
@@ -366,33 +377,64 @@ public class GUI implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// update all the displayed information (tables)
-		
+		updateInventory();
+		updateCustomer();
+		updateOder();
+		updateOrderLine();
 
 	}
 
-	/*private void updateTable() {
-		int j = dtmInventory.getRowCount();
-		for(int i = 0; i<j; i++) {
-			dtmInventory.removeRow(0);
-		}
-		for (Product a : .getPerson().getAccounts().values()) {
-			String[] s = { a.getNbr(), Double.toString(a.getBalance()) };
+	private void updateCustomer() {
+		clearTable(dtmCustomer);
+		for (Customer a : m.getCustomerCollection()) {
+			String[] s = { a.getCustomerNumber(), a.getName(), a.getAddress()};
 			dtmInventory.addRow(s);
 		}
-	}*/
+	}
+	
+	private void updateInventory() {
+		clearTable(dtmInventory);
+		for (Product a : m.getProductCollection()) {
+			String[] s = { a.getName(), Double.toString(a.getPrice()), Integer.toString(a.numberInStock()), a.getCategory()};
+			dtmOrderLine.addRow(s);
+		}
+	}
+	
+	private void updateOder() {
+		clearTable(dtmOrder);
+		for (Order a : m.getCustomer().getOrderCollection()) {
+			String[] s = { a.getOrderID(), a.getDeliveryDate()};
+			dtmOrderLine.addRow(s);
+		}
+	}
+	
+	private void updateOrderLine() {
+		//TODO: Uncomment and make getting order line collection work
+/*		clearTable(dtmOrderLine);
+		for (OrderLine a : m.getCustomer().getOrder().getOrderLineCollection) {
+			String[] s = {a.getNumber(), Integer.toString(a.getAmount())};
+			dtmInventory.addRow(s);
+		}*/
+	}
+	
+	private static void clearTable(DefaultTableModel dtm) {
+		int j = dtm.getRowCount();
+		for(int i = 0; i < j; i++) {
+			dtm.removeRow(0);
+		}
+	}
 	
 	public String getProductID() {
 		return fieldProductID.getText();
 	}
 	
 	public String getProductCategory() {
-		// TODO Auto-generated method stub
-		return null;
+		return fieldProductCategory.getText();
 	}
 
 	public double getProductPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Double.parseDouble((fieldProductPrice.getText()));
+		
 	}
 	
 	public String getOrderID() {
@@ -401,6 +443,15 @@ public class GUI implements Observer {
 	
 	public String getCostumerID() {
 		return fieldCustomerID.getText();
+	}
+		private class UneditableJTable extends JTable {
+		public UneditableJTable(DefaultTableModel dtm) {
+			super(dtm);
+		}
+
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		}
 	}
 	
 }

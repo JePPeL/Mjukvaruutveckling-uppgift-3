@@ -26,7 +26,7 @@ public class Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				model.addProduct(view.getProductID(), view.getProductCategory(), view.getProductPrice());				
-
+				
 			}			
 		};
 	}
@@ -58,7 +58,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addOrder(view.getOrderID);
+				model.addOrder(view.getOrderID());
 			}			
 		};
 	}
