@@ -1,17 +1,21 @@
 package main;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Random;
+
+import com.sun.glass.ui.View;
 
 public class Model extends Observable {
 	CustomerRegister cReg;
 	ProductRegister pReg;
 	private int maxNbr = 10000000;
 	private List<String> idList = new LinkedList<String>();
-	
+
 	public Model() {
 		cReg = new CustomerRegister();
 		pReg = new ProductRegister();
@@ -78,7 +82,9 @@ public class Model extends Observable {
 		pReg.findProduct(productID);
 	}
 	
-	public void addOrder(String orderID) {
+
+	
+	public void addOrder(String orderID, Customer customer, String string) {
 		//TODO: implement
 	}
 	

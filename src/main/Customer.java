@@ -7,15 +7,16 @@ import java.util.Map;
 public class Customer {
 	private String customerNumber;
 	// NB: Shouldn't be changed, don't add a setter
-	private Map<String, Order> orderMap;
 	private String name;
 	private String address;
+	private Map<String, Order> orderMap;
+
 
 	public Customer(String customerNumber, String name, String address) {
 		this.customerNumber = customerNumber;
-		orderMap = new HashMap<String, Order>();
 		setName(name);
 		setAddress(address);
+		orderMap = new HashMap<String, Order>();
 
 	}
 
@@ -40,13 +41,13 @@ public class Customer {
 	}
 
 	public void addOrder(String orderID, Customer customer, String deliveryDate) {
-		orderMap.put(orderID, new Order(orderID, this, deliveryDate));
+		orderMap.put(orderID, new Order(orderID, customer, deliveryDate));
+	}
 	/*public void addOrder(Order order) {
 		orderMap.put(order.getOrderID(), order);
 		order.setCustomer(this);
 		*/
-	}
-
+	
 	public Order findOrder(String ID) {
 		return orderMap.get(ID);
 	}
@@ -58,4 +59,7 @@ public class Customer {
 	public Collection<Order> getOrderCollection() {
 		return orderMap.values();
 	}
+	
+
+	
 }
