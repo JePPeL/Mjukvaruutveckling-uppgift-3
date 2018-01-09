@@ -96,12 +96,16 @@ public class Model extends Observable {
 		for (Customer c : getCustomerCollection()){
 			if (c.findOrder(orderID) != null){
 				c.removeOrder(orderID);
+				setChanged();
+				notifyObservers();
 			}
 		}
 	}
 	
 	public void addOrder(String orderID, Customer customer, String deliveryDate) {
 		customer.addOrder(orderID, deliveryDate);
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void removeItem(String productID) {
