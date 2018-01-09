@@ -485,7 +485,7 @@ public class GUI implements Observer {
 
 	public void setCurrentCustomerID(String currentCustomerID) {
 		this.currentCustomerID = currentCustomerID;
-		updateOrder();
+		updateCustomer();
 	}
 	
 	public void clearCurrentCustomerID(){
