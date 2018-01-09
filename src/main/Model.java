@@ -113,6 +113,12 @@ public class Model extends Observable {
 		return order.getOrderLine(orderLineID);
 	}
 	
+	public void addOrderLine(String orderLineID, int amount, String orderID){
+		Order order = searchOrder(orderID);
+		order.addOrderLine(new OrderLine(orderLineID, amount));
+		
+	}
+	
 	public void removeItem(String productID) {
 		pReg.removeProduct(productID);
 	}

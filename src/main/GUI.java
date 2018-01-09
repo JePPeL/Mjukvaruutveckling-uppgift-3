@@ -535,6 +535,10 @@ public class GUI implements Observer {
 		return currentOrderLineID;
 	}
 
+	public String getAmountOrderLine() {
+		return fieldAmountOrderLine.getText();
+	}
+	
 	public void setCurrentOrderLineID(String currentOrderLineID) {
 		this.currentOrderLineID = currentOrderLineID;
 	}
