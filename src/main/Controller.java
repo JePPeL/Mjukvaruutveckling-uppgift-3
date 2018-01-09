@@ -117,7 +117,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (model.searchOrderLine(view.getOrderLineID(), view.getOrderID()) != null) {
+				if (model.searchOrderLine(view.getOrderLineID(), view.getCurrentOrderID()) != null) {
 					view.setCurrentOrderLineID(view.getOrderLineID());
 				}
 			}
@@ -128,7 +128,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				model.addOrderLine(view.getOrderLineID(), 0, view.getCurrentOrderID());
 			}
 		};
 	}
@@ -137,7 +137,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO: Implement
+				model.removeOrderLine(view.getOrderLineID(), view.getCurrentOrderID());
 			}
 		};
 	}
@@ -164,7 +164,9 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				model.removeFromOrderLine(view.getCurrentOrderLineID(), view.getCurrentOrderID(),
+						Integer.parseInt(view.getAmountOrderLine()));
+
 			}
 		};
 	}
@@ -173,7 +175,8 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				model.addToOrderLine(view.getCurrentOrderLineID(), view.getCurrentOrderID(),
+						Integer.parseInt(view.getAmountOrderLine()));
 			}
 		};
 	}

@@ -16,9 +16,12 @@ public class Order {
 	
 	public void addOrderLine(OrderLine line) {
 		orderLines.put(line.getNumber(), line);
-		
 	}
 
+	public void removeOrderLine(String orderLineID){
+		orderLines.remove(orderLineID);
+	}
+	
 	public String getOrderID() {
 		return orderID;
 	}

@@ -24,6 +24,14 @@ public class OrderLine {
 		return amount;
 	}
 	
+	public void increase(int amount) {
+		this.amount += amount;
+	}
+	
+	public void decrease(int amount) {
+		this.amount -= amount;
+	}
+	
 	
 	
 }
