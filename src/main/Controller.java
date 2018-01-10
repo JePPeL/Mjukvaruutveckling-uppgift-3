@@ -21,7 +21,7 @@ public class Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				double p;
-				if(view.getProductPrice().equals(""))
+				if (view.getProductPrice().equals(""))
 					p = 0;
 				else
 					p = Double.parseDouble(view.getProductPrice());
@@ -74,8 +74,7 @@ public class Controller {
 				if (view.getCurrentCustomerID() != null) {
 					model.addOrder(view.getOrderID(), model.findCustomer(view.getCurrentCustomerID()),
 							view.getDeliveryDate());
-				}
-				else if (view.getTableCustomerID() != null){
+				} else if (view.getTableCustomerID() != null) {
 					model.addOrder(view.getOrderID(), model.findCustomer(view.getTableCustomerID()),
 							view.getDeliveryDate());
 				}
@@ -129,7 +128,8 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				if (model.searchOrderLine(view.getOrderLineID(), view.getCurrentOrderID()) != null) {
 					view.setCurrentOrderLineID(view.getOrderLineID());
-					System.out.println("SearchOrderLineListener: currentOrderLineID == " + view.getCurrentOrderLineID());
+					System.out
+							.println("SearchOrderLineListener: currentOrderLineID == " + view.getCurrentOrderLineID());
 				}
 			}
 		};
@@ -139,7 +139,8 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addOrderLine(view.getOrderLineID(), 0, view.getCurrentOrderID());
+				if (view.getCurrentOrderID() != null)
+					model.addOrderLine(view.getOrderLineID(), 0, view.getCurrentOrderID());
 			}
 		};
 	}
@@ -157,6 +158,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(model.searchProduct(view.getSeletedInventory())!=null)
 				model.removeItems(view.getAntal(), view.getSeletedInventory());
 			}
 		};
@@ -175,8 +177,11 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.removeFromOrderLine(view.getCurrentOrderLineID(), view.getCurrentOrderID(),
-						Integer.parseInt(view.getAmountOrderLine()));
+				int a = 0;
+				if (!view.getAmountOrderLine().equals(""))
+					a = Integer.parseInt(view.getAmountOrderLine());
+				if (view.getCurrentOrderID() != null)
+					model.removeFromOrderLine(view.getCurrentOrderLineID(), view.getCurrentOrderID(), a);
 
 			}
 		};
@@ -186,8 +191,11 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addToOrderLine(view.getCurrentOrderLineID(), view.getCurrentOrderID(),
-						Integer.parseInt(view.getAmountOrderLine()));
+				int a = 0;
+				if (!view.getAmountOrderLine().equals(""))
+					a = Integer.parseInt(view.getAmountOrderLine());
+				if (view.getCurrentOrderID() != null)
+					model.addToOrderLine(view.getCurrentOrderLineID(), view.getCurrentOrderID(), a);
 			}
 		};
 	}

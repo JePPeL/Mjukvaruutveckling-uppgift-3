@@ -102,11 +102,14 @@ public class GUI implements Observer {
 	}
 
 	public int getAntal() {
-		return Integer.parseInt(fieldAmountInventory.getText());
+		int i = 0;
+		if (!fieldAmountInventory.getText().equals(""))
+			i = Integer.parseInt(fieldAmountInventory.getText());
+		return i;
 	}
 
 	public String getSeletedInventory() {
-		if (currentProductID!=null)
+		if (currentProductID != null)
 			return currentProductID;
 		if (tableCustomer.getRowCount() != 0)
 			return (String) tableCustomer.getValueAt(tableCustomer.getSelectedRow(), 0);
@@ -198,7 +201,7 @@ public class GUI implements Observer {
 		JButton btnRemoveOrderLine = new JButton("Ta bort");
 		btnRemoveOrderLine.setBounds(202, 380, 89, 23);
 		frame.getContentPane().add(btnRemoveOrderLine);
-		btnRemoveOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
+		btnRemoveOrderLine.addActionListener(c.addRemoveOrderLineListener());
 
 		fieldAmountInventory = new JTextField();
 		fieldAmountInventory.setBounds(597, 188, 258, 20);
@@ -447,8 +450,10 @@ public class GUI implements Observer {
 			if (currentOrderLineID != null) {
 				System.out.println("single line");
 				OrderLine a = m.searchOrder(currentOrderID).getOrderLine(currentOrderLineID);
-				String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
-				dtmOrderLine.addRow(s);
+				if (a != null) {
+					String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
+					dtmOrderLine.addRow(s);
+				}
 			} else {
 				for (OrderLine a : m.searchOrder(currentOrderID).getOrderLineCollection()) {
 					String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
@@ -560,8 +565,9 @@ public class GUI implements Observer {
 	}
 
 	public String getTableCustomerID() {
-		return (String) tableCustomer.getValueAt(tableCustomer.getSelectedRow(), 0);
-
+		if (tableCustomer.getSelectedRow() >= 0)
+			return (String) tableCustomer.getValueAt(tableCustomer.getSelectedRow(), 0);
+		return null;
 	}
 
 	private class UneditableJTable extends JTable {

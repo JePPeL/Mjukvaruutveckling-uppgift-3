@@ -114,7 +114,9 @@ public class Model extends Observable {
 
 	public OrderLine searchOrderLine(String orderLineID, String orderID) {
 		Order order = searchOrder(orderID);
-		return order.getOrderLine(orderLineID);
+		if (order != null)
+			return order.getOrderLine(orderLineID);
+		return null;
 	}
 
 	public void addOrderLine(String orderLineID, int amount, String orderID) {
@@ -126,7 +128,8 @@ public class Model extends Observable {
 
 	public void removeOrderLine(String orderLineID, String orderID) {
 		Order order = searchOrder(orderID);
-		order.removeOrderLine(orderLineID);
+		if (order != null)
+			order.removeOrderLine(orderLineID);
 		setChanged();
 		notifyObservers();
 	}
@@ -135,6 +138,8 @@ public class Model extends Observable {
 		Order order = searchOrder(orderID);
 		OrderLine ol = order.getOrderLine(orderLineID);
 		ol.decrease(amount);
+		setChanged();
+		notifyObservers();
 	}
 
 	public void addToOrderLine(String orderLineID, String orderID, int amount) {
