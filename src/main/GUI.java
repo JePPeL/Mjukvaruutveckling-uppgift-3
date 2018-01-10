@@ -106,7 +106,11 @@ public class GUI implements Observer {
 	}
 
 	public String getSeletedInventory() {
-		return (String) tableCustomer.getValueAt(tableCustomer.getSelectedRow(), 0);
+		if (currentProductID!=null)
+			return currentProductID;
+		if (tableCustomer.getRowCount() != 0)
+			return (String) tableCustomer.getValueAt(tableCustomer.getSelectedRow(), 0);
+		return "";
 	}
 
 	private void initialize(Controller c, Model m) {
@@ -470,8 +474,8 @@ public class GUI implements Observer {
 		return fieldProductCategory.getText();
 	}
 
-	public double getProductPrice() {
-		return Double.parseDouble((fieldProductPrice.getText()));
+	public String getProductPrice() {
+		return fieldProductPrice.getText();
 
 	}
 

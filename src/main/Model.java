@@ -145,7 +145,7 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 
-	public void removeItem(String productID) {
+	public void removeProduct(String productID) {
 		pReg.removeProduct(productID);
 		setChanged();
 		notifyObservers();
@@ -157,5 +157,11 @@ public class Model extends Observable {
 
 	public Collection<Customer> getCustomerCollection() {
 		return cReg.getCustomers();
+	}
+
+	public void removeItems(int antal, String seletedInventory) {
+		pReg.findProduct(seletedInventory).removeItems(antal);
+		setChanged();
+		notifyObservers();
 	}
 }

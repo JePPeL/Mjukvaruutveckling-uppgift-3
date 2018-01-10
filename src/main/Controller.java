@@ -20,7 +20,12 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.addProduct(view.getProductID(), view.getProductCategory(), view.getProductPrice());
+				double p;
+				if(view.getProductPrice().equals(""))
+					p = 0;
+				else
+					p = Double.parseDouble(view.getProductPrice());
+				model.addProduct(view.getProductID(), view.getProductCategory(), p);
 
 			}
 		};
@@ -91,7 +96,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.removeItem(view.getProductID());
+				model.removeProduct(view.getProductID());
 			}
 		};
 	}
@@ -152,7 +157,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.removeItem(view.getProductID());
+				model.removeItems(view.getAntal(), view.getSeletedInventory());
 			}
 		};
 	}
