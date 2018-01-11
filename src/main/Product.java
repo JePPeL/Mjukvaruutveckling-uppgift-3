@@ -43,8 +43,17 @@ public class Product {
 		items.put(item.getSerialNumber(), item);
 	}
 	
-	public void removeItem(Item item) {
-		items.remove(item.getSerialNumber());
+	public void removeItem(String itemID) {
+		items.remove(itemID);
 	}
 	
+	public void removeItems(int amount) {
+		for (int i = 0; i < amount; i++) {
+			removeItem(items.keySet().iterator().next());
+		}
+	}
+	
+	public int numberInStock() {
+		return items.size();
+	}
 }

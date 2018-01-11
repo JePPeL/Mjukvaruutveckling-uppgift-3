@@ -1,6 +1,7 @@
 package main;
 //hejhej
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +23,11 @@ public class CustomerRegister {
 
 	public Customer removeCustomer(String customerNumber) {
 		return register.remove(customerNumber);		
+	}
+
+	public Collection<Customer> getCustomers() {
+		// TODO Auto-generated method stub
+		return register.values();
 	}
 	
 	
