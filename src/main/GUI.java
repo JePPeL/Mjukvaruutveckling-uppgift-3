@@ -321,12 +321,12 @@ public class GUI implements Observer {
 		frame.getContentPane().add(tableOrderLine);
 		
 		tableOrder = new JTable();
-		tableOrder.setBounds(295, 167, 264, 77);
+		tableOrder.setBounds(295, 167, 264, 70);
 		frame.getContentPane().add(tableOrder);
 		
 	
 		tableCustomerRegister = new JTable();
-		tableCustomerRegister.setBounds(293, 25, 264, 114);
+		tableCustomerRegister.setBounds(293, 25, 264, 201);
 		frame.getContentPane().add(tableCustomerRegister);
 		
 		JLabel lblBestllning = new JLabel("Beställning");
