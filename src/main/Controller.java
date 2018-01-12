@@ -140,7 +140,7 @@ public class Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (view.getCurrentOrderID() != null)
-					model.addOrderLine(view.getOrderLineID(), 0, view.getCurrentOrderID());
+					model.addOrderLine(view.getOrderLineID(), 0, view.getCurrentOrderID(), view.getOLProduct());
 			}
 		};
 	}

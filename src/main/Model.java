@@ -41,8 +41,10 @@ public class Model extends Observable {
 		// }
 	}
 
-	public void removeCustomer(String CustomerNumber) {
-		cReg.removeCustomer(CustomerNumber);
+	public void removeCustomer(String customerNumber) {
+		cReg.removeCustomer(customerNumber);
+		System.out.println("remove");
+		System.out.println(cReg.findCustomer(customerNumber));
 		setChanged();
 		notifyObservers();
 	}
@@ -119,9 +121,11 @@ public class Model extends Observable {
 		return null;
 	}
 
-	public void addOrderLine(String orderLineID, int amount, String orderID) {
+	public void addOrderLine(String orderLineID, int amount, String orderID, String productID) {
 		Order order = searchOrder(orderID);
-		order.addOrderLine(new OrderLine(orderLineID, amount));
+		if (pReg.findProduct(productID) == null)
+			return;
+		order.addOrderLine(new OrderLine(orderLineID, amount, pReg.findProduct(productID)));
 		setChanged();
 		notifyObservers();
 	}

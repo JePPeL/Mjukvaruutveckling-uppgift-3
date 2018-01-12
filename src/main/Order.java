@@ -40,5 +40,13 @@ public class Order {
 		// TODO Auto-generated method stub
 		return orderLines.get(orderLineID);
 	}
+	
+	public double getPrice() {
+		double a = 0;
+		for(OrderLine ol : orderLines.values()) {
+			a+=ol.getPrice();
+		}
+		return a;
+	}
 
 }

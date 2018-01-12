@@ -60,6 +60,7 @@ public class GUI implements Observer {
 	private JScrollPane scrollI;
 	private JTextField fieldDeliveryDate;
 	private String currentProductID;
+	private JTextField fieldOrderLineProduct;
 
 	/**
 	 * Launch the application.
@@ -99,6 +100,10 @@ public class GUI implements Observer {
 
 	public String getCustomerName() {
 		return fieldName.getText();
+	}
+	
+	public String getOLProduct() {
+		return fieldOrderLineProduct.getText();
 	}
 
 	public int getAntal() {
@@ -164,7 +169,7 @@ public class GUI implements Observer {
 		btnAddOrder.addActionListener(c.addAddOrderListener());
 
 		fieldOrderLineID = new JTextField();
-		fieldOrderLineID.setBounds(24, 354, 267, 20);
+		fieldOrderLineID.setBounds(17, 384, 267, 20);
 		frame.getContentPane().add(fieldOrderLineID);
 		fieldOrderLineID.setColumns(10);
 
@@ -189,17 +194,17 @@ public class GUI implements Observer {
 		btnRemoveOrder.addActionListener(c.addRemoveOrderListener());
 
 		JButton btnSearchOrderLine = new JButton("Sök");
-		btnSearchOrderLine.setBounds(22, 380, 89, 23);
+		btnSearchOrderLine.setBounds(15, 410, 89, 23);
 		frame.getContentPane().add(btnSearchOrderLine);
 		btnSearchOrderLine.addActionListener(c.addSearchOrderLineListener());
 
 		JButton btnAddOrderLine = new JButton("Lägg till");
-		btnAddOrderLine.setBounds(113, 380, 89, 23);
+		btnAddOrderLine.setBounds(106, 410, 89, 23);
 		frame.getContentPane().add(btnAddOrderLine);
 		btnAddOrderLine.addActionListener(c.addAddOrderLineListener());
 
 		JButton btnRemoveOrderLine = new JButton("Ta bort");
-		btnRemoveOrderLine.setBounds(202, 380, 89, 23);
+		btnRemoveOrderLine.setBounds(195, 410, 89, 23);
 		frame.getContentPane().add(btnRemoveOrderLine);
 		btnRemoveOrderLine.addActionListener(c.addRemoveOrderLineListener());
 
@@ -220,16 +225,16 @@ public class GUI implements Observer {
 
 		fieldAmountOrderLine = new JTextField();
 		fieldAmountOrderLine.setColumns(10);
-		fieldAmountOrderLine.setBounds(24, 440, 267, 20);
+		fieldAmountOrderLine.setBounds(18, 452, 267, 20);
 		frame.getContentPane().add(fieldAmountOrderLine);
 
 		JButton btnRemoveFromOrderLine = new JButton("Ta bort");
-		btnRemoveFromOrderLine.setBounds(113, 465, 89, 23);
+		btnRemoveFromOrderLine.setBounds(107, 477, 89, 23);
 		frame.getContentPane().add(btnRemoveFromOrderLine);
 		btnRemoveFromOrderLine.addActionListener(c.addRemoveFromOrderLineListener());
 
 		JButton btnAddToOrderLine = new JButton("Lägg till");
-		btnAddToOrderLine.setBounds(22, 465, 89, 23);
+		btnAddToOrderLine.setBounds(16, 477, 89, 23);
 		frame.getContentPane().add(btnAddToOrderLine);
 		btnAddToOrderLine.addActionListener(c.addAddToOrderLineListener());
 
@@ -264,7 +269,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lblOrdernummer);
 
 		JLabel lblOrderrad = new JLabel("Orderrad");
-		lblOrderrad.setBounds(28, 333, 61, 16);
+		lblOrderrad.setBounds(21, 363, 61, 16);
 		frame.getContentPane().add(lblOrderrad);
 
 		JLabel lnlAntalLager = new JLabel("Antal");
@@ -272,7 +277,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(lnlAntalLager);
 
 		JLabel lblAntalLager = new JLabel("Antal");
-		lblAntalLager.setBounds(28, 420, 61, 16);
+		lblAntalLager.setBounds(22, 432, 61, 16);
 		frame.getContentPane().add(lblAntalLager);
 
 		// JList listCustomers = new JList();
@@ -302,7 +307,7 @@ public class GUI implements Observer {
 		frame.getContentPane().add(separator);
 
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(10, 310, 1148, 16);
+		separator_1.setBounds(10, 309, 1148, 16);
 		frame.getContentPane().add(separator_1);
 
 		JSeparator separator_3 = new JSeparator();
@@ -341,7 +346,7 @@ public class GUI implements Observer {
 		scrollI.setBounds(868, 37, 263, 108);
 		frame.getContentPane().add(scrollI);
 
-		String[] s2 = { "Ordernummer", "Leveransdatum" };
+		String[] s2 = { "Ordernummer", "Leveransdatum", "Pris"};
 
 		dtmOrder = new DefaultTableModel(s2, 0);
 		tableOrder = new UneditableJTable(dtmOrder);
@@ -350,7 +355,7 @@ public class GUI implements Observer {
 		scrollO.setBounds(301, 169, 264, 129);
 		frame.getContentPane().add(scrollO);
 
-		String[] s3 = { "Produktnummer", "Lagersaldo" };
+		String[] s3 = {"Produktnamn", "Produktnummer", "Lagersaldo", "Pris" };
 
 		dtmOrderLine = new DefaultTableModel(s3, 0);
 		tableOrderLine = new UneditableJTable(dtmOrderLine);
@@ -390,6 +395,15 @@ public class GUI implements Observer {
 		JLabel labelDeliveryDate = new JLabel("Leveransdatum (YYYY-MM-DD)");
 		labelDeliveryDate.setBounds(24, 169, 231, 16);
 		frame.getContentPane().add(labelDeliveryDate);
+		
+		fieldOrderLineProduct = new JTextField();
+		fieldOrderLineProduct.setBounds(16, 337, 268, 20);
+		frame.getContentPane().add(fieldOrderLineProduct);
+		fieldOrderLineProduct.setColumns(10);
+		
+		JLabel lblProdukt = new JLabel("Produkt");
+		lblProdukt.setBounds(16, 322, 46, 14);
+		frame.getContentPane().add(lblProdukt);
 	}
 
 	@Override
@@ -404,7 +418,7 @@ public class GUI implements Observer {
 
 	private void updateCustomer() {
 		clearTable(dtmCustomer);
-		if (currentCustomerID != null) {
+		if (currentCustomerID != null && m.findCustomer(currentCustomerID) != null) {
 			Customer c = m.findCustomer(currentCustomerID);
 			String[] s = { c.getCustomerNumber(), c.getName(), c.getAddress() };
 			dtmCustomer.addRow(s);
@@ -417,7 +431,7 @@ public class GUI implements Observer {
 
 	private void updateInventory() {
 		clearTable(dtmInventory);
-		if (currentProductID != null) {
+		if (currentProductID != null && m.searchProduct(currentProductID) != null) {
 			Product a = m.searchProduct(currentProductID);
 			String[] s = { a.getName(), Double.toString(a.getPrice()), Integer.toString(a.numberInStock()),
 					a.getCategory() };
@@ -432,13 +446,13 @@ public class GUI implements Observer {
 
 	private void updateOrder() {
 		clearTable(dtmOrder);
-		if (currentOrderID != null) {
+		if (currentOrderID != null && m.searchOrder(currentOrderID) != null) {
 			Order a = m.searchOrder(currentOrderID);
-			String[] s = { a.getOrderID(), a.getDeliveryDate() };
+			String[] s = { a.getOrderID(), a.getDeliveryDate(), Double.toString(a.getPrice()) };
 			dtmOrder.addRow(s);
 		} else if (currentCustomerID != null)
 			for (Order a : m.findCustomer(currentCustomerID).getOrderCollection()) {
-				String[] s = { a.getOrderID(), a.getDeliveryDate() };
+				String[] s = { a.getOrderID(), a.getDeliveryDate(), Double.toString(a.getPrice()) };
 				dtmOrder.addRow(s);
 			}
 	}
@@ -447,16 +461,16 @@ public class GUI implements Observer {
 		clearTable(dtmOrderLine);
 		if (currentOrderID != null) {
 			System.out.println("updating, currentOrderID == " + currentOrderID);
-			if (currentOrderLineID != null) {
+			if (currentOrderLineID != null && m.searchOrderLine(currentOrderLineID, currentOrderID) != null) {
 				System.out.println("single line");
 				OrderLine a = m.searchOrder(currentOrderID).getOrderLine(currentOrderLineID);
 				if (a != null) {
-					String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
+					String[] s = {a.getProduct().getName(), a.getNumber(), Integer.toString(a.getAmount()), Double.toString(a.getPrice()) };
 					dtmOrderLine.addRow(s);
 				}
 			} else {
 				for (OrderLine a : m.searchOrder(currentOrderID).getOrderLineCollection()) {
-					String[] s = { a.getNumber(), Integer.toString(a.getAmount()) };
+					String[] s = {a.getProduct().getName(), a.getNumber(), Integer.toString(a.getAmount()), Double.toString(a.getPrice()) };
 					dtmOrderLine.addRow(s);
 				}
 			}

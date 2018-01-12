@@ -6,10 +6,12 @@ public class OrderLine {
 	//Shouldn't have a setter (I think)
 	//Maybe rename to avoid it being interpreted as number of items
 	private int amount;
+	private Product product;
 	
-	public OrderLine(String number, int amount) {
+	public OrderLine(String number, int amount, Product product) {
 		this.number = number;
 		this.amount = amount;
+		this.product = product;
 	}
 	
 	public String getNumber() {
@@ -32,6 +34,13 @@ public class OrderLine {
 		this.amount -= amount;
 	}
 	
+	public Product getProduct(){
+		return product;
+	}
+	
+	public double getPrice() {
+		return amount*product.getPrice();
+	}
 	
 	
 }
