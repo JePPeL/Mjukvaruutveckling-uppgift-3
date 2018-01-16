@@ -42,6 +42,8 @@ public class Model extends Observable {
 	}
 
 	public void removeCustomer(String customerNumber) {
+		System.out.println("customerNumber (model); " + customerNumber);
+		System.out.println(cReg.findCustomer(customerNumber));
 		cReg.removeCustomer(customerNumber);
 		System.out.println("remove");
 		System.out.println(cReg.findCustomer(customerNumber));

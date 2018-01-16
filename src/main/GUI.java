@@ -90,7 +90,7 @@ public class GUI implements Observer {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	public String getCustomerId() {
+	public String getCustomerID() {
 		return fieldCustomerID.getText();
 	}
 
@@ -101,7 +101,7 @@ public class GUI implements Observer {
 	public String getCustomerName() {
 		return fieldName.getText();
 	}
-	
+
 	public String getOLProduct() {
 		return fieldOrderLineProduct.getText();
 	}
@@ -346,7 +346,7 @@ public class GUI implements Observer {
 		scrollI.setBounds(868, 37, 263, 108);
 		frame.getContentPane().add(scrollI);
 
-		String[] s2 = { "Ordernummer", "Leveransdatum", "Pris"};
+		String[] s2 = { "Ordernummer", "Leveransdatum", "Pris" };
 
 		dtmOrder = new DefaultTableModel(s2, 0);
 		tableOrder = new UneditableJTable(dtmOrder);
@@ -355,7 +355,7 @@ public class GUI implements Observer {
 		scrollO.setBounds(301, 169, 264, 129);
 		frame.getContentPane().add(scrollO);
 
-		String[] s3 = {"Produktnamn", "Produktnummer", "Lagersaldo", "Pris" };
+		String[] s3 = { "Produktnamn", "Produktnummer", "Lagersaldo", "Pris" };
 
 		dtmOrderLine = new DefaultTableModel(s3, 0);
 		tableOrderLine = new UneditableJTable(dtmOrderLine);
@@ -395,12 +395,12 @@ public class GUI implements Observer {
 		JLabel labelDeliveryDate = new JLabel("Leveransdatum (YYYY-MM-DD)");
 		labelDeliveryDate.setBounds(24, 169, 231, 16);
 		frame.getContentPane().add(labelDeliveryDate);
-		
+
 		fieldOrderLineProduct = new JTextField();
 		fieldOrderLineProduct.setBounds(16, 337, 268, 20);
 		frame.getContentPane().add(fieldOrderLineProduct);
 		fieldOrderLineProduct.setColumns(10);
-		
+
 		JLabel lblProdukt = new JLabel("Produkt");
 		lblProdukt.setBounds(16, 322, 46, 14);
 		frame.getContentPane().add(lblProdukt);
@@ -419,14 +419,18 @@ public class GUI implements Observer {
 	private void updateCustomer() {
 		clearTable(dtmCustomer);
 		if (currentCustomerID != null && m.findCustomer(currentCustomerID) != null) {
+			System.out.println("1");
 			Customer c = m.findCustomer(currentCustomerID);
 			String[] s = { c.getCustomerNumber(), c.getName(), c.getAddress() };
 			dtmCustomer.addRow(s);
-		} else
+		} else {
+			System.out.println("2");
 			for (Customer a : m.getCustomerCollection()) {
 				String[] s = { a.getCustomerNumber(), a.getName(), a.getAddress() };
+				System.out.println(s[0]);
 				dtmCustomer.addRow(s);
 			}
+		}
 	}
 
 	private void updateInventory() {
@@ -465,12 +469,14 @@ public class GUI implements Observer {
 				System.out.println("single line");
 				OrderLine a = m.searchOrder(currentOrderID).getOrderLine(currentOrderLineID);
 				if (a != null) {
-					String[] s = {a.getProduct().getName(), a.getNumber(), Integer.toString(a.getAmount()), Double.toString(a.getPrice()) };
+					String[] s = { a.getProduct().getName(), a.getNumber(), Integer.toString(a.getAmount()),
+							Double.toString(a.getPrice()) };
 					dtmOrderLine.addRow(s);
 				}
 			} else {
 				for (OrderLine a : m.searchOrder(currentOrderID).getOrderLineCollection()) {
-					String[] s = {a.getProduct().getName(), a.getNumber(), Integer.toString(a.getAmount()), Double.toString(a.getPrice()) };
+					String[] s = { a.getProduct().getName(), a.getNumber(), Integer.toString(a.getAmount()),
+							Double.toString(a.getPrice()) };
 					dtmOrderLine.addRow(s);
 				}
 			}
@@ -500,10 +506,6 @@ public class GUI implements Observer {
 
 	public String getOrderID() {
 		return fieldOrderID.getText();
-	}
-
-	public String getCostumerID() {
-		return fieldCustomerID.getText();
 	}
 
 	public String getCurrentCustomerID() {

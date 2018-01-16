@@ -27,6 +27,10 @@ public class CustomerRegister {
 
 	public Collection<Customer> getCustomers() {
 		// TODO Auto-generated method stub
+		System.out.println("Collection size: " + register.size());
+		System.out.println("Map contains: ");
+		for (String s : register.keySet())
+			System.out.println(register.get(s).getCustomerNumber());
 		return register.values();
 	}
 	

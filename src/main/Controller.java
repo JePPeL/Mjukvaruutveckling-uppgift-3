@@ -57,8 +57,8 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (model.findCustomer(view.getCustomerId()) != null)
-					view.setCurrentCustomerID(view.getCostumerID());
+				if (model.findCustomer(view.getCustomerID()) != null)
+					view.setCurrentCustomerID(view.getCustomerID());
 				view.clearCurrentOrderID();
 				view.clearCurrentOrderLineID();
 				view.clearCurrentProductID();
@@ -86,7 +86,7 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.removeCustomer(view.getCurrentCustomerID());
+				model.removeCustomer(view.getCustomerID());
 			}
 		};
 	}
