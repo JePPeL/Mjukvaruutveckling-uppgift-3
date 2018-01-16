@@ -33,12 +33,6 @@ public class Model extends Observable {
 
 	public Customer findCustomer(String cNbr) {
 		return cReg.findCustomer(cNbr);
-		// if (cReg.findCustomer(cNbr) != null) {
-		// this.CustomerNumber = cReg.findCustomer(cNbr).getCustomerNumber();
-		// return cReg.findCustomer(cNbr);
-		// } else {
-		// return null;
-		// }
 	}
 
 	public void removeCustomer(String customerNumber) {
@@ -149,6 +143,8 @@ public class Model extends Observable {
 	}
 
 	public void addToOrderLine(String orderLineID, String orderID, int amount) {
+		if (amount>searchOrderLine(orderLineID, orderID).getProduct().numberInStock())
+			return;
 		Order order = searchOrder(orderID);
 		OrderLine ol = order.getOrderLine(orderLineID);
 		ol.increase(amount);
@@ -170,8 +166,10 @@ public class Model extends Observable {
 		return cReg.getCustomers();
 	}
 
-	public void removeItems(int antal, String seletedInventory) {
-		pReg.findProduct(seletedInventory).removeItems(antal);
+	public void removeItems(int amount, String seletedInventory) {
+		if (amount>pReg.findProduct(seletedInventory).numberInStock())
+			return;
+		pReg.findProduct(seletedInventory).removeItems(amount);
 		setChanged();
 		notifyObservers();
 	}

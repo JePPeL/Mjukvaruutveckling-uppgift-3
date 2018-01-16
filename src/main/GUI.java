@@ -463,7 +463,7 @@ public class GUI implements Observer {
 
 	private void updateOrderLine() {
 		clearTable(dtmOrderLine);
-		if (currentOrderID != null) {
+		if (currentOrderID != null && m.searchOrder(currentOrderID) != null) {
 			System.out.println("updating, currentOrderID == " + currentOrderID);
 			if (currentOrderLineID != null && m.searchOrderLine(currentOrderLineID, currentOrderID) != null) {
 				System.out.println("single line");
