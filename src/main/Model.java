@@ -143,7 +143,8 @@ public class Model extends Observable {
 	}
 
 	public void addToOrderLine(String orderLineID, String orderID, int amount) {
-		if (amount>searchOrderLine(orderLineID, orderID).getProduct().numberInStock())
+		if (amount + searchOrderLine(orderLineID, orderID).getAmount() > searchOrderLine(orderLineID, orderID)
+				.getProduct().numberInStock())
 			return;
 		Order order = searchOrder(orderID);
 		OrderLine ol = order.getOrderLine(orderLineID);
@@ -167,9 +168,23 @@ public class Model extends Observable {
 	}
 
 	public void removeItems(int amount, String seletedInventory) {
-		if (amount>pReg.findProduct(seletedInventory).numberInStock())
+		if (amount > pReg.findProduct(seletedInventory).numberInStock())
 			return;
 		pReg.findProduct(seletedInventory).removeItems(amount);
+		setChanged();
+		notifyObservers();
+	}
+
+	public void setCustomerInfo(String customerNumber, String customerName, String customerAddress) {
+		cReg.findCustomer(customerNumber).setName(customerName);
+		cReg.findCustomer(customerNumber).setAddress(customerAddress);
+		setChanged();
+		notifyObservers();
+	}
+
+	public void setProductInfo(String currentProductID, String productCategory, double p) {
+		pReg.findProduct(currentProductID).setCategory(productCategory);
+		pReg.findProduct(currentProductID).setPrice(p);
 		setChanged();
 		notifyObservers();
 	}

@@ -158,8 +158,8 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(model.searchProduct(view.getSeletedInventory())!=null)
-				model.removeItems(view.getAntal(), view.getSeletedInventory());
+				if (model.searchProduct(view.getSeletedInventory()) != null)
+					model.removeItems(view.getAntal(), view.getSeletedInventory());
 			}
 		};
 	}
@@ -196,6 +196,25 @@ public class Controller {
 					a = Integer.parseInt(view.getAmountOrderLine());
 				if (view.getCurrentOrderID() != null)
 					model.addToOrderLine(view.getCurrentOrderLineID(), view.getCurrentOrderID(), a);
+			}
+		};
+	}
+
+	public ActionListener addChangeCustomerListener() {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				model.setCustomerInfo(view.getCurrentCustomerID(), view.getCustomerName(), view.getCustomerAddress());
+			}
+		};
+	}
+
+	public ActionListener addChangeProductListener() {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double p = 0;
+				if (!view.getProductPrice().equals(""))
+					p = Double.parseDouble(view.getProductPrice());
+				model.setProductInfo(view.getCurrentProductID(), view.getProductCategory(), p);
 			}
 		};
 	}

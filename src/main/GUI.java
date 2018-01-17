@@ -373,6 +373,7 @@ public class GUI implements Observer {
 		JButton btnChangeCustomer = new JButton("Ändra");
 		btnChangeCustomer.setBounds(195, 124, 89, 23);
 		frame.getContentPane().add(btnChangeCustomer);
+		btnChangeCustomer.addActionListener(c.addChangeCustomerListener());
 
 		JLabel lblPrice = new JLabel("Pris");
 		lblPrice.setBounds(735, 77, 89, 23);
@@ -381,7 +382,8 @@ public class GUI implements Observer {
 		JButton btnChangeProduct = new JButton("Ändra");
 		btnChangeProduct.setBounds(770, 124, 89, 23);
 		frame.getContentPane().add(btnChangeProduct);
-
+		btnChangeProduct.addActionListener(c.addChangeProductListener());
+		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setOrientation(SwingConstants.VERTICAL);
 		separator_2.setBounds(571, -21, 6, 545);
