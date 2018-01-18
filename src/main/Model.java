@@ -28,7 +28,6 @@ public class Model extends Observable {
 	
 	
 	public Customer findCustomer(String cNbr) {
-<<<<<<< HEAD
 		if (cReg.findCustomer(cNbr) != null) {
 			this.CustomerNumber = cReg.findCustomer(cNbr).getCustomerNumber();
 			return cReg.findCustomer(cNbr);
@@ -43,19 +42,6 @@ public class Model extends Observable {
 	
 	public void removeCustomer() {
 		cReg.removeCustomer(CustomerNumber);
-=======
-		return cReg.findCustomer(cNbr);
-	}
-
-	public void removeCustomer(String customerNumber) {
-		System.out.println("customerNumber (model); " + customerNumber);
-		System.out.println(cReg.findCustomer(customerNumber));
-		cReg.removeCustomer(customerNumber);
-		System.out.println("remove");
-		System.out.println(cReg.findCustomer(customerNumber));
-		setChanged();
-		notifyObservers();
->>>>>>> 8a7066d94c642171b281cc5678859cc697977e51
 	}
 	
 	
@@ -95,94 +81,11 @@ public class Model extends Observable {
 	public void searchProduct(String productID) {
 		
 	}
-<<<<<<< HEAD
 	
 	public void removeItem(String productID) {
-=======
-
-	public void addOrder(String orderID, Customer customer, String deliveryDate) {
-		customer.addOrder(orderID, deliveryDate);
-		setChanged();
-		notifyObservers();
-	}
-
-	public OrderLine searchOrderLine(String orderLineID, String orderID) {
-		Order order = searchOrder(orderID);
-		if (order != null)
-			return order.getOrderLine(orderLineID);
-		return null;
-	}
-
-	public void addOrderLine(String orderLineID, int amount, String orderID, String productID) {
-		Order order = searchOrder(orderID);
-		if (pReg.findProduct(productID) == null)
-			return;
-		order.addOrderLine(new OrderLine(orderLineID, amount, pReg.findProduct(productID)));
-		setChanged();
-		notifyObservers();
-	}
-
-	public void removeOrderLine(String orderLineID, String orderID) {
-		Order order = searchOrder(orderID);
-		if (order != null)
-			order.removeOrderLine(orderLineID);
-		setChanged();
-		notifyObservers();
-	}
-
-	public void removeFromOrderLine(String orderLineID, String orderID, int amount) {
-		Order order = searchOrder(orderID);
-		OrderLine ol = order.getOrderLine(orderLineID);
-		ol.decrease(amount);
-		setChanged();
-		notifyObservers();
-	}
-
-	public void addToOrderLine(String orderLineID, String orderID, int amount) {
-		if (amount + searchOrderLine(orderLineID, orderID).getAmount() > searchOrderLine(orderLineID, orderID)
-				.getProduct().numberInStock())
-			return;
-		Order order = searchOrder(orderID);
-		OrderLine ol = order.getOrderLine(orderLineID);
-		ol.increase(amount);
-		setChanged();
-		notifyObservers();
-	}
-
-	public void removeProduct(String productID) {
->>>>>>> 8a7066d94c642171b281cc5678859cc697977e51
 		pReg.removeProduct(productID);
 	}
 	public Collection<Product> getProductList() {
 		return pReg.getProducts();
 	}
-<<<<<<< HEAD
-=======
-
-	public Collection<Customer> getCustomerCollection() {
-		return cReg.getCustomers();
-	}
-
-	public void removeItems(int amount, String seletedInventory) {
-		if (amount > pReg.findProduct(seletedInventory).numberInStock())
-			return;
-		pReg.findProduct(seletedInventory).removeItems(amount);
-		setChanged();
-		notifyObservers();
-	}
-
-	public void setCustomerInfo(String customerNumber, String customerName, String customerAddress) {
-		cReg.findCustomer(customerNumber).setName(customerName);
-		cReg.findCustomer(customerNumber).setAddress(customerAddress);
-		setChanged();
-		notifyObservers();
-	}
-
-	public void setProductInfo(String currentProductID, String productCategory, double p) {
-		pReg.findProduct(currentProductID).setCategory(productCategory);
-		pReg.findProduct(currentProductID).setPrice(p);
-		setChanged();
-		notifyObservers();
-	}
->>>>>>> 8a7066d94c642171b281cc5678859cc697977e51
 }

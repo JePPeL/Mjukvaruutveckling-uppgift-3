@@ -50,17 +50,8 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
 				model.findCustomer(view.getCustomerId());			
 			}			
-=======
-				if (model.findCustomer(view.getCustomerID()) != null)
-					view.setCurrentCustomerID(view.getCustomerID());
-				view.clearCurrentOrderID();
-				view.clearCurrentOrderLineID();
-				view.clearCurrentProductID();
-			}
->>>>>>> 8a7066d94c642171b281cc5678859cc697977e51
 		};
 	}
 	public ActionListener addAddOrderListener() {
@@ -76,10 +67,6 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-=======
-				model.removeCustomer(view.getCustomerID());
->>>>>>> 8a7066d94c642171b281cc5678859cc697977e51
 			}
 		};
 	}
@@ -119,14 +106,8 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
 				// TODO Auto-generated method stub				
 			}			
-=======
-				if (view.getCurrentOrderID() != null)
-					model.addOrderLine(view.getOrderLineID(), 0, view.getCurrentOrderID(), view.getOLProduct());
-			}
->>>>>>> 8a7066d94c642171b281cc5678859cc697977e51
 		};
 	}
 	public ActionListener addRemoveOrderLineListener() {
@@ -141,14 +122,8 @@ public class Controller {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
 				model.removeItem(view.getProductID());			
 			}			
-=======
-				if (model.searchProduct(view.getSeletedInventory()) != null)
-					model.removeItems(view.getAntal(), view.getSeletedInventory());
-			}
->>>>>>> 8a7066d94c642171b281cc5678859cc697977e51
 		};
 	}	public ActionListener addAddToInventoryListener() {
 		return new ActionListener() {
@@ -171,25 +146,6 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub				
 			}			
-		};
-	}
-
-	public ActionListener addChangeCustomerListener() {
-		return new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				model.setCustomerInfo(view.getCurrentCustomerID(), view.getCustomerName(), view.getCustomerAddress());
-			}
-		};
-	}
-
-	public ActionListener addChangeProductListener() {
-		return new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				double p = 0;
-				if (!view.getProductPrice().equals(""))
-					p = Double.parseDouble(view.getProductPrice());
-				model.setProductInfo(view.getCurrentProductID(), view.getProductCategory(), p);
-			}
 		};
 	}
 }
