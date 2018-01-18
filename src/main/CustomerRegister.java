@@ -23,6 +23,18 @@ public class CustomerRegister {
 	public Customer removeCustomer(String customerNumber) {
 		return register.remove(customerNumber);		
 	}
+<<<<<<< HEAD
+=======
+
+	public Collection<Customer> getCustomers() {
+		// TODO Auto-generated method stub
+		System.out.println("Collection size: " + register.size());
+		System.out.println("Map contains: ");
+		for (String s : register.keySet())
+			System.out.println(register.get(s).getCustomerNumber());
+		return register.values();
+	}
+>>>>>>> 8a7066d94c642171b281cc5678859cc697977e51
 	
 	
 

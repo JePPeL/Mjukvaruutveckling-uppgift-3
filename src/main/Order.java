@@ -28,5 +28,13 @@ public class Order {
 	public Customer getCustomer() {
 		return customer;
 	}
+	
+	public double getPrice() {
+		double a = 0;
+		for(OrderLine ol : orderLines.values()) {
+			a+=ol.getPrice();
+		}
+		return a;
+	}
 
 }
